@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,15 @@
 		02A94415242B8CE100623BC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A94413242B8CE100623BC4 /* Main.storyboard */; };
 		02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A94416242B8CE400623BC4 /* Assets.xcassets */; };
 		02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A94418242B8CE400623BC4 /* LaunchScreen.storyboard */; };
+		02A94423242B923C00623BC4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94422242B923C00623BC4 /* Alamofire */; };
+		02A94426242B92D700623BC4 /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94425242B92D700623BC4 /* Shuffle */; };
+		02A94429242B93B100623BC4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94428242B93B100623BC4 /* SnapKit */; };
+		02A9442C242B93FB00623BC4 /* Hero in Frameworks */ = {isa = PBXBuildFile; productRef = 02A9442B242B93FB00623BC4 /* Hero */; };
+		02A9442F242B954900623BC4 /* SwiftyUserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 02A9442E242B954900623BC4 /* SwiftyUserDefaults */; };
+		02A94432242B961F00623BC4 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94431242B961F00623BC4 /* AlamofireImage */; };
+		02A94435242B977300623BC4 /* SwiftDate in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94434242B977300623BC4 /* SwiftDate */; };
+		02A94438242B979E00623BC4 /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94437242B979E00623BC4 /* Haptica */; };
+		02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */ = {isa = PBXBuildFile; productRef = 02A9443A242B98EB00623BC4 /* MSBBarChart */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +40,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A94429242B93B100623BC4 /* SnapKit in Frameworks */,
+				02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */,
+				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
+				02A94426242B92D700623BC4 /* Shuffle in Frameworks */,
+				02A9442C242B93FB00623BC4 /* Hero in Frameworks */,
+				02A9442F242B954900623BC4 /* SwiftyUserDefaults in Frameworks */,
+				02A94435242B977300623BC4 /* SwiftDate in Frameworks */,
+				02A94423242B923C00623BC4 /* Alamofire in Frameworks */,
+				02A94432242B961F00623BC4 /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +101,17 @@
 			dependencies = (
 			);
 			name = CovidApp;
+			packageProductDependencies = (
+				02A94422242B923C00623BC4 /* Alamofire */,
+				02A94425242B92D700623BC4 /* Shuffle */,
+				02A94428242B93B100623BC4 /* SnapKit */,
+				02A9442B242B93FB00623BC4 /* Hero */,
+				02A9442E242B954900623BC4 /* SwiftyUserDefaults */,
+				02A94431242B961F00623BC4 /* AlamofireImage */,
+				02A94434242B977300623BC4 /* SwiftDate */,
+				02A94437242B979E00623BC4 /* Haptica */,
+				02A9443A242B98EB00623BC4 /* MSBBarChart */,
+			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +140,17 @@
 				Base,
 			);
 			mainGroup = 02A94401242B8CE100623BC4;
+			packageReferences = (
+				02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				02A94424242B92D700623BC4 /* XCRemoteSwiftPackageReference "Shuffle" */,
+				02A94427242B93B100623BC4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				02A9442A242B93FB00623BC4 /* XCRemoteSwiftPackageReference "Hero" */,
+				02A9442D242B954900623BC4 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */,
+				02A94430242B961F00623BC4 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				02A94433242B977300623BC4 /* XCRemoteSwiftPackageReference "SwiftDate" */,
+				02A94436242B979E00623BC4 /* XCRemoteSwiftPackageReference "Haptica" */,
+				02A94439242B98EB00623BC4 /* XCRemoteSwiftPackageReference "MSBBarChart" */,
+			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -338,6 +378,129 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.5;
+			};
+		};
+		02A94424242B92D700623BC4 /* XCRemoteSwiftPackageReference "Shuffle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-gallagher/Shuffle.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.5;
+			};
+		};
+		02A94427242B93B100623BC4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
+		02A9442A242B93FB00623BC4 /* XCRemoteSwiftPackageReference "Hero" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/HeroTransitions/Hero.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+		02A9442D242B954900623BC4 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sunshinejr/SwiftyUserDefaults.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		02A94430242B961F00623BC4 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.3;
+			};
+		};
+		02A94433242B977300623BC4 /* XCRemoteSwiftPackageReference "SwiftDate" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/SwiftDate.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.0;
+			};
+		};
+		02A94436242B979E00623BC4 /* XCRemoteSwiftPackageReference "Haptica" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/efremidze/Haptica.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
+		02A94439242B98EB00623BC4 /* XCRemoteSwiftPackageReference "MSBBarChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/misyobun/MSBBarChart.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		02A94422242B923C00623BC4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		02A94425242B92D700623BC4 /* Shuffle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94424242B92D700623BC4 /* XCRemoteSwiftPackageReference "Shuffle" */;
+			productName = Shuffle;
+		};
+		02A94428242B93B100623BC4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94427242B93B100623BC4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		02A9442B242B93FB00623BC4 /* Hero */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A9442A242B93FB00623BC4 /* XCRemoteSwiftPackageReference "Hero" */;
+			productName = Hero;
+		};
+		02A9442E242B954900623BC4 /* SwiftyUserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A9442D242B954900623BC4 /* XCRemoteSwiftPackageReference "SwiftyUserDefaults" */;
+			productName = SwiftyUserDefaults;
+		};
+		02A94431242B961F00623BC4 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94430242B961F00623BC4 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		02A94434242B977300623BC4 /* SwiftDate */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94433242B977300623BC4 /* XCRemoteSwiftPackageReference "SwiftDate" */;
+			productName = SwiftDate;
+		};
+		02A94437242B979E00623BC4 /* Haptica */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94436242B979E00623BC4 /* XCRemoteSwiftPackageReference "Haptica" */;
+			productName = Haptica;
+		};
+		02A9443A242B98EB00623BC4 /* MSBBarChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94439242B98EB00623BC4 /* XCRemoteSwiftPackageReference "MSBBarChart" */;
+			productName = MSBBarChart;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 02A94402242B8CE100623BC4 /* Project object */;
 }
