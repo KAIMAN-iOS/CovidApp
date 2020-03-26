@@ -20,21 +20,12 @@
         }
       },
       {
-        "package": "CwlCatchException",
-        "repositoryURL": "https://github.com/mattgallagher/CwlCatchException.git",
+        "package": "PMKCoreLocation",
+        "repositoryURL": "https://github.com/PromiseKit/CoreLocation.git",
         "state": {
           "branch": null,
-          "revision": "7cd2f8cacc4d22f21bc0b2309c3b18acf7957b66",
-          "version": "1.2.0"
-        }
-      },
-      {
-        "package": "CwlPreconditionTesting",
-        "repositoryURL": "https://github.com/mattgallagher/CwlPreconditionTesting.git",
-        "state": {
-          "branch": null,
-          "revision": "c228db5d2ad1b01ebc84435e823e6cca4e3db98b",
-          "version": "1.2.0"
+          "revision": "d027bbcdfffc83fa7a790aa6f9189b18c94632e2",
+          "version": "3.1.1"
         }
       },
       {
@@ -65,30 +56,30 @@
         }
       },
       {
-        "package": "Nimble",
-        "repositoryURL": "https://github.com/Quick/Nimble",
+        "package": "NSAttributedStringBuilder",
+        "repositoryURL": "https://github.com/ethanhuang13/NSAttributedStringBuilder.git",
         "state": {
           "branch": null,
-          "revision": "b02b00b30b6353632aa4a5fb6124f8147f7140c0",
-          "version": "8.0.5"
+          "revision": "4a3b02b8b4baf531490e1ddae8ed4a667bdb12b5",
+          "version": "0.3.3"
         }
       },
       {
-        "package": "Quick",
-        "repositoryURL": "https://github.com/Quick/Quick",
+        "package": "PaperOnboarding",
+        "repositoryURL": "https://github.com/Ramotion/paper-onboarding.git",
         "state": {
           "branch": null,
-          "revision": "33682c2f6230c60614861dfc61df267e11a1602f",
-          "version": "2.2.0"
+          "revision": "c77ff68563eb44671394e976b7c877dc442809d9",
+          "version": "6.1.4"
         }
       },
       {
-        "package": "Shuffle",
-        "repositoryURL": "https://github.com/mac-gallagher/Shuffle.git",
+        "package": "PromiseKit",
+        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
         "state": {
           "branch": null,
-          "revision": "93a4be47e95d3e92af2fb0ba15a95f55c7af50bd",
-          "version": "0.1.5"
+          "revision": "f14f16cc2602afec1030e4f492100d6d43dca544",
+          "version": "6.13.1"
         }
       },
       {
