@@ -69,6 +69,17 @@
 		02A94525242CC47D00623BC4 /* CovidSwipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94524242CC47D00623BC4 /* CovidSwipeCard.swift */; };
 		02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A94526242CC48600623BC4 /* SwipeCardContentView.xib */; };
 		02A94529242CC6B500623BC4 /* SwipeCardContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94528242CC6B500623BC4 /* SwipeCardContentView.swift */; };
+		02A9452B242CC85300623BC4 /* SwipeCardOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9452A242CC85300623BC4 /* SwipeCardOverlay.swift */; };
+		02A9452E242CFF6C00623BC4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9452D242CFF6C00623BC4 /* User.swift */; };
+		02A94530242CFF7600623BC4 /* Metric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9452F242CFF7600623BC4 /* Metric.swift */; };
+		02A94532242D0EDE00623BC4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 02A94531242D0EDE00623BC4 /* Localizable.strings */; };
+		02A94534242D10E500623BC4 /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94533242D10E500623BC4 /* UILabel+Ext.swift */; };
+		02A94536242D117E00623BC4 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94535242D117E00623BC4 /* Configuration.swift */; };
+		02A94538242D126C00623BC4 /* UIFont+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94537242D126C00623BC4 /* UIFont+Extension.swift */; };
+		02A9453E242F5A8D00623BC4 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 02A9453D242F5A8D00623BC4 /* FacebookCore */; };
+		02A94540242F5A8D00623BC4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02A9453F242F5A8D00623BC4 /* FacebookLogin */; };
+		02A94542242F5A8D00623BC4 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94541242F5A8D00623BC4 /* FacebookShare */; };
+		02A94544242F602600623BC4 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94543242F602600623BC4 /* Onboarding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +135,14 @@
 		02A94524242CC47D00623BC4 /* CovidSwipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSwipeCard.swift; sourceTree = "<group>"; };
 		02A94526242CC48600623BC4 /* SwipeCardContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SwipeCardContentView.xib; sourceTree = "<group>"; };
 		02A94528242CC6B500623BC4 /* SwipeCardContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardContentView.swift; sourceTree = "<group>"; };
+		02A9452A242CC85300623BC4 /* SwipeCardOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardOverlay.swift; sourceTree = "<group>"; };
+		02A9452D242CFF6C00623BC4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		02A9452F242CFF7600623BC4 /* Metric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metric.swift; sourceTree = "<group>"; };
+		02A94531242D0EDE00623BC4 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		02A94533242D10E500623BC4 /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		02A94535242D117E00623BC4 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		02A94537242D126C00623BC4 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
+		02A94543242F602600623BC4 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,7 +150,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A94540242F5A8D00623BC4 /* FacebookLogin in Frameworks */,
 				02A94519242CBA2A00623BC4 /* PaperOnboarding in Frameworks */,
+				02A9453E242F5A8D00623BC4 /* FacebookCore in Frameworks */,
 				02A9446C242B9A8300623BC4 /* NSAttributedStringBuilder in Frameworks */,
 				02A94472242B9C2300623BC4 /* PMKCoreLocation in Frameworks */,
 				02A94429242B93B100623BC4 /* SnapKit in Frameworks */,
@@ -140,6 +161,7 @@
 				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
 				02A9442C242B93FB00623BC4 /* Hero in Frameworks */,
 				02A94475242B9DA300623BC4 /* UIKit.framework in Frameworks */,
+				02A94542242F5A8D00623BC4 /* FacebookShare in Frameworks */,
 				02A9442F242B954900623BC4 /* SwiftyUserDefaults in Frameworks */,
 				02A94477242B9E6600623BC4 /* CoreGraphics.framework in Frameworks */,
 				02A94435242B977300623BC4 /* SwiftDate in Frameworks */,
@@ -171,6 +193,7 @@
 		02A9440C242B8CE100623BC4 /* CovidApp */ = {
 			isa = PBXGroup;
 			children = (
+				02A9452C242CFF5A00623BC4 /* Models */,
 				02A94520242CBBF000623BC4 /* Configuration */,
 				02A9451A242CBA4500623BC4 /* Modules */,
 				02A9445F242B99F600623BC4 /* CoordinatorKit */,
@@ -188,7 +211,6 @@
 			children = (
 				02A944E9242CB83E00623BC4 /* Shuffle */,
 				02A944E4242BC24900623BC4 /* Network */,
-				02A9443D242B99AA00623BC4 /* Palette.swift */,
 				02A9443E242B99AA00623BC4 /* Ext */,
 				02A9444D242B99AA00623BC4 /* Protocols */,
 			);
@@ -198,6 +220,7 @@
 		02A9443E242B99AA00623BC4 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
+				02A94537242D126C00623BC4 /* UIFont+Extension.swift */,
 				02A9443F242B99AA00623BC4 /* UIView+Ext.swift */,
 				02A94440242B99AA00623BC4 /* StringExt.swift */,
 				02A94441242B99AA00623BC4 /* UIViewControllerExt.swift */,
@@ -205,6 +228,7 @@
 				02A94443242B99AA00623BC4 /* Double+Extensions.swift */,
 				02A94444242B99AA00623BC4 /* UIImageExt.swift */,
 				02A94445242B99AA00623BC4 /* UITableView+Extension.swift */,
+				02A94533242D10E500623BC4 /* UILabel+Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -338,7 +362,10 @@
 		02A94520242CBBF000623BC4 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				02A9443D242B99AA00623BC4 /* Palette.swift */,
 				02A94416242B8CE400623BC4 /* Assets.xcassets */,
+				02A94531242D0EDE00623BC4 /* Localizable.strings */,
+				02A94535242D117E00623BC4 /* Configuration.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -346,11 +373,22 @@
 		02A94523242CC44100623BC4 /* Cards */ = {
 			isa = PBXGroup;
 			children = (
+				02A9452A242CC85300623BC4 /* SwipeCardOverlay.swift */,
 				02A94524242CC47D00623BC4 /* CovidSwipeCard.swift */,
 				02A94528242CC6B500623BC4 /* SwipeCardContentView.swift */,
 				02A94526242CC48600623BC4 /* SwipeCardContentView.xib */,
 			);
 			path = Cards;
+			sourceTree = "<group>";
+		};
+		02A9452C242CFF5A00623BC4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				02A9452D242CFF6C00623BC4 /* User.swift */,
+				02A9452F242CFF7600623BC4 /* Metric.swift */,
+				02A94543242F602600623BC4 /* Onboarding.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -382,6 +420,9 @@
 				02A9446E242B9BA300623BC4 /* PromiseKit */,
 				02A94471242B9C2300623BC4 /* PMKCoreLocation */,
 				02A94518242CBA2A00623BC4 /* PaperOnboarding */,
+				02A9453D242F5A8D00623BC4 /* FacebookCore */,
+				02A9453F242F5A8D00623BC4 /* FacebookLogin */,
+				02A94541242F5A8D00623BC4 /* FacebookShare */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -424,6 +465,7 @@
 				02A9446D242B9BA300623BC4 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				02A94470242B9C2300623BC4 /* XCRemoteSwiftPackageReference "CoreLocation" */,
 				02A94517242CBA2A00623BC4 /* XCRemoteSwiftPackageReference "paper-onboarding" */,
+				02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -439,6 +481,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A94532242D0EDE00623BC4 /* Localizable.strings in Resources */,
 				02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */,
 				02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */,
 				02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */,
@@ -462,6 +505,7 @@
 				02A9451F242CBA7D00623BC4 /* AppCoordinator.swift in Sources */,
 				02A9450D242CB83E00623BC4 /* CardStackTransformProvider.swift in Sources */,
 				02A94502242CB83E00623BC4 /* CardLayoutProvider.swift in Sources */,
+				02A94536242D117E00623BC4 /* Configuration.swift in Sources */,
 				02A94509242CB83E00623BC4 /* SwipeCardStackDataSource.swift in Sources */,
 				02A94467242B99F600623BC4 /* WindowCoordinator.swift in Sources */,
 				02A94454242B99AA00623BC4 /* CLLocation+Extensions.swift in Sources */,
@@ -470,13 +514,18 @@
 				02A94479242BB8A400623BC4 /* SceneDelegate.swift in Sources */,
 				02A9440E242B8CE100623BC4 /* AppDelegate.swift in Sources */,
 				02A94455242B99AA00623BC4 /* Double+Extensions.swift in Sources */,
+				02A94538242D126C00623BC4 /* UIFont+Extension.swift in Sources */,
 				02A94451242B99AA00623BC4 /* UIView+Ext.swift in Sources */,
 				02A94525242CC47D00623BC4 /* CovidSwipeCard.swift in Sources */,
+				02A9452B242CC85300623BC4 /* SwipeCardOverlay.swift in Sources */,
 				02A9450A242CB83E00623BC4 /* CardStackAnimationOptions.swift in Sources */,
 				02A94514242CB83E00623BC4 /* UIView+Extensions.swift in Sources */,
+				02A94534242D10E500623BC4 /* UILabel+Ext.swift in Sources */,
+				02A9452E242CFF6C00623BC4 /* User.swift in Sources */,
 				02A94456242B99AA00623BC4 /* UIImageExt.swift in Sources */,
 				02A94468242B99F600623BC4 /* Router.swift in Sources */,
 				02A94522242CC3D000623BC4 /* MainViewController.swift in Sources */,
+				02A94530242CFF7600623BC4 /* Metric.swift in Sources */,
 				02A94465242B99F600623BC4 /* WindowRouter.swift in Sources */,
 				02A9445D242B99AA00623BC4 /* TableViewModelable.swift in Sources */,
 				02A94452242B99AA00623BC4 /* StringExt.swift in Sources */,
@@ -486,6 +535,7 @@
 				02A94511242CB83E00623BC4 /* SwipeDirection.swift in Sources */,
 				02A94508242CB83E00623BC4 /* SwipeCard.swift in Sources */,
 				02A9445E242B99AA00623BC4 /* Result.swift in Sources */,
+				02A94544242F602600623BC4 /* Onboarding.swift in Sources */,
 				02A94453242B99AA00623BC4 /* UIViewControllerExt.swift in Sources */,
 				02A94516242CB83E00623BC4 /* Animator.swift in Sources */,
 				02A94507242CB83E00623BC4 /* SwipeCardDelegate.swift in Sources */,
@@ -794,6 +844,14 @@
 				minimumVersion = 6.1.4;
 			};
 		};
+		02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -856,6 +914,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02A94517242CBA2A00623BC4 /* XCRemoteSwiftPackageReference "paper-onboarding" */;
 			productName = PaperOnboarding;
+		};
+		02A9453D242F5A8D00623BC4 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		02A9453F242F5A8D00623BC4 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		02A94541242F5A8D00623BC4 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

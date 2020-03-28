@@ -14,8 +14,8 @@ protocol Colorable {
 
 struct Palette {
     enum basic: Colorable {
-        case primary(reverseOnDark: Bool)
-        case secondary(reverseOnDark: Bool)
+        case primary
+        case secondary
         case background
         case primaryTexts
         case mainTexts
@@ -24,8 +24,8 @@ struct Palette {
         
         var color: UIColor? {
             switch self {
-            case .primary(let reverseOnDark): return reverseOnDark ? UIColor.init(named: "primaryDark") : UIColor.init(named: "primary")
-            case .secondary(let reverseOnDark):return reverseOnDark ? UIColor.init(named: "secondaryDark") : UIColor.init(named: "secondary")
+            case .primary: return UIColor.init(named: "primary")
+            case .secondary:return UIColor.init(named: "secondary")
             case .background: return UIColor.init(named: "background")
             case .primaryTexts:return UIColor.init(named: "primary")
             case .mainTexts:return UIColor.init(named: "mainTexts")
