@@ -34,15 +34,42 @@ fileprivate enum LaunchInstructor {
 class AppCoordinator: Coordinator<DeepLink> {
     
     let mainController = MainViewController.create()
+    let loginController = LoginViewController.create()
     
     private var instructor: LaunchInstructor {
         return LaunchInstructor.configure()
     }
     
-//    private lazy var tabControllers: [Coordinator<DeepLink>] = getCoordinators()
-    
     override init(router: RouterType) {
         super.init(router: router)
         router.setRootModule(mainController, hideBar: true)
+    }
+    
+    override func start() {
+        switch instructor {
+        case .onboarding: presentOnboardingFlow()
+        case .main:
+            if SessionController().userLoggedIn == false {
+                router.setRootModule(loginController, hideBar: true)
+            } else {
+                router.setRootModule(mainController, hideBar: true)
+            }
+        }
+    }
+    
+    func presentOnboardingFlow() {
+        let onboarding = OnboardingViewController.create()
+        onboarding.modalPresentationStyle = .overFullScreen
+        onboarding.delegate = self
+        mainController.present(onboarding, animated: true)
+    }
+}
+
+extension AppCoordinator: CloseDelegate {
+    func close() {
+        start()
+        mainController.dismiss(animated: true) {
+            Defaults[\.onboardingWasShown] = true
+        }
     }
 }

@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -35,5 +36,119 @@
             </objects>
             <point key="canvasLocation" x="139" y="138"/>
         </scene>
+        <!--Onboarding View Controller-->
+        <scene sceneID="7bk-y7-wjP">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingViewController" id="CSQ-Tb-SsS" customClass="OnboardingViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VJ5-gd-iLu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLh-FQ-h1h" customClass="PaperOnboarding" customModule="PaperOnboarding">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxG-Aa-yle" customClass="Button" customModule="CovidApp" customModuleProvider="target">
+                                <rect key="frame" x="12" y="782" width="390" height="60"/>
+                                <color key="backgroundColor" name="background"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="nmk-ee-ZBq"/>
+                                </constraints>
+                                <state key="normal" title="Cest parti">
+                                    <color key="titleColor" name="primary"/>
+                                </state>
+                                <connections>
+                                    <action selector="quit:" destination="CSQ-Tb-SsS" eventType="touchUpInside" id="pKn-Iw-tel"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="primary"/>
+                        <constraints>
+                            <constraint firstItem="YKr-3Q-lwx" firstAttribute="bottom" secondItem="AxG-Aa-yle" secondAttribute="bottom" constant="20" id="7h1-1f-RJ7"/>
+                            <constraint firstItem="KLh-FQ-h1h" firstAttribute="top" secondItem="YKr-3Q-lwx" secondAttribute="top" id="JCB-qS-DrN"/>
+                            <constraint firstItem="YKr-3Q-lwx" firstAttribute="trailing" secondItem="AxG-Aa-yle" secondAttribute="trailing" constant="12" id="MQb-lC-hEo"/>
+                            <constraint firstItem="YKr-3Q-lwx" firstAttribute="trailing" secondItem="KLh-FQ-h1h" secondAttribute="trailing" id="NbF-Qx-XS5"/>
+                            <constraint firstItem="AxG-Aa-yle" firstAttribute="leading" secondItem="YKr-3Q-lwx" secondAttribute="leading" constant="12" id="c54-c2-rYq"/>
+                            <constraint firstItem="YKr-3Q-lwx" firstAttribute="bottom" secondItem="KLh-FQ-h1h" secondAttribute="bottom" id="qIc-wb-q0N"/>
+                            <constraint firstItem="KLh-FQ-h1h" firstAttribute="leading" secondItem="YKr-3Q-lwx" secondAttribute="leading" id="uHR-V1-VE9"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="YKr-3Q-lwx"/>
+                    </view>
+                    <connections>
+                        <outlet property="paperView" destination="KLh-FQ-h1h" id="Rqb-9r-BQD"/>
+                        <outlet property="quitButton" destination="AxG-Aa-yle" id="yeR-nH-VS3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uhY-ed-cDp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="921.73913043478262" y="137.94642857142856"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="dCa-ac-bGi">
+            <objects>
+                <viewController storyboardIdentifier="LoginViewController" id="Vuu-ER-eCC" customClass="LoginViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ahl-O4-Xee">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Cz4-nh-tkx">
+                                <rect key="frame" x="12" y="289.5" width="390" height="317.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-Om-BwE">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="168.5"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-uD-6Ic" customClass="Button" customModule="CovidApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="188.5" width="390" height="60"/>
+                                        <color key="backgroundColor" name="primary"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Ep6-QL-4bf"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Se connecter avec Facebook" image="facebook">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connect:" destination="Vuu-ER-eCC" eventType="touchUpInside" id="GwC-aS-Tpj"/>
+                                            <action selector="quit:" destination="CSQ-Tb-SsS" eventType="touchUpInside" id="8SV-0p-0gN"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Merci de vous connecter afin de pouvoir utiliser Covid'App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nQ-p9-VH4">
+                                        <rect key="frame" x="0.0" y="268.5" width="390" height="49"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <color key="textColor" name="mainTexts"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VPo-rP-vf7" firstAttribute="trailing" secondItem="Cz4-nh-tkx" secondAttribute="trailing" constant="12" id="Pqe-kK-qnZ"/>
+                            <constraint firstItem="Cz4-nh-tkx" firstAttribute="leading" secondItem="VPo-rP-vf7" secondAttribute="leading" constant="12" id="geh-wv-eIG"/>
+                            <constraint firstItem="Cz4-nh-tkx" firstAttribute="centerY" secondItem="ahl-O4-Xee" secondAttribute="centerY" id="y59-Nn-7jr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VPo-rP-vf7"/>
+                    </view>
+                    <connections>
+                        <outlet property="facebookButton" destination="K2H-uD-6Ic" id="Bwo-gY-tOp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gw0-nu-Xbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1657" y="137"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="facebook" width="42" height="42"/>
+        <image name="house" width="168.5" height="168.5"/>
+        <namedColor name="background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="mainTexts">
+            <color red="0.16078431372549021" green="0.19215686274509805" blue="0.19607843137254902" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="primary">
+            <color red="0.29803921568627451" green="0.59999999999999998" blue="0.81176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -39,7 +39,6 @@
 		02A94472242B9C2300623BC4 /* PMKCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94471242B9C2300623BC4 /* PMKCoreLocation */; };
 		02A94475242B9DA300623BC4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A94474242B9DA300623BC4 /* UIKit.framework */; };
 		02A94477242B9E6600623BC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A94476242B9E6600623BC4 /* CoreGraphics.framework */; };
-		02A94479242BB8A400623BC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94478242BB8A300623BC4 /* SceneDelegate.swift */; };
 		02A944E7242BC25200623BC4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944E5242BC25200623BC4 /* API.swift */; };
 		02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944E6242BC25200623BC4 /* RequestObject.swift */; };
 		02A94502242CB83E00623BC4 /* CardLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944EB242CB83E00623BC4 /* CardLayoutProvider.swift */; };
@@ -80,6 +79,14 @@
 		02A94540242F5A8D00623BC4 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 02A9453F242F5A8D00623BC4 /* FacebookLogin */; };
 		02A94542242F5A8D00623BC4 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94541242F5A8D00623BC4 /* FacebookShare */; };
 		02A94544242F602600623BC4 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94543242F602600623BC4 /* Onboarding.swift */; };
+		02A94547242F8D4D00623BC4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94546242F8D4D00623BC4 /* OnboardingViewController.swift */; };
+		02A94548242F95DF00623BC4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94478242BB8A300623BC4 /* SceneDelegate.swift */; };
+		02A9454B242FA02200623BC4 /* UIButton+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9454A242FA02200623BC4 /* UIButton+Ext.swift */; };
+		02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9454D242FAA7600623BC4 /* SessionController.swift */; };
+		02A94551242FAB0F00623BC4 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94550242FAB0F00623BC4 /* KeychainAccess */; };
+		02A94555242FAD9200623BC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94554242FAD9200623BC4 /* LoginViewController.swift */; };
+		02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94557242FB5D700623BC4 /* NotificationBannerSwift */; };
+		02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94559242FB5EA00623BC4 /* MessageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -143,6 +150,11 @@
 		02A94535242D117E00623BC4 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		02A94537242D126C00623BC4 /* UIFont+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIFont+Extension.swift"; sourceTree = "<group>"; };
 		02A94543242F602600623BC4 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
+		02A94546242F8D4D00623BC4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		02A9454A242FA02200623BC4 /* UIButton+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Ext.swift"; sourceTree = "<group>"; };
+		02A9454D242FAA7600623BC4 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
+		02A94554242FAD9200623BC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		02A94559242FB5EA00623BC4 /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,12 +164,14 @@
 			files = (
 				02A94540242F5A8D00623BC4 /* FacebookLogin in Frameworks */,
 				02A94519242CBA2A00623BC4 /* PaperOnboarding in Frameworks */,
+				02A94551242FAB0F00623BC4 /* KeychainAccess in Frameworks */,
 				02A9453E242F5A8D00623BC4 /* FacebookCore in Frameworks */,
 				02A9446C242B9A8300623BC4 /* NSAttributedStringBuilder in Frameworks */,
 				02A94472242B9C2300623BC4 /* PMKCoreLocation in Frameworks */,
 				02A94429242B93B100623BC4 /* SnapKit in Frameworks */,
 				02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */,
 				02A9446F242B9BA300623BC4 /* PromiseKit in Frameworks */,
+				02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */,
 				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
 				02A9442C242B93FB00623BC4 /* Hero in Frameworks */,
 				02A94475242B9DA300623BC4 /* UIKit.framework in Frameworks */,
@@ -209,6 +223,8 @@
 		02A9443C242B99AA00623BC4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				02A9454C242FAA6C00623BC4 /* Manager */,
+				02A94549242FA00F00623BC4 /* Views */,
 				02A944E9242CB83E00623BC4 /* Shuffle */,
 				02A944E4242BC24900623BC4 /* Network */,
 				02A9443E242B99AA00623BC4 /* Ext */,
@@ -220,15 +236,16 @@
 		02A9443E242B99AA00623BC4 /* Ext */ = {
 			isa = PBXGroup;
 			children = (
-				02A94537242D126C00623BC4 /* UIFont+Extension.swift */,
-				02A9443F242B99AA00623BC4 /* UIView+Ext.swift */,
-				02A94440242B99AA00623BC4 /* StringExt.swift */,
-				02A94441242B99AA00623BC4 /* UIViewControllerExt.swift */,
 				02A94442242B99AA00623BC4 /* CLLocation+Extensions.swift */,
 				02A94443242B99AA00623BC4 /* Double+Extensions.swift */,
+				02A94440242B99AA00623BC4 /* StringExt.swift */,
+				02A9454A242FA02200623BC4 /* UIButton+Ext.swift */,
+				02A94537242D126C00623BC4 /* UIFont+Extension.swift */,
 				02A94444242B99AA00623BC4 /* UIImageExt.swift */,
-				02A94445242B99AA00623BC4 /* UITableView+Extension.swift */,
 				02A94533242D10E500623BC4 /* UILabel+Ext.swift */,
+				02A94445242B99AA00623BC4 /* UITableView+Extension.swift */,
+				02A9443F242B99AA00623BC4 /* UIView+Ext.swift */,
+				02A94441242B99AA00623BC4 /* UIViewControllerExt.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -327,8 +344,9 @@
 		02A9451A242CBA4500623BC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				02A94553242FAD3A00623BC4 /* Login */,
 				02A9451D242CBA5000623BC4 /* CollectData */,
-				02A9451C242CBA4C00623BC4 /* Onbording */,
+				02A9451C242CBA4C00623BC4 /* Onboarding */,
 				02A9451B242CBA4800623BC4 /* Main */,
 			);
 			path = Modules;
@@ -344,11 +362,12 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		02A9451C242CBA4C00623BC4 /* Onbording */ = {
+		02A9451C242CBA4C00623BC4 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				02A94546242F8D4D00623BC4 /* OnboardingViewController.swift */,
 			);
-			path = Onbording;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		02A9451D242CBA5000623BC4 /* CollectData */ = {
@@ -391,6 +410,30 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		02A94549242FA00F00623BC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02A9454C242FAA6C00623BC4 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				02A94559242FB5EA00623BC4 /* MessageManager.swift */,
+				02A9454D242FAA7600623BC4 /* SessionController.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		02A94553242FAD3A00623BC4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				02A94554242FAD9200623BC4 /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -423,6 +466,8 @@
 				02A9453D242F5A8D00623BC4 /* FacebookCore */,
 				02A9453F242F5A8D00623BC4 /* FacebookLogin */,
 				02A94541242F5A8D00623BC4 /* FacebookShare */,
+				02A94550242FAB0F00623BC4 /* KeychainAccess */,
+				02A94557242FB5D700623BC4 /* NotificationBannerSwift */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -466,6 +511,8 @@
 				02A94470242B9C2300623BC4 /* XCRemoteSwiftPackageReference "CoreLocation" */,
 				02A94517242CBA2A00623BC4 /* XCRemoteSwiftPackageReference "paper-onboarding" */,
 				02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+				02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -511,7 +558,6 @@
 				02A94454242B99AA00623BC4 /* CLLocation+Extensions.swift in Sources */,
 				02A94469242B99F600623BC4 /* Coordinator.swift in Sources */,
 				02A94529242CC6B500623BC4 /* SwipeCardContentView.swift in Sources */,
-				02A94479242BB8A400623BC4 /* SceneDelegate.swift in Sources */,
 				02A9440E242B8CE100623BC4 /* AppDelegate.swift in Sources */,
 				02A94455242B99AA00623BC4 /* Double+Extensions.swift in Sources */,
 				02A94538242D126C00623BC4 /* UIFont+Extension.swift in Sources */,
@@ -535,14 +581,20 @@
 				02A94511242CB83E00623BC4 /* SwipeDirection.swift in Sources */,
 				02A94508242CB83E00623BC4 /* SwipeCard.swift in Sources */,
 				02A9445E242B99AA00623BC4 /* Result.swift in Sources */,
+				02A9454B242FA02200623BC4 /* UIButton+Ext.swift in Sources */,
+				02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */,
+				02A94547242F8D4D00623BC4 /* OnboardingViewController.swift in Sources */,
 				02A94544242F602600623BC4 /* Onboarding.swift in Sources */,
 				02A94453242B99AA00623BC4 /* UIViewControllerExt.swift in Sources */,
 				02A94516242CB83E00623BC4 /* Animator.swift in Sources */,
+				02A94555242FAD9200623BC4 /* LoginViewController.swift in Sources */,
 				02A94507242CB83E00623BC4 /* SwipeCardDelegate.swift in Sources */,
 				02A94504242CB83E00623BC4 /* SwipeView.swift in Sources */,
 				02A9450E242CB83E00623BC4 /* SwipeCardStackDelegate.swift in Sources */,
+				02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */,
 				02A94513242CB83E00623BC4 /* CGVector+Extensions.swift in Sources */,
 				02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */,
+				02A94548242F95DF00623BC4 /* SceneDelegate.swift in Sources */,
 				02A94510242CB83E00623BC4 /* CardStackStateManager.swift in Sources */,
 				02A9450C242CB83E00623BC4 /* SwipeCardStack.swift in Sources */,
 				02A94450242B99AA00623BC4 /* Palette.swift in Sources */,
@@ -691,14 +743,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PL2MHQYD7K;
+				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				INFOPLIST_FILE = CovidApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jerometonnelier.CovidApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaimanCovidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -710,14 +762,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = PL2MHQYD7K;
+				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				INFOPLIST_FILE = CovidApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.jerometonnelier.CovidApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kaimanCovidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -852,6 +904,22 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+		02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Daltron/NotificationBanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -929,6 +997,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
 			productName = FacebookShare;
+		};
+		02A94550242FAB0F00623BC4 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		02A94557242FB5D700623BC4 /* NotificationBannerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */;
+			productName = NotificationBannerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

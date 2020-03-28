@@ -56,12 +56,39 @@
         }
       },
       {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
+        "state": {
+          "branch": null,
+          "revision": "b920ad7df3c73189dcdd4aa05c540849b2010dbf",
+          "version": "4.1.0"
+        }
+      },
+      {
+        "package": "MarqueeLabel",
+        "repositoryURL": "https://github.com/cbpowell/MarqueeLabel",
+        "state": {
+          "branch": null,
+          "revision": "8cd051e549b4fcbc469cc1cb7c55ae10f49caef8",
+          "version": "4.0.2"
+        }
+      },
+      {
         "package": "MSBBarChart",
         "repositoryURL": "https://github.com/misyobun/MSBBarChart.git",
         "state": {
           "branch": null,
           "revision": "16cf3f0c1f1658d3584fc27585608e8743e7b572",
           "version": "1.0.1"
+        }
+      },
+      {
+        "package": "NotificationBannerSwift",
+        "repositoryURL": "https://github.com/Daltron/NotificationBanner.git",
+        "state": {
+          "branch": null,
+          "revision": "a852488c04c5bfdb32021711b3dde465ad0899ef",
+          "version": "3.0.4"
         }
       },
       {

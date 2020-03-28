@@ -16,7 +16,7 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        (UIApplication.shared.delegate as? AppDelegate)?.appCoordinator.start()
         // Do any additional setup after loading the view.
     }
     

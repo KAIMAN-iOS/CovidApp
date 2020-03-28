@@ -21,6 +21,7 @@ struct Palette {
         case mainTexts
         case secondaryTexts
         case lightGray
+        case alert
         
         var color: UIColor? {
             switch self {
@@ -31,6 +32,7 @@ struct Palette {
             case .mainTexts:return UIColor.init(named: "mainTexts")
             case .secondaryTexts:return UIColor.init(named: "secondaryTexts")
             case .lightGray:return UIColor.init(named: "lightGray")
+            case .alert:return UIColor.init(named: "alert")
             }
         }
     }

@@ -7,23 +7,30 @@
 //
 
 import UIKit
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     // coordinator
-    lazy var appNavigationController: UINavigationController = UINavigationController()
-    lazy var appRouter: RouterType = Router(navigationController: self.appNavigationController)
+    private lazy var appNavigationController: UINavigationController = UINavigationController()
+    private lazy var appRouter: RouterType = Router(navigationController: self.appNavigationController)
     lazy var appCoordinator: AppCoordinator = AppCoordinator(router: self.appRouter)
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = appCoordinator.toPresentable()
-        window?.backgroundColor = .white
-        window?.makeKeyAndVisible()
-        appCoordinator.start()
+        if #available(iOS 13.0, *) {
+            
+        } else {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.rootViewController = appCoordinator.toPresentable()
+            window?.backgroundColor = .white
+            window?.makeKeyAndVisible()
+            appCoordinator.start()
+        }
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         return true
     }
 
