@@ -67,9 +67,8 @@ class AppCoordinator: Coordinator<DeepLink> {
 
 extension AppCoordinator: CloseDelegate {
     func close() {
+        Defaults[\.onboardingWasShown] = true
+        mainController.dismiss(animated: true) { }
         start()
-        mainController.dismiss(animated: true) {
-            Defaults[\.onboardingWasShown] = true
-        }
     }
 }
