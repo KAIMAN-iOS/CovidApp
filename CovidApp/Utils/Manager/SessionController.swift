@@ -11,7 +11,7 @@ import KeychainAccess
 import SwiftDate
 
 struct SessionController {
-    private static let keychain = Keychain.init(accessGroup: "R8CKJFJ8PKcom.kaiman.apps")
+    private static let keychain = Keychain.init(service: "CovidApp", accessGroup: "group.com.kaiman.apps")
     private static var instance = SessionController()
     var name: String?  {
         set {
