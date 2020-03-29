@@ -57,9 +57,9 @@ class AppCoordinator: Coordinator<DeepLink> {
         case .onboarding: presentOnboardingFlow()
         case .main:
             if SessionController().userLoggedIn == false {
-                router.setRootModule(loginController, hideBar: true, animated: true)
+                router.setRootModule(loginController, hideBar: true, animated: false)
             } else {
-                router.setRootModule(mainController, hideBar: true, animated: true)
+                router.setRootModule(mainController, hideBar: true, animated: false)
             }
         }
     }

@@ -93,6 +93,8 @@
 		02A945642430AE5500623BC4 /* AskProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945632430AE5500623BC4 /* AskProfileViewController.swift */; };
 		02A945672430B3CC00623BC4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */; };
 		02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945682430CFD900623BC4 /* Date+Ext.swift */; };
+		02A9456C2430DF1500623BC4 /* MetricStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9456B2430DF1500623BC4 /* MetricStateView.swift */; };
+		02A9456E2430DF1900623BC4 /* MetricStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A9456D2430DF1900623BC4 /* MetricStateView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -167,6 +169,8 @@
 		02A945612430AE4A00623BC4 /* AskEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskEmailViewController.swift; sourceTree = "<group>"; };
 		02A945632430AE5500623BC4 /* AskProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskProfileViewController.swift; sourceTree = "<group>"; };
 		02A945682430CFD900623BC4 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		02A9456B2430DF1500623BC4 /* MetricStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStateView.swift; sourceTree = "<group>"; };
+		02A9456D2430DF1900623BC4 /* MetricStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStateView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -371,6 +375,7 @@
 		02A9451B242CBA4800623BC4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				02A9456A2430DEF800623BC4 /* Views */,
 				02A94413242B8CE100623BC4 /* Main.storyboard */,
 				02A9451E242CBA7D00623BC4 /* AppCoordinator.swift */,
 				02A94521242CC3D000623BC4 /* MainViewController.swift */,
@@ -459,6 +464,15 @@
 				02A945632430AE5500623BC4 /* AskProfileViewController.swift */,
 			);
 			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		02A9456A2430DEF800623BC4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				02A9456B2430DF1500623BC4 /* MetricStateView.swift */,
+				02A9456D2430DF1900623BC4 /* MetricStateView.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -557,6 +571,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02A9456E2430DF1900623BC4 /* MetricStateView.xib in Resources */,
 				02A94532242D0EDE00623BC4 /* Localizable.strings in Resources */,
 				02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */,
 				02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */,
@@ -584,6 +599,7 @@
 				02A94536242D117E00623BC4 /* Configuration.swift in Sources */,
 				02A94509242CB83E00623BC4 /* SwipeCardStackDataSource.swift in Sources */,
 				02A94467242B99F600623BC4 /* WindowCoordinator.swift in Sources */,
+				02A9456C2430DF1500623BC4 /* MetricStateView.swift in Sources */,
 				02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */,
 				02A94454242B99AA00623BC4 /* CLLocation+Extensions.swift in Sources */,
 				02A94469242B99F600623BC4 /* Coordinator.swift in Sources */,
