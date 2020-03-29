@@ -8,6 +8,7 @@
 
 import UIKit
 import FacebookCore
+import IQKeyboardManagerSwift
 
 @available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -28,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
         appCoordinator.start()
+        IQKeyboardManager.shared.enable = true
     }
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {

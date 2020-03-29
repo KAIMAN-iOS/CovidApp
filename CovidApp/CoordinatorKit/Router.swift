@@ -9,7 +9,7 @@ public protocol RouterType: class, Presentable {
     func push(_ module: Presentable, animated: Bool, completion: (() -> Void)?)
     func add(_ module: Presentable, index: Int, completion: (() -> Void)?)
 	func popModule(animated: Bool)
-	func setRootModule(_ module: Presentable, hideBar: Bool)
+	func setRootModule(_ module: Presentable, hideBar: Bool, animated: Bool)
 	func popToRootModule(animated: Bool)
 }
 
@@ -91,12 +91,12 @@ final public class Router: NSObject, RouterType, UINavigationControllerDelegate 
 		}
 	}
 	
-	public func setRootModule(_ module: Presentable, hideBar: Bool = false) {
+    public func setRootModule(_ module: Presentable, hideBar: Bool = false, animated: Bool = false) {
         pushCompletions.removeAll()
 		// Call all completions so all coordinators can be deallocated
 		completions.forEach { $0.value() }
         completions.removeAll()
-		navigationController.setViewControllers([module.toPresentable()], animated: false)
+		navigationController.setViewControllers([module.toPresentable()], animated: animated)
 		navigationController.isNavigationBarHidden = hideBar
 	}
 	

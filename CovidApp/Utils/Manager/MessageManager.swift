@@ -188,10 +188,12 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
     enum MessageTypeSSO: MessageConfigurable, MessageDisplayable {
         
         case userWasLoggedOut
+        case emailNotGranted
         
         func hash(into hasher: inout Hasher) {
             switch self {
             case .userWasLoggedOut: hasher.combine(0)
+            case .emailNotGranted: hasher.combine(1)
             }
             hasher.combine("MessageTypeSSO")
         }
@@ -202,25 +204,28 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
                 var conf = MessageDisplayConfiguration.alert
                 conf.buttonConfiguration = ButtonConfiguration()
                 return conf
+            case .emailNotGranted: return MessageDisplayConfiguration.alert
             }
         }
 
         var title: String {
             switch self {
             case .userWasLoggedOut: return ""
+            case .emailNotGranted: return "Oups".local()
             }
         }
 
         var body: String? {
             switch self {
             case .userWasLoggedOut: return "Account logged out".local()
+            case .emailNotGranted: return "emailNotGranted".local()
             }
         }
 
         var buttonTitle: String? {
             switch self {
             case .userWasLoggedOut: return "Sign in".local()
-                default: return nil
+            default: return nil
             }
         }
     }
@@ -277,20 +282,19 @@ class MessageManager {
     }
     
     public static func show(_ type: MessageType,
-                            in view: UIView? = nil,
+                            in viewController: UIViewController? = nil,
                             buttonTapHandler: ((_ button: UIButton) -> Void)? = nil,
                             closeTapHandler: ((_ button: UIButton) -> Void)? = nil) {
-        instance.show(type, in: view, buttonTapHandler: buttonTapHandler, closeTapHandler: closeTapHandler)
+        instance.show(type, in: viewController, buttonTapHandler: buttonTapHandler, closeTapHandler: closeTapHandler)
     }
     
     private func show(_ type: MessageType,
-                     in view: UIView? = nil,
+                     in viewController: UIViewController? = nil,
                      buttonTapHandler: ((_ button: UIButton) -> Void)? = nil,
                      closeTapHandler: ((_ button: UIButton) -> Void)? = nil) {
         
         guard queue.contains(type) == false else { return }
         var conf = type.configuration
-        conf.containerView = view
         conf.buttonConfiguration?.buttonTapHandler = buttonTapHandler
         conf.closeTapHandler = closeTapHandler
         queue.append(type)
@@ -299,17 +303,17 @@ class MessageManager {
         case .line:
             let banner = StatusBarNotificationBanner(title: type.title, style: conf.bannerStyle)
             banner.delegate = self
-            banner.show()
+            banner.show(on: viewController)
             
         case .card:
             let banner = FloatingNotificationBanner(title: type.title, subtitle: type.body, leftView: UIImageView(image: conf.icon), style: conf.bannerStyle, iconPosition: .center)
             banner.delegate = self
-            banner.show()
+            banner.show(on: viewController)
             
         default:
             let banner = NotificationBanner(title: type.title, subtitle: type.body, leftView: UIImageView(image: conf.icon), style: conf.bannerStyle)
             banner.delegate = self
-            banner.show()
+            banner.show(on: viewController)
         }
     }
 }

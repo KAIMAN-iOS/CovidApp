@@ -20,7 +20,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="28" translatesAutoresizingMaskIntoConstraints="NO" id="c2J-8T-Cjf">
                                 <rect key="frame" x="38.5" y="232" width="337" height="432.5"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="house" translatesAutoresizingMaskIntoConstraints="NO" id="f8K-jm-HB8">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid'house" translatesAutoresizingMaskIntoConstraints="NO" id="f8K-jm-HB8">
                                         <rect key="frame" x="0.0" y="0.0" width="337" height="337"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="f8K-jm-HB8" secondAttribute="height" multiplier="1:1" id="o2i-5D-IWA"/>
@@ -61,7 +61,7 @@ sans quitter votre maison</string>
         </scene>
     </scenes>
     <resources>
-        <image name="house" width="168.5" height="168.5"/>
+        <image name="covid'house" width="168.5" height="168.5"/>
         <namedColor name="barTitle">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

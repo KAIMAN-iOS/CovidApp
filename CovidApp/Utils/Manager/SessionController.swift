@@ -8,9 +8,11 @@
 
 import Foundation
 import KeychainAccess
+import SwiftDate
 
 struct SessionController {
-    private static let keychain = Keychain.init(accessGroup: "CovidApp")
+    private static let keychain = Keychain.init(accessGroup: "R8CKJFJ8PKcom.kaiman.apps")
+    private static var instance = SessionController()
     var name: String?  {
         set {
             guard let value = newValue else { return }
@@ -44,6 +46,28 @@ struct SessionController {
         }
     }
     
+    var birthday: Date?  {
+        set {
+            guard let value = newValue else { return }
+            try? SessionController.keychain.set(value.toISO(), key: "birthday")
+        }
+        
+        get {
+            return try? SessionController.keychain.get("birthday")?.toISODate()?.date
+        }
+    }
+    
+    var facebookToken: String?  {
+        set {
+            guard let value = newValue else { return }
+            try? SessionController.keychain.set(value, key: "facebookToken")
+        }
+        
+        get {
+            return try? SessionController.keychain.get("facebookToken")
+        }
+    }
+    
     var token: String?  {
         set {
             guard let value = newValue else { return }
@@ -72,5 +96,20 @@ struct SessionController {
     
     var userLoggedIn: Bool {
         return SessionController().token != nil
+    }
+    
+    func readFromFacebook(_ data: [String : String]) {
+        read(from: data, for: "email", keyPath: \SessionController.email)
+        read(from: data, for: "last_name", keyPath: \SessionController.name)
+        read(from: data, for: "first_name", keyPath: \SessionController.firstname)
+        if let date = data["birthday"] {
+            SessionController.instance.birthday = date.toISODate()?.date
+        }
+    }
+    
+    private func read(from data: [String : String], for key: String, keyPath: WritableKeyPath<SessionController, String?>) {
+        if let data = data[key] {
+            SessionController.instance[keyPath: keyPath] = data
+        }
     }
 }

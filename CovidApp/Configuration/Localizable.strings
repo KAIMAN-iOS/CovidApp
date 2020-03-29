@@ -51,3 +51,11 @@
 "Onboarding governement subtitle" = "Les données anonymisées (nous ne collectons aucune donnée nominative) que vous fournissez chaque jour permettent d'aider le gouvernement et les personnels soignants dans la gestion de l'épidémie";
 "Onboarding betterWhenShare subtitle" = "En autorisant vos proches à avoir accès à vos données, Covid'App vous permet, sans aucun effort, de donner et prendre des nouvelles de vos proches";
 "Onboarding letsGo subtitle" = "";
+
+"The email address entered is not valid" = "Emaill invalide";
+"Email cannot be empty" = "Email vide";
+"Field mandatory" = "Champ obligatoire";
+"Email address" = "Adresse email";
+"Last name" = "Nom";
+"First name" = "Prénom";
+"Birthdate" = "Date de naissance";

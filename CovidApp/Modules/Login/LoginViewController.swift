@@ -11,6 +11,7 @@ import FacebookLogin
 
 class LoginViewController: UIViewController {
 
+    weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     static func create() -> LoginViewController {
         return LoginViewController.loadFromStoryboard(identifier: "LoginViewController", storyboardName: "Main")
     }
@@ -23,17 +24,32 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func connect(_ sender: Any) {
-        LoginManager().logIn(permissions: [Permission.email], viewController: self) { result in
+        LoginManager().logIn(permissions: [.email, .publicProfile, .userBirthday], viewController: self) { result in
             print("res \(result)")
             switch result {
-            case .success(let granted, let declined, let token):
-                DispatchQueue.main.async {
-                    MessageManager.show(.basic(.custom(title: "Oups".local(), message: "testMessage", buttonTitle: nil, configuration: MessageDisplayConfiguration.notification)))
+            case .success:
+                GraphRequest
+                    .init(graphPath: "me", parameters: ["fields" : "id, last_name, first_name, email, birthday"])
+                    .start { [weak self] (connection, result, error) in
+                        guard let self = self else { return }
+                        // if there are no data, asks for the email
+                        guard let data = result as? [String : String] else {
+                            self.coordinatorDelegate?.showEmailController()
+                            return
+                        }
+                        let session = SessionController()
+                        session.readFromFacebook(data)
+                        
+                        // if there is no email, asks for the email
+                        guard session.email?.count ?? 0 > 0, session.email?.isValidEmail == true else {
+                            self.coordinatorDelegate?.showEmailController()
+                            return
+                        }
+                        self.coordinatorDelegate?.showUserProfileController()
                 }
                 
-                // todo
             case .failed(let error):
-                MessageManager.show(.basic(.custom(title: "Oups".local(), message: error.localizedDescription, buttonTitle: nil, configuration: MessageDisplayConfiguration.alert)))
+                MessageManager.show(.basic(.custom(title: "Oups".local(), message: error.localizedDescription, buttonTitle: nil, configuration: MessageDisplayConfiguration.alert)), in: self)
                 
             default: ()
             }

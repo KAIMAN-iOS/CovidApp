@@ -344,3 +344,68 @@ extension UIView {
         return anchor(top: superview?.topAnchor, left: superview?.leftAnchor, bottom: superview?.bottomAnchor, right: superview?.rightAnchor)
     }
 }
+
+extension UIView {
+    
+    class func autolayout() -> Self {
+        let view = self.init()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+    
+    @discardableResult func autolayout() -> Self {
+        self.translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
+    
+    @discardableResult func add(in superView: UIView) -> Self {
+        superView.addSubview(self)
+        return self
+    }
+    
+    @discardableResult func layout(constraints: (ConstraintMaker) -> Void) -> Self {
+        self.snp.makeConstraints(constraints)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
+    
+    @discardableResult func updateLayout(constraints: (ConstraintMaker) -> Void) -> Self {
+        self.snp.updateConstraints(constraints)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
+    
+    @discardableResult func remakeLayout(constraints: (ConstraintMaker) -> Void) -> Self {
+        self.snp.remakeConstraints(constraints)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        return self
+    }
+    
+    func add(constraints: String, for views: [String: UIView]) {
+        
+        for (_,view) in views {
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+        
+        self.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: constraints, options: [], metrics: nil, views: views))
+    }
+    
+    func printSubviews(at index:Int = 0) {
+        let tab = Array<String>(repeating: "--", count: index)
+        print("\(tab.joined())-> \(self is UILabel) - \(self)")
+        subviews.forEach { (subview) in
+            subview.printSubviews(at: index + 1)
+        }
+    }
+    
+    func updateConstraints(animated: Bool = true, duration: Double = 0.5, useSpringWithDamping damping: CGFloat = 0.5, initialVelocity valocity: CGFloat = 0.5, _ animationBlock: @escaping (() -> Void)) {
+        guard animated == true else {
+            animationBlock()
+            return
+        }
+        
+        let animator = UIViewPropertyAnimator(duration: duration, dampingRatio: damping, animations: animationBlock)
+        layoutIfNeeded()
+        animator.startAnimation()
+    }
+}

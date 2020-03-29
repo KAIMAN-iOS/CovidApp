@@ -22,12 +22,13 @@ extension String {
             .attributedString
         
         return underline != nil ? AText.init(attr.string, attributes: attr.attributes(at: 0, effectiveRange: nil)).underline(underline!).attributedString : attr
-            
-        
-        
-//        if let underlineStyle = underline {
-//            return self.font(style.font.withSize(style.font.pointSize * fontScale)).color(textColor).backgroundColor(backgroundColor).underline(style: underlineStyle)
-//        }
-//        return self.font(style.font.withSize(style.font.pointSize * fontScale)).color(textColor).backgroundColor(backgroundColor)
+    }
+    
+    var isValidEmail: Bool {
+        guard !self.lowercased().hasPrefix("mailto:") else { return false }
+        guard let emailDetector = try? NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue) else { return false }
+        let matches = emailDetector.matches(in: self, options: NSRegularExpression.MatchingOptions.anchored, range: NSRange(location: 0, length: self.count))
+        guard matches.count == 1 else { return false }
+        return matches[0].url?.scheme == "mailto"
     }
 }

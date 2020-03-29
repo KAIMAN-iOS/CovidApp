@@ -31,6 +31,12 @@ fileprivate enum LaunchInstructor {
     }
 }
 
+protocol AppCoordinatorDelegate: class {
+    func showEmailController()
+    func showUserProfileController()
+    func showMainController()
+}
+
 class AppCoordinator: Coordinator<DeepLink> {
     
     let mainController = MainViewController.create()
@@ -42,7 +48,8 @@ class AppCoordinator: Coordinator<DeepLink> {
     
     override init(router: RouterType) {
         super.init(router: router)
-        router.setRootModule(mainController, hideBar: true)
+        router.setRootModule(mainController, hideBar: true, animated: false)
+        loginController.coordinatorDelegate = self
     }
     
     override func start() {
@@ -50,9 +57,9 @@ class AppCoordinator: Coordinator<DeepLink> {
         case .onboarding: presentOnboardingFlow()
         case .main:
             if SessionController().userLoggedIn == false {
-                router.setRootModule(loginController, hideBar: true)
+                router.setRootModule(loginController, hideBar: true, animated: true)
             } else {
-                router.setRootModule(mainController, hideBar: true)
+                router.setRootModule(mainController, hideBar: true, animated: true)
             }
         }
     }
@@ -70,5 +77,23 @@ extension AppCoordinator: CloseDelegate {
         Defaults[\.onboardingWasShown] = true
         mainController.dismiss(animated: true) { }
         start()
+    }
+}
+
+extension AppCoordinator: AppCoordinatorDelegate {
+    func showEmailController() {
+        let email = AskEmailViewController.create()
+        email.coordinatorDelegate = self
+        router.setRootModule(email, hideBar: true, animated: true)
+    }
+    
+    func showUserProfileController() {
+        let profile = AskProfileViewController.create()
+        profile.coordinatorDelegate = self
+        router.setRootModule(profile, hideBar: true, animated: true)
+    }
+    
+    func showMainController() {
+        router.setRootModule(mainController, hideBar: true, animated: true)
     }
 }

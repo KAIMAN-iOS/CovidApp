@@ -87,6 +87,12 @@
 		02A94555242FAD9200623BC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94554242FAD9200623BC4 /* LoginViewController.swift */; };
 		02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94557242FB5D700623BC4 /* NotificationBannerSwift */; };
 		02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94559242FB5EA00623BC4 /* MessageManager.swift */; };
+		02A9455C243098D600623BC4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9455B243098D500623BC4 /* ActionButton.swift */; };
+		02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9455E2430AA9E00623BC4 /* ErrorTextField.swift */; };
+		02A945622430AE4A00623BC4 /* AskEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945612430AE4A00623BC4 /* AskEmailViewController.swift */; };
+		02A945642430AE5500623BC4 /* AskProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945632430AE5500623BC4 /* AskProfileViewController.swift */; };
+		02A945672430B3CC00623BC4 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */; };
+		02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945682430CFD900623BC4 /* Date+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -155,6 +161,12 @@
 		02A9454D242FAA7600623BC4 /* SessionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionController.swift; sourceTree = "<group>"; };
 		02A94554242FAD9200623BC4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		02A94559242FB5EA00623BC4 /* MessageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageManager.swift; sourceTree = "<group>"; };
+		02A9455B243098D500623BC4 /* ActionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
+		02A9455D2430A6B600623BC4 /* CovidApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CovidApp.entitlements; sourceTree = "<group>"; };
+		02A9455E2430AA9E00623BC4 /* ErrorTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorTextField.swift; sourceTree = "<group>"; };
+		02A945612430AE4A00623BC4 /* AskEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskEmailViewController.swift; sourceTree = "<group>"; };
+		02A945632430AE5500623BC4 /* AskProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskProfileViewController.swift; sourceTree = "<group>"; };
+		02A945682430CFD900623BC4 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +179,7 @@
 				02A94551242FAB0F00623BC4 /* KeychainAccess in Frameworks */,
 				02A9453E242F5A8D00623BC4 /* FacebookCore in Frameworks */,
 				02A9446C242B9A8300623BC4 /* NSAttributedStringBuilder in Frameworks */,
+				02A945672430B3CC00623BC4 /* IQKeyboardManagerSwift in Frameworks */,
 				02A94472242B9C2300623BC4 /* PMKCoreLocation in Frameworks */,
 				02A94429242B93B100623BC4 /* SnapKit in Frameworks */,
 				02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */,
@@ -207,6 +220,7 @@
 		02A9440C242B8CE100623BC4 /* CovidApp */ = {
 			isa = PBXGroup;
 			children = (
+				02A9455D2430A6B600623BC4 /* CovidApp.entitlements */,
 				02A9452C242CFF5A00623BC4 /* Models */,
 				02A94520242CBBF000623BC4 /* Configuration */,
 				02A9451A242CBA4500623BC4 /* Modules */,
@@ -246,6 +260,7 @@
 				02A94445242B99AA00623BC4 /* UITableView+Extension.swift */,
 				02A9443F242B99AA00623BC4 /* UIView+Ext.swift */,
 				02A94441242B99AA00623BC4 /* UIViewControllerExt.swift */,
+				02A945682430CFD900623BC4 /* Date+Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -344,6 +359,7 @@
 		02A9451A242CBA4500623BC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				02A945602430ADFA00623BC4 /* UserProfile */,
 				02A94553242FAD3A00623BC4 /* Login */,
 				02A9451D242CBA5000623BC4 /* CollectData */,
 				02A9451C242CBA4C00623BC4 /* Onboarding */,
@@ -413,6 +429,8 @@
 		02A94549242FA00F00623BC4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02A9455E2430AA9E00623BC4 /* ErrorTextField.swift */,
+				02A9455B243098D500623BC4 /* ActionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -432,6 +450,15 @@
 				02A94554242FAD9200623BC4 /* LoginViewController.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		02A945602430ADFA00623BC4 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				02A945612430AE4A00623BC4 /* AskEmailViewController.swift */,
+				02A945632430AE5500623BC4 /* AskProfileViewController.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -468,6 +495,7 @@
 				02A94541242F5A8D00623BC4 /* FacebookShare */,
 				02A94550242FAB0F00623BC4 /* KeychainAccess */,
 				02A94557242FB5D700623BC4 /* NotificationBannerSwift */,
+				02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -513,6 +541,7 @@
 				02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
+				02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -555,6 +584,7 @@
 				02A94536242D117E00623BC4 /* Configuration.swift in Sources */,
 				02A94509242CB83E00623BC4 /* SwipeCardStackDataSource.swift in Sources */,
 				02A94467242B99F600623BC4 /* WindowCoordinator.swift in Sources */,
+				02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */,
 				02A94454242B99AA00623BC4 /* CLLocation+Extensions.swift in Sources */,
 				02A94469242B99F600623BC4 /* Coordinator.swift in Sources */,
 				02A94529242CC6B500623BC4 /* SwipeCardContentView.swift in Sources */,
@@ -563,8 +593,10 @@
 				02A94538242D126C00623BC4 /* UIFont+Extension.swift in Sources */,
 				02A94451242B99AA00623BC4 /* UIView+Ext.swift in Sources */,
 				02A94525242CC47D00623BC4 /* CovidSwipeCard.swift in Sources */,
+				02A945622430AE4A00623BC4 /* AskEmailViewController.swift in Sources */,
 				02A9452B242CC85300623BC4 /* SwipeCardOverlay.swift in Sources */,
 				02A9450A242CB83E00623BC4 /* CardStackAnimationOptions.swift in Sources */,
+				02A945642430AE5500623BC4 /* AskProfileViewController.swift in Sources */,
 				02A94514242CB83E00623BC4 /* UIView+Extensions.swift in Sources */,
 				02A94534242D10E500623BC4 /* UILabel+Ext.swift in Sources */,
 				02A9452E242CFF6C00623BC4 /* User.swift in Sources */,
@@ -572,6 +604,7 @@
 				02A94468242B99F600623BC4 /* Router.swift in Sources */,
 				02A94522242CC3D000623BC4 /* MainViewController.swift in Sources */,
 				02A94530242CFF7600623BC4 /* Metric.swift in Sources */,
+				02A9455C243098D600623BC4 /* ActionButton.swift in Sources */,
 				02A94465242B99F600623BC4 /* WindowRouter.swift in Sources */,
 				02A9445D242B99AA00623BC4 /* TableViewModelable.swift in Sources */,
 				02A94452242B99AA00623BC4 /* StringExt.swift in Sources */,
@@ -581,6 +614,7 @@
 				02A94511242CB83E00623BC4 /* SwipeDirection.swift in Sources */,
 				02A94508242CB83E00623BC4 /* SwipeCard.swift in Sources */,
 				02A9445E242B99AA00623BC4 /* Result.swift in Sources */,
+				02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */,
 				02A9454B242FA02200623BC4 /* UIButton+Ext.swift in Sources */,
 				02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */,
 				02A94547242F8D4D00623BC4 /* OnboardingViewController.swift in Sources */,
@@ -742,6 +776,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CovidApp/CovidApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				INFOPLIST_FILE = CovidApp/Info.plist;
@@ -752,6 +788,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaimanCovidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -761,6 +798,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = CovidApp/CovidApp.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				INFOPLIST_FILE = CovidApp/Info.plist;
@@ -771,6 +810,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaimanCovidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -920,6 +960,14 @@
 				minimumVersion = 3.0.4;
 			};
 		};
+		02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.5;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1007,6 +1055,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */;
 			productName = NotificationBannerSwift;
+		};
+		02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
