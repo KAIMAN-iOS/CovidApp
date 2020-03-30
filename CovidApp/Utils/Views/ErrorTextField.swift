@@ -330,17 +330,17 @@ class ErrorTextField: UIView {
     
     // Update title
     private func updateTitle() {
-        var title: String = self.configuration.title
+        let title: String = self.configuration.title
         self.textField.isSecureTextEntry = self.configuration.isSecure
         
         if let entryInstruction = self.configuration.entryInstruction {
             let attributedTitle = title.asAttributedString(for: FontType.title)
             let attrString = NSMutableAttributedString(attributedString: attributedTitle)
             attrString.append(NSAttributedString(string: " "))
-            attrString.append(entryInstruction.asAttributedString(for: FontType.subTitle, textColor: Palette.basic.secondaryTexts.color!))
+            attrString.append(entryInstruction.asAttributedString(for: FontType.subTitle, textColor: Palette.basic.secondaryTexts.color))
             self.titleLabel.attributedText = attrString
         } else {
-            self.titleLabel.set(text: title, for: .title, textColor: Palette.basic.mainTexts.color!, backgroundColor: .clear)
+            self.titleLabel.set(text: title, for: .title, textColor: Palette.basic.mainTexts.color, backgroundColor: .clear)
         }
     }
     
@@ -350,8 +350,8 @@ class ErrorTextField: UIView {
             self.horizontalStackView.isHidden = (self.isInError == false)
             self.errorMessageLabel.alpha = 0
             self.horizontalStackView.alpha = self.isInError == false ? 0 : 1
-            self.separatorView.backgroundColor = self.isInError ? Palette.basic.alert.color! : Palette.basic.lightGray.color!
-            self.titleLabel.set(text: self.titleLabel.attributedText?.string ?? "", for: FontType.title, textColor: self.isInError ? Palette.basic.alert.color! : Palette.basic.mainTexts.color!, backgroundColor: .clear)
+            self.separatorView.backgroundColor = self.isInError ? Palette.basic.alert.color : Palette.basic.lightGray.color
+            self.titleLabel.set(text: self.titleLabel.attributedText?.string ?? "", for: FontType.title, textColor: self.isInError ? Palette.basic.alert.color : Palette.basic.mainTexts.color, backgroundColor: .clear)
             if isInError {
                 UIView.animate(withDuration: 0.2) {
                     self.errorMessageLabel.alpha = 1
@@ -374,7 +374,7 @@ class ErrorTextField: UIView {
     }
     
     func set(errorMessage: String) {
-        errorMessageLabel.set(text: errorMessage, for: .footnote, textColor: Palette.basic.alert.color!, backgroundColor: .clear)
+        errorMessageLabel.set(text: errorMessage, for: .footnote, textColor: Palette.basic.alert.color, backgroundColor: .clear)
         
         // to avoid launching the animation again
         if isInError == false {

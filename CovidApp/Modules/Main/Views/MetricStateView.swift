@@ -10,12 +10,17 @@ import UIKit
 
 class MetricStateView: UIView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var backgroundView: UIView!  {
+        didSet {
+//            cornerRadius = 5.0
+            backgroundView.setAsDefaultCard()
+        }
     }
-    */
 
+    @IBOutlet weak var icon: UIImageView!
+    
+    func configure(with metricState: MetricState) {
+        backgroundView.backgroundColor = metricState.color
+        icon.image = metricState.metricIcon
+    }
 }

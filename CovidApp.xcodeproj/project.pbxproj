@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
+		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
+		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
+		0285CDA7243216BA004DF64A /* NoFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA6243216BA004DF64A /* NoFriendsViewController.swift */; };
+		0285CDA924321850004DF64A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA824321850004DF64A /* MainViewModel.swift */; };
 		02A9440E242B8CE100623BC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9440D242B8CE100623BC4 /* AppDelegate.swift */; };
 		02A94415242B8CE100623BC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A94413242B8CE100623BC4 /* Main.storyboard */; };
 		02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A94416242B8CE400623BC4 /* Assets.xcassets */; };
@@ -98,6 +103,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
+		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
+		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
+		0285CDA6243216BA004DF64A /* NoFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFriendsViewController.swift; sourceTree = "<group>"; };
+		0285CDA824321850004DF64A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		02A9440A242B8CE100623BC4 /* CovidApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CovidApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A9440D242B8CE100623BC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A94414242B8CE100623BC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -379,6 +389,7 @@
 				02A94413242B8CE100623BC4 /* Main.storyboard */,
 				02A9451E242CBA7D00623BC4 /* AppCoordinator.swift */,
 				02A94521242CC3D000623BC4 /* MainViewController.swift */,
+				0285CDA824321850004DF64A /* MainViewModel.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -436,6 +447,7 @@
 			children = (
 				02A9455E2430AA9E00623BC4 /* ErrorTextField.swift */,
 				02A9455B243098D500623BC4 /* ActionButton.swift */,
+				0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -471,6 +483,9 @@
 			children = (
 				02A9456B2430DF1500623BC4 /* MetricStateView.swift */,
 				02A9456D2430DF1900623BC4 /* MetricStateView.xib */,
+				0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */,
+				0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */,
+				0285CDA6243216BA004DF64A /* NoFriendsViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -573,6 +588,7 @@
 			files = (
 				02A9456E2430DF1900623BC4 /* MetricStateView.xib in Resources */,
 				02A94532242D0EDE00623BC4 /* Localizable.strings in Resources */,
+				0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */,
 				02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */,
 				02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */,
 				02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */,
@@ -590,6 +606,7 @@
 				02A94457242B99AA00623BC4 /* UITableView+Extension.swift in Sources */,
 				02A9450B242CB83E00623BC4 /* CardStackAnimator.swift in Sources */,
 				02A94503242CB83E00623BC4 /* CardAnimationOptions.swift in Sources */,
+				0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */,
 				02A9450F242CB83E00623BC4 /* CardStackLayoutProvider.swift in Sources */,
 				02A944E7242BC25200623BC4 /* API.swift in Sources */,
 				02A94512242CB83E00623BC4 /* Array+Extensions.swift in Sources */,
@@ -647,8 +664,11 @@
 				02A94548242F95DF00623BC4 /* SceneDelegate.swift in Sources */,
 				02A94510242CB83E00623BC4 /* CardStackStateManager.swift in Sources */,
 				02A9450C242CB83E00623BC4 /* SwipeCardStack.swift in Sources */,
+				0285CDA7243216BA004DF64A /* NoFriendsViewController.swift in Sources */,
+				0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */,
 				02A94450242B99AA00623BC4 /* Palette.swift in Sources */,
 				02A94505242CB83E00623BC4 /* CardTransformProvider.swift in Sources */,
+				0285CDA924321850004DF64A /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

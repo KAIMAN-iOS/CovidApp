@@ -9,7 +9,7 @@
 import UIKit
 
 protocol Colorable {
-    var color: UIColor? { get }
+    var color: UIColor { get }
 }
 
 struct Palette {
@@ -22,17 +22,19 @@ struct Palette {
         case secondaryTexts
         case lightGray
         case alert
+        case confirmation
         
-        var color: UIColor? {
+        var color: UIColor {
             switch self {
-            case .primary: return UIColor.init(named: "primary")
-            case .secondary:return UIColor.init(named: "secondary")
-            case .background: return UIColor.init(named: "background")
-            case .primaryTexts:return UIColor.init(named: "primary")
-            case .mainTexts:return UIColor.init(named: "mainTexts")
-            case .secondaryTexts:return UIColor.init(named: "secondaryTexts")
-            case .lightGray:return UIColor.init(named: "lightGray")
-            case .alert:return UIColor.init(named: "alert")
+            case .primary: return UIColor.init(named: "primary")!
+            case .secondary:return UIColor.init(named: "secondary")!
+            case .background: return UIColor.init(named: "background")!
+            case .primaryTexts:return UIColor.init(named: "primary")!
+            case .mainTexts:return UIColor.init(named: "mainTexts")!
+            case .secondaryTexts:return UIColor.init(named: "secondaryTexts")!
+            case .lightGray:return UIColor.init(named: "lightGray")!
+            case .alert:return UIColor.init(named: "alert")!
+            case .confirmation:return UIColor.init(named: "confirmation")!
             }
         }
     }
@@ -41,10 +43,10 @@ struct Palette {
         case background
         case title(selected: Bool)
         
-        var color: UIColor? {
+        var color: UIColor {
             switch self {
-            case .background: return UIColor.init(named: "primaryDark")
-            case .title(let selected): return selected ? UIColor.init(named: "barTitle") : UIColor.init(named: "barTtitleUnselected")
+            case .background: return UIColor.init(named: "primaryDark")!
+            case .title(let selected): return selected ? UIColor.init(named: "barTitle")! : UIColor.init(named: "barTtitleUnselected")!
             }
         }
     }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="MetricStatesCell" customModule="CovidApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="80" height="52"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="80" height="52"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bES-QB-McB">
+                        <rect key="frame" x="4" y="4" width="72" height="44"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="TK5-b6-i4t">
+                                <rect key="frame" x="4" y="4" width="64" height="36"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="20/03/20" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZm-Oy-1rd">
+                                        <rect key="frame" x="5.5" y="0.0" width="53" height="36"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="0.60439033742331283" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="TK5-b6-i4t" secondAttribute="bottom" constant="4" id="8Ho-GB-OEU"/>
+                            <constraint firstItem="TK5-b6-i4t" firstAttribute="top" secondItem="bES-QB-McB" secondAttribute="top" constant="4" id="NhN-Yd-Epv"/>
+                            <constraint firstAttribute="trailing" secondItem="TK5-b6-i4t" secondAttribute="trailing" constant="4" id="dgD-wA-iLB"/>
+                            <constraint firstItem="TK5-b6-i4t" firstAttribute="leading" secondItem="bES-QB-McB" secondAttribute="leading" constant="4" id="zdJ-w6-XHi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bES-QB-McB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="4" id="ARV-Gj-gob"/>
+                <constraint firstAttribute="bottom" secondItem="bES-QB-McB" secondAttribute="bottom" constant="4" id="ehf-3M-Q8i"/>
+                <constraint firstItem="bES-QB-McB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="rff-be-ZRl"/>
+                <constraint firstAttribute="trailing" secondItem="bES-QB-McB" secondAttribute="trailing" constant="4" id="ujq-eU-RDZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="80" height="57"/>
+            <connections>
+                <outlet property="card" destination="bES-QB-McB" id="Oj7-Fa-vuV"/>
+                <outlet property="dateLabel" destination="TK5-b6-i4t" id="wta-ZO-O4c"/>
+                <outlet property="stackView" destination="TK5-b6-i4t" id="q7y-H9-j0M"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="141.29464285714286"/>
+        </collectionViewCell>
+    </objects>
+</document>

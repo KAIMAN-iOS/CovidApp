@@ -14,7 +14,7 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
     
-    func asAttributedString(for style: FontType, fontScale: CGFloat = 1.0, textColor: UIColor = Palette.basic.primaryTexts.color!, backgroundColor: UIColor = .clear, underline: NSUnderlineStyle? = nil) -> NSAttributedString {
+    func asAttributedString(for style: FontType, fontScale: CGFloat = 1.0, textColor: UIColor = Palette.basic.primaryTexts.color, backgroundColor: UIColor = .clear, underline: NSUnderlineStyle? = nil) -> NSAttributedString {
         let attr = AText(self)
             .font(style.font.withSize(style.font.pointSize * fontScale))
             .foregroundColor(textColor)

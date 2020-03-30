@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -18,12 +18,17 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RM7-RI-3us">
                     <rect key="frame" x="2" y="2" width="50" height="50"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Metrics-Fine" translatesAutoresizingMaskIntoConstraints="NO" id="etP-cf-fJr">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Metrics-Cough" translatesAutoresizingMaskIntoConstraints="NO" id="etP-cf-fJr">
                             <rect key="frame" x="10" y="10" width="30" height="30"/>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="KU6-KQ-BU1"/>
+                                <constraint firstAttribute="width" secondItem="etP-cf-fJr" secondAttribute="height" multiplier="1:1" id="muy-wS-w5k"/>
+                            </constraints>
                         </imageView>
                     </subviews>
-                    <color key="backgroundColor" name="confirmation"/>
+                    <color key="backgroundColor" name="alert"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="etP-cf-fJr" firstAttribute="top" secondItem="RM7-RI-3us" secondAttribute="top" constant="10" id="H0o-7Y-pNa"/>
                         <constraint firstItem="etP-cf-fJr" firstAttribute="leading" secondItem="RM7-RI-3us" secondAttribute="leading" constant="10" id="Y4D-L2-q1e"/>
@@ -47,13 +52,17 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="0pD-cP-Nwe"/>
-            <point key="canvasLocation" x="-373.91304347826087" y="-273.21428571428572"/>
+            <connections>
+                <outlet property="backgroundView" destination="RM7-RI-3us" id="Uyi-Me-Kle"/>
+                <outlet property="icon" destination="etP-cf-fJr" id="P2j-BA-I1l"/>
+            </connections>
+            <point key="canvasLocation" x="-373.91304347826087" y="-273.88392857142856"/>
         </view>
     </objects>
     <resources>
-        <image name="Metrics-Fine" width="168.5" height="168.5"/>
-        <namedColor name="confirmation">
-            <color red="0.71764705882352942" green="0.95686274509803915" blue="0.61568627450980395" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="Metrics-Cough" width="168.5" height="168.5"/>
+        <namedColor name="alert">
+            <color red="0.6029999852180481" green="0.17599999904632568" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

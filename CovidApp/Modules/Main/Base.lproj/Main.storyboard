@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,24 +19,169 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CoviApp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xa-KK-nx2">
-                                <rect key="frame" x="174.5" y="437.5" width="65" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0SS-Ua-JiO">
+                                <rect key="frame" x="0.0" y="52" width="414" height="844"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G50-J0-zXU">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="28.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tableau de bord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDk-8p-947">
+                                                <rect key="frame" x="145.5" y="4" width="123.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWE-0N-klq">
+                                                <rect key="frame" x="380" y="1.5" width="26" height="26"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="26" id="dTC-GK-uZ7"/>
+                                                    <constraint firstAttribute="width" constant="26" id="zyY-u9-soT"/>
+                                                </constraints>
+                                                <color key="tintColor" name="primary"/>
+                                                <state key="normal" image="gear" catalog="system"/>
+                                                <connections>
+                                                    <action selector="settingsBUtton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bM0-Bt-m8t"/>
+                                                    <action selector="showSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ale-4x-XHB"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="mDk-8p-947" secondAttribute="bottom" constant="4" id="Fim-4p-V6I"/>
+                                            <constraint firstAttribute="trailing" secondItem="CWE-0N-klq" secondAttribute="trailing" constant="8" id="RHD-mV-sJX"/>
+                                            <constraint firstItem="mDk-8p-947" firstAttribute="top" secondItem="G50-J0-zXU" secondAttribute="top" constant="4" id="i72-X3-eIV"/>
+                                            <constraint firstItem="mDk-8p-947" firstAttribute="centerX" secondItem="G50-J0-zXU" secondAttribute="centerX" id="tWv-Pd-3Iq"/>
+                                            <constraint firstItem="CWE-0N-klq" firstAttribute="centerY" secondItem="G50-J0-zXU" secondAttribute="centerY" id="zDA-xw-bY0"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQg-DA-Sae">
+                                        <rect key="frame" x="0.0" y="36.5" width="414" height="172.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lsX-3g-IP0">
+                                                <rect key="frame" x="16" y="4" width="382" height="164.5"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="750" image="government" translatesAutoresizingMaskIntoConstraints="NO" id="mxg-jz-syT">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="60" id="Noz-Zf-1ph"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Vos résultats journaliers apparaîtront ici dés que vous aurez enregistré votre premier questionnaire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDa-Xv-OCK">
+                                                        <rect key="frame" x="0.0" y="72" width="382" height="30.5"/>
+                                                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                                        <color key="textColor" name="primary"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaH-1Y-5DA" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="114.5" width="382" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="6vQ-rE-JGZ"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Button"/>
+                                                        <connections>
+                                                            <action selector="launchReport:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kMJ-Nz-fiS"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="lsX-3g-IP0" secondAttribute="bottom" constant="4" id="HMd-14-Ktz"/>
+                                            <constraint firstItem="lsX-3g-IP0" firstAttribute="top" secondItem="SQg-DA-Sae" secondAttribute="top" constant="4" id="Rgo-0j-nQG"/>
+                                            <constraint firstAttribute="trailing" secondItem="lsX-3g-IP0" secondAttribute="trailing" constant="16" id="hoT-gG-gBj"/>
+                                            <constraint firstItem="lsX-3g-IP0" firstAttribute="leading" secondItem="SQg-DA-Sae" secondAttribute="leading" constant="16" id="pYq-cD-pLw"/>
+                                        </constraints>
+                                    </view>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="176" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jy3-Gp-PUt">
+                                        <rect key="frame" x="0.0" y="217" width="414" height="176"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <collectionViewLayout key="collectionViewLayout" id="6hy-zH-82x" customClass="CollectionViewFlowLayout" customModule="CovidApp" customModuleProvider="target"/>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nwe-xL-K6O">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="X28-44-uT6">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </collectionViewCellContentView>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="dRT-RR-z7h"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="DaM-KF-hmG"/>
+                                        </connections>
+                                    </collectionView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wm2-oT-yxF">
+                                        <rect key="frame" x="0.0" y="401" width="414" height="443"/>
+                                        <subviews>
+                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e08-MA-RAF">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vuv-Ac-Mx5">
+                                                    <size key="itemSize" width="128" height="128"/>
+                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                </collectionViewFlowLayout>
+                                                <cells>
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xCI-Dh-hgc">
+                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="qdg-yQ-wV7">
+                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                        </collectionViewCellContentView>
+                                                    </collectionViewCell>
+                                                </cells>
+                                                <connections>
+                                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="3ov-On-NPV"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="NN0-Yg-x0t"/>
+                                                </connections>
+                                            </collectionView>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-A4-gZo">
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                                                <connections>
+                                                    <segue destination="3p7-2O-U8q" kind="embed" id="nJv-kM-Ncm"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="ey7-A4-gZo" firstAttribute="leading" secondItem="wm2-oT-yxF" secondAttribute="leading" id="CoK-zv-ZBa"/>
+                                            <constraint firstAttribute="bottom" secondItem="e08-MA-RAF" secondAttribute="bottom" id="Ffg-bh-Y5I"/>
+                                            <constraint firstAttribute="trailing" secondItem="e08-MA-RAF" secondAttribute="trailing" id="afd-Md-jZ6"/>
+                                            <constraint firstItem="e08-MA-RAF" firstAttribute="leading" secondItem="wm2-oT-yxF" secondAttribute="leading" id="jn4-3r-AMA"/>
+                                            <constraint firstItem="e08-MA-RAF" firstAttribute="top" secondItem="wm2-oT-yxF" secondAttribute="top" id="nBU-8b-NvA"/>
+                                            <constraint firstItem="ey7-A4-gZo" firstAttribute="top" secondItem="wm2-oT-yxF" secondAttribute="top" id="oBj-e6-MkR"/>
+                                            <constraint firstAttribute="trailing" secondItem="ey7-A4-gZo" secondAttribute="trailing" id="pYr-kw-YC1"/>
+                                            <constraint firstAttribute="bottom" secondItem="ey7-A4-gZo" secondAttribute="bottom" id="yWv-Fi-onH"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="1xa-KK-nx2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sih-dn-RJo"/>
-                            <constraint firstItem="1xa-KK-nx2" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="j5h-Xf-D2u"/>
+                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="FzY-u7-wzG"/>
+                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ns3-MA-AZS"/>
+                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ajR-IL-MRq"/>
+                            <constraint firstAttribute="bottom" secondItem="0SS-Ua-JiO" secondAttribute="bottom" id="hSl-0c-pw7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="dashboardLabel" destination="mDk-8p-947" id="KTi-zs-fS2"/>
+                        <outlet property="friendsCollectionView" destination="e08-MA-RAF" id="ypG-qh-uxE"/>
+                        <outlet property="launchReportButton" destination="iaH-1Y-5DA" id="Rti-8r-s41"/>
+                        <outlet property="noResultLabel" destination="dDa-Xv-OCK" id="7mg-7f-0k1"/>
+                        <outlet property="noResultView" destination="SQg-DA-Sae" id="Qa6-MC-09J"/>
+                        <outlet property="reportsCollectionView" destination="Jy3-Gp-PUt" id="lnh-ZJ-2z5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139" y="138"/>
+            <point key="canvasLocation" x="921.73913043478262" y="814.95535714285711"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="7bk-y7-wjP">
@@ -273,10 +420,67 @@
             </objects>
             <point key="canvasLocation" x="3132" y="138"/>
         </scene>
+        <!--No Friends View Controller-->
+        <scene sceneID="fRQ-7H-nbh">
+            <objects>
+                <viewController storyboardIdentifier="NoFriendsViewController" id="3p7-2O-U8q" customClass="NoFriendsViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8W9-Hc-4P5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="ptP-ub-WmD">
+                                <rect key="frame" x="24" y="68" width="366" height="307"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" image="shareFaces" translatesAutoresizingMaskIntoConstraints="NO" id="Kkh-wo-8ow">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="142.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="9mq-Ah-BAE"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C'est toujours meilleur quand on partage." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2j-8r-r7L">
+                                        <rect key="frame" x="0.0" y="189.5" width="366" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4y-sa-wtM" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="257" width="366" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="avt-gP-hQg"/>
+                                        </constraints>
+                                        <state key="normal" title="Ajoutez des amis 😊"/>
+                                        <connections>
+                                            <action selector="share:" destination="3p7-2O-U8q" eventType="touchUpInside" id="u0e-6P-Or0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ptP-ub-WmD" firstAttribute="centerY" secondItem="8W9-Hc-4P5" secondAttribute="centerY" id="0Je-sk-8Ps"/>
+                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="ptP-ub-WmD" secondAttribute="bottom" constant="24" id="7VA-2c-V0w"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ptP-ub-WmD" secondAttribute="trailing" constant="4" id="8Cp-1r-rud"/>
+                            <constraint firstItem="ptP-ub-WmD" firstAttribute="leading" secondItem="8W9-Hc-4P5" secondAttribute="leadingMargin" constant="4" id="dMG-QF-EBP"/>
+                            <constraint firstItem="ptP-ub-WmD" firstAttribute="centerX" secondItem="8W9-Hc-4P5" secondAttribute="centerX" id="i7V-Sc-Qdt"/>
+                            <constraint firstItem="ptP-ub-WmD" firstAttribute="top" relation="greaterThanOrEqual" secondItem="8W9-Hc-4P5" secondAttribute="topMargin" constant="24" id="yGC-kL-uE1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addFriendsButton" destination="h4y-sa-wtM" id="7Vp-bu-Lzj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4H0-cJ-ngU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1722" y="924"/>
+        </scene>
     </scenes>
     <resources>
         <image name="covid'house" width="168.5" height="168.5"/>
         <image name="facebook" width="42" height="42"/>
+        <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="government" width="168.5" height="168.5"/>
+        <image name="shareFaces" width="168.5" height="168.5"/>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

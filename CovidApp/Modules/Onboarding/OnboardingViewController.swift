@@ -39,7 +39,7 @@ class OnboardingViewController: UIViewController {
                                           title: onboarding.title,
                                           description: onboarding.subtitle,
                                           pageIcon: onboarding.image!,
-                                          color: Palette.basic.primary.color!,
+                                          color: Palette.basic.primary.color,
                                           titleColor: .white,
                                           descriptionColor: .white,
                                           titleFont: FontType.title.font,

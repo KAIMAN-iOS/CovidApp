@@ -9,6 +9,18 @@
 import Foundation
 import SwiftyUserDefaults
 
+//MARK: - Protocols
+protocol AppCoordinatorDelegate: class {
+    func showEmailController()
+    func showUserProfileController()
+    func showMainController()
+}
+
+protocol ShareDelegate: class {
+    func share()
+}
+
+//MARK: - Launch
 extension DefaultsKeys {
     var username: DefaultsKey<String?> { .init("username") }
     var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
@@ -31,12 +43,7 @@ fileprivate enum LaunchInstructor {
     }
 }
 
-protocol AppCoordinatorDelegate: class {
-    func showEmailController()
-    func showUserProfileController()
-    func showMainController()
-}
-
+//MARK: - AppCoordinator
 class AppCoordinator: Coordinator<DeepLink> {
     
     let mainController = MainViewController.create()
@@ -50,6 +57,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         super.init(router: router)
         router.setRootModule(mainController, hideBar: true, animated: false)
         loginController.coordinatorDelegate = self
+        mainController.shareDelegate = self
     }
     
     override func start() {
@@ -72,6 +80,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
 }
 
+//MARK: - AppCoordinator extensions
 extension AppCoordinator: CloseDelegate {
     func close() {
         Defaults[\.onboardingWasShown] = true
@@ -95,5 +104,11 @@ extension AppCoordinator: AppCoordinatorDelegate {
     
     func showMainController() {
         router.setRootModule(mainController, hideBar: true, animated: true)
+    }
+}
+
+extension AppCoordinator: ShareDelegate {
+    func share() {
+        
     }
 }

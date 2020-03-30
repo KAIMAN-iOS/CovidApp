@@ -128,6 +128,29 @@ enum GovernmentMetrics: Int, CaseIterable {
     }
 }
 
+enum MetricState {
+    case fine
+    case condition(_: MetricType)
+    
+    var color: UIColor {
+        switch self {
+        case .fine: return Palette.basic.confirmation.color
+        case .condition: return Palette.basic.alert.color
+        }
+    }
+    
+    var metricIcon: UIImage? {
+        switch self {
+        case .fine: return UIImage(named: "Metrics-Fine")
+        case .condition(let metric): return metric.metricIcon
+        }
+    }
+}
+
+struct MetricStates {
+    var metrics: [MetricState]
+}
+
 enum MetricType: Int, CaseIterable {
     case drippingNose = 0
     case cough
@@ -142,6 +165,16 @@ enum MetricType: Int, CaseIterable {
         case .fever: return UIImage(named: "fever")
         case .throatSoreness: return UIImage(named: "throatSoreness")
         case .breathingIssues: return UIImage(named: "breathingIssues")
+        }
+    }
+    
+    var metricIcon: UIImage? {
+        switch self {
+        case .drippingNose: return UIImage(named: "Metrics-DrippingNose")
+        case .cough: return UIImage(named: "Metrics-Cough")
+        case .fever: return UIImage(named: "Metrics-Fever")
+        case .throatSoreness: return UIImage(named: "Metrics-ThroatSoreness")
+        case .breathingIssues: return UIImage(named: "Metrics-BreathingIssues")
         }
     }
     

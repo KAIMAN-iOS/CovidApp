@@ -10,25 +10,70 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    weak var shareDelegate: ShareDelegate? = nil
     static func create() -> MainViewController {
         return MainViewController.loadFromStoryboard(identifier: "MainViewController", storyboardName: "Main")
     }
+    @IBOutlet weak var dashboardLabel: UILabel!
+    @IBOutlet weak var noResultView: UIView!
+    @IBOutlet weak var noResultLabel: UILabel!
+    @IBOutlet weak var launchReportButton: ActionButton!  {
+        didSet {
+            launchReportButton.actionButtonType = .primary
+//            launchReportButton.textColor = Palette.basic.primary.color
+            launchReportButton.setTitle("try".local(), for: .normal)
+        }
+    }
+
+    @IBOutlet weak var reportsCollectionView: UICollectionView!
+    @IBOutlet weak var friendsCollectionView: UICollectionView!
     
+    @IBAction func settingsBUtton(_ sender: Any) {
+    }
+    
+    @IBAction func launchReport(_ sender: Any) {
+    }
+    
+    private var noFriendController: NoFriendsViewController!
+    private lazy var collectionType: [UICollectionView : CollectionViewType] = [reportsCollectionView : .metrics, friendsCollectionView : .friends]
+    let viewModel = MainViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-//        (UIApplication.shared.delegate as? AppDelegate)?.appCoordinator.start()
-        // Do any additional setup after loading the view.
+        guard let ctrl = children.compactMap({ $0 as? NoFriendsViewController }).first else {
+            fatalError()
+        }
+        noFriendController = ctrl
+        noFriendController.shareDelegate = shareDelegate
+        
+        handleLayout()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func handleLayout() {
+        let numberOfFriends = viewModel.numberOfItems(in: 0, for: .friends)
+        noFriendController.view.isHidden = numberOfFriends > 0
+        friendsCollectionView.isHidden = numberOfFriends == 0
+        let numberOfMetrics = viewModel.numberOfItems(in: 0, for: .metrics)
+        noResultView.isHidden = numberOfMetrics > 0
+        reportsCollectionView.isHidden = numberOfMetrics == 0
     }
-    */
+    
+    @IBAction func showSettings(_ sender: Any) {
+    }
+}
 
+extension MainViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        guard let type = collectionType[collectionView] else { return 0 }
+        return viewModel.numberOfItems(in: section, for: type)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return UICollectionViewCell()
+    }
+}
+
+extension MainViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
 }

@@ -258,10 +258,10 @@ public struct MessageDisplayConfiguration {
 
 //MARK: - ButtonConfiguration
 public struct ButtonConfiguration {
-    var buttonTextColor: UIColor = Palette.basic.mainTexts.color!
+    var buttonTextColor: UIColor = Palette.basic.mainTexts.color
     var buttonFont: FontType = FontType.button
     var buttonTapHandler: ((_ button: UIButton) -> Void)? = nil
-    var buttonTintColor: UIColor = Palette.basic.alert.color!
+    var buttonTintColor: UIColor = Palette.basic.alert.color
 }
 
 //MARK: - MessageDisplayType
