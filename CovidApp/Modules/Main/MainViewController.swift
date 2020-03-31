@@ -27,6 +27,7 @@ class MainViewController: UIViewController {
 
     @IBOutlet weak var reportsCollectionView: UICollectionView!
     @IBOutlet weak var friendsCollectionView: UICollectionView!
+    @IBOutlet weak var bottomContainerView: UIView!
     
     @IBAction func settingsBUtton(_ sender: Any) {
     }
@@ -53,8 +54,9 @@ class MainViewController: UIViewController {
         noResultView.isHidden = numberOfMetrics > 0
         reportsCollectionView.isHidden = numberOfMetrics == 0
         let numberOfFriends = viewModel.numberOfItems(in: 0, for: .friends)
-        noFriendController.view.isHidden = numberOfFriends > 0 || numberOfMetrics == 0
+        noFriendController.view.isHidden = numberOfFriends > 0
         friendsCollectionView.isHidden = numberOfFriends == 0
+//        bottomContainerView.isHidden = numberOfFriends == 0 && numberOfMetrics == 0
     }
     
     @IBAction func showSettings(_ sender: Any) {

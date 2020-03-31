@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		023EFC0524323932000A46B7 /* CollectDataInitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */; };
+		023EFC0724336E2F000A46B7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0624336E2F000A46B7 /* Storage.swift */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -107,6 +108,7 @@
 
 /* Begin PBXFileReference section */
 		023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDataInitialCoordinator.swift; sourceTree = "<group>"; };
+		023EFC0624336E2F000A46B7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -466,6 +468,7 @@
 			children = (
 				02A94559242FB5EA00623BC4 /* MessageManager.swift */,
 				02A9454D242FAA7600623BC4 /* SessionController.swift */,
+				023EFC0624336E2F000A46B7 /* Storage.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				02A9450A242CB83E00623BC4 /* CardStackAnimationOptions.swift in Sources */,
 				02A945642430AE5500623BC4 /* AskProfileViewController.swift in Sources */,
 				02A94514242CB83E00623BC4 /* UIView+Extensions.swift in Sources */,
+				023EFC0724336E2F000A46B7 /* Storage.swift in Sources */,
 				02A94534242D10E500623BC4 /* UILabel+Ext.swift in Sources */,
 				02A9452E242CFF6C00623BC4 /* User.swift in Sources */,
 				02A94456242B99AA00623BC4 /* UIImageExt.swift in Sources */,

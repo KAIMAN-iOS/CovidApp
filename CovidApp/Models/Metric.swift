@@ -8,11 +8,17 @@
 
 import UIKit
 import SwiftDate
+import CoreLocation.CLLocation
 
 enum RawValueError: Error {
     case unknownTypeForEnum
 }
 
+protocol Parametarable {
+    var parameters: [String : Any] { get }
+}
+
+//MARK: - Validation
 enum Validation {
     case yes
     case `continue`
@@ -21,7 +27,7 @@ enum Validation {
     case dontKnow
     case notApplicable
     case ratherNotAnswer
-    case value(_: Int?)
+    case value(_: Int)
     
     var text: String? {
         switch self {
@@ -33,6 +39,20 @@ enum Validation {
         case .notApplicable   : return "notApplicable".local()
         case .ratherNotAnswer : return "ratherNotAnswer".local()
         case .value:            return nil
+        }
+    }
+    
+    
+    var value: String {
+        switch self {
+        case .yes: return "yes"
+        case .continue: return "continue"
+        case .end: return "end"
+        case .no: return "no"
+        case .dontKnow: return "dontKnow"
+        case .notApplicable: return "notApplicable"
+        case .ratherNotAnswer: return "ratherNotAnswer"
+        case .value(let intValue): return "value-\(intValue)"
         }
     }
     
@@ -50,6 +70,68 @@ enum Validation {
     }
 }
 
+extension Validation: Codable {
+    
+    enum CodingError: Error {
+        case unknownValue
+    }
+    enum Key: CodingKey {
+        case rawValue
+        case associatedValue
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: Key.self)
+        let rawValue = try container.decode(Int.self, forKey: .rawValue)
+        switch rawValue {
+        case 0: self = .yes
+        case 1: self = .no
+        case 2: self = .continue
+        case 3: self = .end
+        case 4: self = .dontKnow
+        case 5: self = .notApplicable
+        case 6: self = .ratherNotAnswer
+        case 7:
+            let intValue = try container.decode(Int.self, forKey: .associatedValue)
+            self = .value(intValue)
+            
+        default: throw CodingError.unknownValue
+        }
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: Key.self)
+        switch self {
+            
+        case .yes:
+            try container.encode(0, forKey: .rawValue)
+            
+        case .continue:
+            try container.encode(1, forKey: .rawValue)
+            
+        case .end:
+            try container.encode(2, forKey: .rawValue)
+            
+        case .no:
+            try container.encode(3, forKey: .rawValue)
+            
+        case .dontKnow:
+            try container.encode(4, forKey: .rawValue)
+            
+        case .notApplicable:
+            try container.encode(5, forKey: .rawValue)
+            
+        case .ratherNotAnswer:
+            try container.encode(6, forKey: .rawValue)
+            
+        case .value(let intValue):
+            try container.encode(7, forKey: .rawValue)
+            try container.encode(intValue, forKey: .associatedValue)
+        }
+    }
+}
+
+//MARK: - GovernmentMetrics
 enum GovernmentMetrics: Int, CaseIterable {
     case fever
     case cough
@@ -96,6 +178,31 @@ enum GovernmentMetrics: Int, CaseIterable {
         case .immunodefense    : return "initial immunodefense".local()
         case .immunosupressant : return "initial immunosupressant".local()
 //        case .postalCode       : return "initial postalCode".local()
+        }
+    }
+    
+    var key: String {
+        switch self {
+        case .fever            : return "fever"
+        case .cough            : return "cough"
+        case .taste            : return "taste"
+        case .throatSoreness   : return "throatSoreness"
+        case .diarrhea         : return "diarrhea"
+        case .tired            : return "tired"
+        case .eatDrink         : return "eatDrink"
+        case .breathingIssues  : return "breathingIssues"
+        case .age              : return "age"
+        case .height           : return "height"
+        case .weight           : return "weight"
+        case .heartDisease     : return "heartDisease"
+        case .diabetese        : return "diabetese"
+        case .cancer           : return "cancer"
+        case .breathingIllness : return "breathingIllness"
+        case .kidney           : return "kidney"
+        case .liver            : return "liver"
+        case .pregnant         : return "pregnant"
+        case .immunodefense    : return "immunodefense"
+        case .immunosupressant : return "immunosupressant"
         }
     }
     
@@ -153,8 +260,17 @@ enum GovernmentMetrics: Int, CaseIterable {
         default: return nil
         }
     }
+    
+    fileprivate var encodedRawValue: Int {
+        return GovernmentMetrics.allCases.firstIndex(of: self)!
+    }
 }
 
+extension GovernmentMetrics: Codable {
+    
+}
+
+//MARK: - Answers
 struct Answers {
     internal var data: [GovernmentMetrics : Validation] = [:]
     
@@ -167,6 +283,21 @@ struct Answers {
     }
 }
 
+extension Answers: Codable {
+    
+}
+
+extension Answers: Parametarable {
+    var parameters: [String : Any] {
+        var param: [String : Any] = [:]
+        data.forEach { (key, value) in
+            param[key.key] = value.value
+        }
+        return param
+    }
+}
+
+//MARK: - MetricState
 enum MetricState {
     case fine
     case condition(_: MetricType)
@@ -190,6 +321,7 @@ struct MetricStates {
     var metrics: [MetricState]
 }
 
+//MARK: - MetricType
 enum MetricType: Int, CaseIterable {
     case drippingNose = 0
     case cough
@@ -239,11 +371,68 @@ enum MetricType: Int, CaseIterable {
     }
 }
 
+extension MetricType: Codable {
+    
+}
+
+//MARK: - Metric
 struct Metric {
     let metric: MetricType
     let value: Bool
 }
 
+extension Metric: Codable {
+    
+}
+
+extension Metric: Parametarable {
+    var parameters: [String : Any] {
+        return [ "metric" : metric.rawValue, "value" : value ]
+    }
+}
+
 struct Metrics {
     let metrics: [Metric]
+    let date: Date
+    let coordinates: Coordinate?
+}
+
+struct Coordinate: Codable {
+    var latitude: Double
+    var longitude: Double
+}
+
+extension Metrics: Codable {
+    
+    enum CodingKeys: CodingKey {
+        case metrics
+        case date
+        case coordinates
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        //mandatory
+        metrics = try container.decode([Metric].self, forKey: .metrics)
+        date = try container.decode(Date.self, forKey: .date)
+        //optional
+        coordinates = try container.decodeIfPresent(Coordinate.self, forKey: .coordinates)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(metrics, forKey: .metrics)
+        try container.encode(date, forKey: .date)
+        try container.encodeIfPresent(coordinates, forKey: .coordinates)
+    }
+}
+
+extension Metrics: Parametarable {
+    var parameters: [String : Any] {
+        var param: [String : Any] = [ "metrics" : metrics.compactMap({ $0.parameters }), "date" : date.toISO()]
+        if let coordinates = coordinates {
+            param["coordinates"] = [ "latitude" : coordinates.latitude, "longitude" : coordinates.longitude ]
+        }
+        return param
+    }
 }

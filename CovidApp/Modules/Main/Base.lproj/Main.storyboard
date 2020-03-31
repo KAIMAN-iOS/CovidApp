@@ -25,7 +25,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G50-J0-zXU">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="28.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tableau de bord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDk-8p-947">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Tableau de bord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDk-8p-947">
                                                 <rect key="frame" x="145.5" y="4" width="123.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
@@ -54,10 +54,10 @@
                                             <constraint firstItem="CWE-0N-klq" firstAttribute="centerY" secondItem="G50-J0-zXU" secondAttribute="centerY" id="zDA-xw-bY0"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SQg-DA-Sae">
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SQg-DA-Sae">
                                         <rect key="frame" x="0.0" y="36.5" width="414" height="172.5"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lsX-3g-IP0">
+                                            <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lsX-3g-IP0">
                                                 <rect key="frame" x="16" y="4" width="382" height="164.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="750" image="government" translatesAutoresizingMaskIntoConstraints="NO" id="mxg-jz-syT">
@@ -87,8 +87,9 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottom" secondItem="lsX-3g-IP0" secondAttribute="bottom" constant="4" id="HMd-14-Ktz"/>
-                                            <constraint firstItem="lsX-3g-IP0" firstAttribute="top" secondItem="SQg-DA-Sae" secondAttribute="top" constant="4" id="Rgo-0j-nQG"/>
+                                            <constraint firstAttribute="bottom" secondItem="lsX-3g-IP0" secondAttribute="bottom" priority="750" constant="4" id="HMd-14-Ktz"/>
+                                            <constraint firstItem="lsX-3g-IP0" firstAttribute="centerY" secondItem="SQg-DA-Sae" secondAttribute="centerY" id="MTK-Im-RdL"/>
+                                            <constraint firstItem="lsX-3g-IP0" firstAttribute="top" secondItem="SQg-DA-Sae" secondAttribute="top" priority="750" constant="4" id="Rgo-0j-nQG"/>
                                             <constraint firstAttribute="trailing" secondItem="lsX-3g-IP0" secondAttribute="trailing" constant="16" id="hoT-gG-gBj"/>
                                             <constraint firstItem="lsX-3g-IP0" firstAttribute="leading" secondItem="SQg-DA-Sae" secondAttribute="leading" constant="16" id="pYq-cD-pLw"/>
                                         </constraints>
@@ -171,6 +172,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="bottomContainerView" destination="wm2-oT-yxF" id="U3d-Zj-agd"/>
                         <outlet property="dashboardLabel" destination="mDk-8p-947" id="KTi-zs-fS2"/>
                         <outlet property="friendsCollectionView" destination="e08-MA-RAF" id="ypG-qh-uxE"/>
                         <outlet property="launchReportButton" destination="iaH-1Y-5DA" id="Rti-8r-s41"/>
@@ -192,7 +194,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLh-FQ-h1h" customClass="PaperOnboarding" customModule="PaperOnboarding">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="18" y="44" width="378" height="818"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AxG-Aa-yle" customClass="Button" customModule="CovidApp" customModuleProvider="target">
@@ -214,10 +216,10 @@
                             <constraint firstItem="YKr-3Q-lwx" firstAttribute="bottom" secondItem="AxG-Aa-yle" secondAttribute="bottom" constant="20" id="7h1-1f-RJ7"/>
                             <constraint firstItem="KLh-FQ-h1h" firstAttribute="top" secondItem="YKr-3Q-lwx" secondAttribute="top" id="JCB-qS-DrN"/>
                             <constraint firstItem="YKr-3Q-lwx" firstAttribute="trailing" secondItem="AxG-Aa-yle" secondAttribute="trailing" constant="12" id="MQb-lC-hEo"/>
-                            <constraint firstItem="YKr-3Q-lwx" firstAttribute="trailing" secondItem="KLh-FQ-h1h" secondAttribute="trailing" id="NbF-Qx-XS5"/>
+                            <constraint firstItem="YKr-3Q-lwx" firstAttribute="trailing" secondItem="KLh-FQ-h1h" secondAttribute="trailing" constant="18" id="NbF-Qx-XS5"/>
                             <constraint firstItem="AxG-Aa-yle" firstAttribute="leading" secondItem="YKr-3Q-lwx" secondAttribute="leading" constant="12" id="c54-c2-rYq"/>
                             <constraint firstItem="YKr-3Q-lwx" firstAttribute="bottom" secondItem="KLh-FQ-h1h" secondAttribute="bottom" id="qIc-wb-q0N"/>
-                            <constraint firstItem="KLh-FQ-h1h" firstAttribute="leading" secondItem="YKr-3Q-lwx" secondAttribute="leading" id="uHR-V1-VE9"/>
+                            <constraint firstItem="KLh-FQ-h1h" firstAttribute="leading" secondItem="YKr-3Q-lwx" secondAttribute="leading" constant="18" id="uHR-V1-VE9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YKr-3Q-lwx"/>
                     </view>

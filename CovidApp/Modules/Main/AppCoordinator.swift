@@ -70,7 +70,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     override func start() {
-        SessionController().clear()
+//        SessionController().clear()
         switch instructor {
         case .onboarding: presentOnboardingFlow()
         case .main:

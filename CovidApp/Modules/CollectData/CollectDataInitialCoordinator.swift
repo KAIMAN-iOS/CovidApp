@@ -7,7 +7,7 @@
 //
 
 import UIKit
- // CollectDataInitialCoordinator
+ import SwiftyUserDefaults
 
 protocol InitialCollectDelegate: class {
     func pushNextController(for metric: GovernmentMetrics, answer: Validation)
@@ -23,7 +23,12 @@ class CollectDataInitialCoordinator: Coordinator<DeepLink> {
     var currentDataIndex = -1
     weak var closeDelegate: CloseDelegate? = nil
     weak var coordinatorDelegate: CollectDataInitialCoordinatorDelegate? = nil
-    private var answers: Answers = Answers()
+    private var answers: Answers = Answers()  {
+        didSet {
+            try? DataStorage().save(answers)
+        }
+    }
+
     
     init() {
         let router: Router = Router(navigationController: CollectInitialDataViewController.createRootController())
@@ -31,6 +36,7 @@ class CollectDataInitialCoordinator: Coordinator<DeepLink> {
     }
     
     override func start() {
+        Defaults[\.initialValuesFilled] = true
         pushNextController()
     }
     
