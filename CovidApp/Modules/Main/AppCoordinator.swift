@@ -77,16 +77,13 @@ class AppCoordinator: Coordinator<DeepLink> {
             if SessionController().userLoggedIn == false {
                 router.setRootModule(loginController, hideBar: true, animated: false)
             } else {
-                router.setRootModule(mainController, hideBar: true, animated: false)
-                if Defaults[\.initialValuesFilled] == false {
-                    showInitialMetrics()
-                }
+                showMainController()
             }
         }
     }
     
     func presentOnboardingFlow() {
-//        SessionController().clear()
+        SessionController().clear()
         let onboarding = OnboardingViewController.create()
         onboarding.modalPresentationStyle = .overFullScreen
         onboarding.delegate = self
@@ -125,6 +122,9 @@ extension AppCoordinator: AppCoordinatorDelegate {
     
     func showMainController() {
         router.setRootModule(mainController, hideBar: true, animated: true)
+        if Defaults[\.initialValuesFilled] == false {
+            self.showInitialMetrics()
+        }
     }
     
     func showInitialMetrics() {

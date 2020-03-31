@@ -15,4 +15,10 @@ extension DateFormatter {
         f.dateStyle = .medium
         return f
     } ()
+    
+    static let facebookDateFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.dateFormat = "MM/dd/yyyy"
+        return f
+    } ()
 }

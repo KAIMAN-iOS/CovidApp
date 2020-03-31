@@ -104,7 +104,7 @@ struct SessionController {
         read(from: data, for: "last_name", keyPath: \SessionController.name)
         read(from: data, for: "first_name", keyPath: \SessionController.firstname)
         if let date = data["birthday"] {
-            SessionController.instance.birthday = date.toISODate()?.date
+            SessionController.instance.birthday = DateFormatter.facebookDateFormatter.date(from: date)
         }
     }
     

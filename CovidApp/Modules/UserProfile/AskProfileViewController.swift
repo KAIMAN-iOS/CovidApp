@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 class AskProfileViewController: UIViewController {
 
@@ -61,6 +62,10 @@ class AskProfileViewController: UIViewController {
         super.viewDidLoad()
         checkValidity()
         
+        if let date = SessionController().birthday {
+            dobTextField.textField.text = DateFormatter.readableDateFormatter.string(from: date)
+        }
+        
         // observe the isValid from ttf
         nameObserver = observe(\.nameTextField.isValid,
                                options: [.old, .new]
@@ -85,6 +90,10 @@ class AskProfileViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
+        var session = SessionController()
+        session.name  = nameTextField.textField.text
+        session.firstname  = firstnameTextField.textField.text
+        session.birthday  = DateFormatter.readableDateFormatter.date(from: dobTextField.textField.text ?? "")
         coordinatorDelegate?.showMainController()
     }
 }

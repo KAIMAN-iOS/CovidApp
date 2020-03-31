@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftDate
 
 enum RawValueError: Error {
     case unknownTypeForEnum
@@ -131,7 +132,13 @@ enum GovernmentMetrics: Int, CaseIterable {
         
         var defaultSelectedIndex: Int {
             switch self {
-            case .age: return values.firstIndex(of: 30) ?? 0
+            case .age:
+                guard let birthdate = SessionController().birthday else {
+                    return values.firstIndex(of: 30) ?? 0
+                }
+                let age = birthdate.getInterval(toDate: Date(), component: .year)
+                return values.firstIndex(of: Int(age)) ?? 30
+                
             case .weight: return values.firstIndex(of: 60) ?? 0
             case .height: return values.firstIndex(of: 150) ?? 0
             }
