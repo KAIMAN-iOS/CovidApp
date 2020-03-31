@@ -10,7 +10,7 @@ import UIKit
 import PaperOnboarding
 
 protocol CloseDelegate: class {
-    func close()
+    func close(_ controller: UIViewController)
 }
 
 class OnboardingViewController: UIViewController {
@@ -51,7 +51,7 @@ class OnboardingViewController: UIViewController {
     }
     
     @IBAction func quit(_ sender: Any) {
-        delegate?.close()
+        delegate?.close(self)
     }
 }
 

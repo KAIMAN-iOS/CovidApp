@@ -14,18 +14,37 @@ enum RawValueError: Error {
 
 enum Validation {
     case yes
+    case `continue`
+    case end
     case no
     case dontKnow
     case notApplicable
     case ratherNotAnswer
+    case value(_: Int?)
     
-    var text: String {
+    var text: String? {
         switch self {
         case .yes             : return "yes".local()
+        case .continue        : return "continue".local()
+        case .end             : return "terminer".local()
         case .no              : return "no".local()
         case .dontKnow        : return "dontKnow".local()
         case .notApplicable   : return "notApplicable".local()
         case .ratherNotAnswer : return "ratherNotAnswer".local()
+        case .value:            return nil
+        }
+    }
+    
+    var actionButtonType: ActionButtonType {
+        switch self {
+        case .yes             : return .alert
+        case .no              : return .primary
+        case .continue        : return .primary
+        case .end             : return .primary
+        case .dontKnow        : return .secondary
+        case .notApplicable   : return .secondary
+        case .ratherNotAnswer : return .secondary
+        case .value:            return .primary
         }
     }
 }
@@ -51,7 +70,7 @@ enum GovernmentMetrics: Int, CaseIterable {
     case pregnant
     case immunodefense
     case immunosupressant
-    case postalCode
+//    case postalCode
     
     var displayText: String {
         switch self {
@@ -75,14 +94,15 @@ enum GovernmentMetrics: Int, CaseIterable {
         case .pregnant         : return "initial pregnant".local()
         case .immunodefense    : return "initial immunodefense".local()
         case .immunosupressant : return "initial immunosupressant".local()
-        case .postalCode       : return "initial postalCode".local()
+//        case .postalCode       : return "initial postalCode".local()
         }
     }
     
     var validationButtons: [Validation] {
         var defaultValues: [Validation] = [.yes, .no]
         switch self {
-        case .postalCode: defaultValues.append(.ratherNotAnswer)
+        case .age, .height, .weight: return [.continue]
+//        case .postalCode: defaultValues.append(.ratherNotAnswer)
         case .pregnant: defaultValues.append(.notApplicable)
         case .heartDisease, .immunodefense, .immunosupressant: defaultValues.append(.dontKnow)
         default: ()
@@ -125,6 +145,18 @@ enum GovernmentMetrics: Int, CaseIterable {
         case .weight: return .weight
         default: return nil
         }
+    }
+}
+
+struct Answers {
+    internal var data: [GovernmentMetrics : Validation] = [:]
+    
+    mutating func append(metric: GovernmentMetrics, for validation: Validation) {
+        data[metric] = validation
+    }
+    
+    mutating func remove(metric: GovernmentMetrics) {
+        data.removeValue(forKey: metric)
     }
 }
 

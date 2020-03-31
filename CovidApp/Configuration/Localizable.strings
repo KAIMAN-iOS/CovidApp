@@ -62,3 +62,11 @@
 
 "add friends" = "Ajoutez des amis 😊";
 "try" = "Remplir mon premier questionnaire";
+
+"reports" = "Questionnaire";
+"report number format" = "Question %d/%d";
+"continue" = "Continuer";
+"end" = "Terminer";
+"close" = "Fermer";
+"Cancel" = "Annuler";
+"close report title" = "Souhaitez-vous réellement fermer ce formlaire ?";

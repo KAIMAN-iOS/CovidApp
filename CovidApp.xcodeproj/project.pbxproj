@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		023EFC0524323932000A46B7 /* CollectDataInitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
 		0285CDA7243216BA004DF64A /* NoFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA6243216BA004DF64A /* NoFriendsViewController.swift */; };
 		0285CDA924321850004DF64A /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA824321850004DF64A /* MainViewModel.swift */; };
+		0285CDAB24321D1E004DF64A /* CollectDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDAA24321D1E004DF64A /* CollectDataViewController.swift */; };
+		0285CDAD24322164004DF64A /* CollectInitialDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDAC24322164004DF64A /* CollectInitialDataViewController.swift */; };
 		02A9440E242B8CE100623BC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9440D242B8CE100623BC4 /* AppDelegate.swift */; };
 		02A94415242B8CE100623BC4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02A94413242B8CE100623BC4 /* Main.storyboard */; };
 		02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 02A94416242B8CE400623BC4 /* Assets.xcassets */; };
@@ -103,11 +106,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDataInitialCoordinator.swift; sourceTree = "<group>"; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
 		0285CDA6243216BA004DF64A /* NoFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoFriendsViewController.swift; sourceTree = "<group>"; };
 		0285CDA824321850004DF64A /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		0285CDAA24321D1E004DF64A /* CollectDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDataViewController.swift; sourceTree = "<group>"; };
+		0285CDAC24322164004DF64A /* CollectInitialDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectInitialDataViewController.swift; sourceTree = "<group>"; };
 		02A9440A242B8CE100623BC4 /* CovidApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CovidApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		02A9440D242B8CE100623BC4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		02A94414242B8CE100623BC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -406,6 +412,9 @@
 			isa = PBXGroup;
 			children = (
 				02A94523242CC44100623BC4 /* Cards */,
+				0285CDAA24321D1E004DF64A /* CollectDataViewController.swift */,
+				0285CDAC24322164004DF64A /* CollectInitialDataViewController.swift */,
+				023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */,
 			);
 			path = CollectData;
 			sourceTree = "<group>";
@@ -625,6 +634,7 @@
 				02A94455242B99AA00623BC4 /* Double+Extensions.swift in Sources */,
 				02A94538242D126C00623BC4 /* UIFont+Extension.swift in Sources */,
 				02A94451242B99AA00623BC4 /* UIView+Ext.swift in Sources */,
+				023EFC0524323932000A46B7 /* CollectDataInitialCoordinator.swift in Sources */,
 				02A94525242CC47D00623BC4 /* CovidSwipeCard.swift in Sources */,
 				02A945622430AE4A00623BC4 /* AskEmailViewController.swift in Sources */,
 				02A9452B242CC85300623BC4 /* SwipeCardOverlay.swift in Sources */,
@@ -648,6 +658,7 @@
 				02A94508242CB83E00623BC4 /* SwipeCard.swift in Sources */,
 				02A9445E242B99AA00623BC4 /* Result.swift in Sources */,
 				02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */,
+				0285CDAB24321D1E004DF64A /* CollectDataViewController.swift in Sources */,
 				02A9454B242FA02200623BC4 /* UIButton+Ext.swift in Sources */,
 				02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */,
 				02A94547242F8D4D00623BC4 /* OnboardingViewController.swift in Sources */,
@@ -660,6 +671,7 @@
 				02A9450E242CB83E00623BC4 /* SwipeCardStackDelegate.swift in Sources */,
 				02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */,
 				02A94513242CB83E00623BC4 /* CGVector+Extensions.swift in Sources */,
+				0285CDAD24322164004DF64A /* CollectInitialDataViewController.swift in Sources */,
 				02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */,
 				02A94548242F95DF00623BC4 /* SceneDelegate.swift in Sources */,
 				02A94510242CB83E00623BC4 /* CardStackStateManager.swift in Sources */,

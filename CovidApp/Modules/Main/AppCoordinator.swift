@@ -6,7 +6,7 @@
 //  Copyright © 2020 Jerome TONNELIER. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SwiftyUserDefaults
 
 //MARK: - Protocols
@@ -14,6 +14,7 @@ protocol AppCoordinatorDelegate: class {
     func showEmailController()
     func showUserProfileController()
     func showMainController()
+    func showInitialMetrics()
 }
 
 protocol ShareDelegate: class {
@@ -24,6 +25,7 @@ protocol ShareDelegate: class {
 extension DefaultsKeys {
     var username: DefaultsKey<String?> { .init("username") }
     var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
+    var initialValuesFilled: DefaultsKey<Bool> { .init("initialValuesFilled", defaultValue: false) }
 }
 
 fileprivate var onboardingWasShown: Bool {
@@ -58,6 +60,13 @@ class AppCoordinator: Coordinator<DeepLink> {
         router.setRootModule(mainController, hideBar: true, animated: false)
         loginController.coordinatorDelegate = self
         mainController.shareDelegate = self
+        customize()
+    }
+    
+    private func customize() {
+        UINavigationBar.appearance().tintColor = UIColor.white
+        UINavigationBar.appearance().barTintColor = Palette.basic.primary.color
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.white]
     }
     
     override func start() {
@@ -68,6 +77,9 @@ class AppCoordinator: Coordinator<DeepLink> {
                 router.setRootModule(loginController, hideBar: true, animated: false)
             } else {
                 router.setRootModule(mainController, hideBar: true, animated: false)
+                if Defaults[\.initialValuesFilled] == false {
+                    showInitialMetrics()
+                }
             }
         }
     }
@@ -82,10 +94,17 @@ class AppCoordinator: Coordinator<DeepLink> {
 
 //MARK: - AppCoordinator extensions
 extension AppCoordinator: CloseDelegate {
-    func close() {
-        Defaults[\.onboardingWasShown] = true
-        mainController.dismiss(animated: true) { }
-        start()
+    func close(_ controller: UIViewController) {
+        
+        switch controller {
+        case is OnboardingViewController:
+            Defaults[\.onboardingWasShown] = true
+            fallthrough
+            
+        default:
+            mainController.dismiss(animated: true) { }
+            start()
+        }
     }
 }
 
@@ -105,10 +124,25 @@ extension AppCoordinator: AppCoordinatorDelegate {
     func showMainController() {
         router.setRootModule(mainController, hideBar: true, animated: true)
     }
+    
+    func showInitialMetrics() {
+        let coord = CollectDataInitialCoordinator()
+        coord.closeDelegate = self
+        coord.coordinatorDelegate = self
+        addChild(coord)
+        router.present(coord, animated: true)
+        coord.start()
+    }
 }
 
 extension AppCoordinator: ShareDelegate {
     func share() {
         
+    }
+}
+
+extension AppCoordinator: CollectDataInitialCoordinatorDelegate {
+    func didFinishCollect(data: Answers) {
+        mainController.dismiss(animated: true, completion: nil)
     }
 }

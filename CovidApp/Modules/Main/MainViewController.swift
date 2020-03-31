@@ -49,12 +49,12 @@ class MainViewController: UIViewController {
     }
     
     private func handleLayout() {
-        let numberOfFriends = viewModel.numberOfItems(in: 0, for: .friends)
-        noFriendController.view.isHidden = numberOfFriends > 0
-        friendsCollectionView.isHidden = numberOfFriends == 0
         let numberOfMetrics = viewModel.numberOfItems(in: 0, for: .metrics)
         noResultView.isHidden = numberOfMetrics > 0
         reportsCollectionView.isHidden = numberOfMetrics == 0
+        let numberOfFriends = viewModel.numberOfItems(in: 0, for: .friends)
+        noFriendController.view.isHidden = numberOfFriends > 0 || numberOfMetrics == 0
+        friendsCollectionView.isHidden = numberOfFriends == 0
     }
     
     @IBAction func showSettings(_ sender: Any) {
