@@ -15,6 +15,7 @@ class AskProfileViewController: UIViewController {
         return AskProfileViewController.loadFromStoryboard(identifier: "AskProfileViewController", storyboardName: "Main")
     }
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var continueButton: ActionButton!  {
         didSet {
             continueButton.actionButtonType = .primary
@@ -49,6 +50,11 @@ class AskProfileViewController: UIViewController {
         nameObserver?.invalidate()
         firstnameObserver?.invalidate()
         dobObserver?.invalidate()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        scrollView.flashScrollIndicators()
     }
     
     override func viewDidLoad() {

@@ -355,26 +355,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="7Si-ja-Ct7">
-                                <rect key="frame" x="24" y="168.5" width="366" height="559"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="639" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="7Si-ja-Ct7">
+                                <rect key="frame" x="24" y="128.5" width="366" height="639"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid'house" translatesAutoresizingMaskIntoConstraints="NO" id="Fi9-vg-Vy3">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="168.5"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="8Qx-2r-kCe" customClass="ErrorTextField" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="204.5" width="366" height="64"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tng-FZ-n5g">
+                                        <rect key="frame" x="0.0" y="0.0" width="366" height="548.5"/>
+                                        <subviews>
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q5I-IY-ACG">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="548.5"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="548.5" translatesAutoresizingMaskIntoConstraints="NO" id="zia-7x-zE9">
+                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="548.5"/>
+                                                        <subviews>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="548.5" axis="vertical" spacing="36" translatesAutoresizingMaskIntoConstraints="NO" id="rGe-Ud-jqR">
+                                                                <rect key="frame" x="0.0" y="0.0" width="366" height="548.5"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid'house" translatesAutoresizingMaskIntoConstraints="NO" id="Fi9-vg-Vy3">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="366" height="168.5"/>
+                                                                    </imageView>
+                                                                    <view contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="8Qx-2r-kCe" customClass="ErrorTextField" customModule="CovidApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="204.5" width="366" height="144"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="xZd-9Y-qb8" customClass="ErrorTextField" customModule="CovidApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="384.5" width="366" height="64"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    </view>
+                                                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="PdN-t6-Ok6" customClass="ErrorTextField" customModule="CovidApp" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="484.5" width="366" height="64"/>
+                                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                    </view>
+                                                                </subviews>
+                                                            </stackView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                        <constraints>
+                                                            <constraint firstItem="rGe-Ud-jqR" firstAttribute="leading" secondItem="zia-7x-zE9" secondAttribute="leading" id="75p-nv-Vit"/>
+                                                            <constraint firstAttribute="bottom" secondItem="rGe-Ud-jqR" secondAttribute="bottom" id="lZ7-S3-Phh"/>
+                                                            <constraint firstAttribute="trailing" secondItem="rGe-Ud-jqR" secondAttribute="trailing" id="qCc-tW-Gqm"/>
+                                                            <constraint firstItem="rGe-Ud-jqR" firstAttribute="top" secondItem="zia-7x-zE9" secondAttribute="top" id="xEK-aT-h2E"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="zia-7x-zE9" secondAttribute="trailing" id="4Gj-0k-Awv"/>
+                                                    <constraint firstItem="zia-7x-zE9" firstAttribute="leading" secondItem="q5I-IY-ACG" secondAttribute="leading" id="Had-BQ-cfR"/>
+                                                    <constraint firstAttribute="bottom" secondItem="zia-7x-zE9" secondAttribute="bottom" id="bEB-vk-Inv"/>
+                                                    <constraint firstItem="zia-7x-zE9" firstAttribute="top" secondItem="q5I-IY-ACG" secondAttribute="top" id="tyV-r5-ChE"/>
+                                                </constraints>
+                                            </scrollView>
+                                        </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="xZd-9Y-qb8" customClass="ErrorTextField" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="304.5" width="366" height="64"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                    </view>
-                                    <view contentMode="scaleToFill" placeholderIntrinsicWidth="366" placeholderIntrinsicHeight="64" translatesAutoresizingMaskIntoConstraints="NO" id="PdN-t6-Ok6" customClass="ErrorTextField" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="404.5" width="366" height="64"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="q5I-IY-ACG" secondAttribute="trailing" id="0s8-vC-aKb"/>
+                                            <constraint firstAttribute="bottom" secondItem="q5I-IY-ACG" secondAttribute="bottom" id="3J5-Xu-s5R"/>
+                                            <constraint firstItem="zia-7x-zE9" firstAttribute="width" secondItem="tng-FZ-n5g" secondAttribute="width" id="5fS-Sd-lGG"/>
+                                            <constraint firstItem="q5I-IY-ACG" firstAttribute="top" secondItem="tng-FZ-n5g" secondAttribute="top" id="Zpa-vb-Q1u"/>
+                                            <constraint firstItem="rGe-Ud-jqR" firstAttribute="width" secondItem="tng-FZ-n5g" secondAttribute="width" id="bdV-mL-RAu"/>
+                                            <constraint firstItem="q5I-IY-ACG" firstAttribute="leading" secondItem="tng-FZ-n5g" secondAttribute="leading" id="gxK-uB-24A"/>
+                                            <constraint firstItem="zia-7x-zE9" firstAttribute="height" secondItem="tng-FZ-n5g" secondAttribute="height" priority="250" id="sPu-FL-34h"/>
+                                        </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Covid'App a besoin de votre email afin de vous identifier de façon unique" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PyM-aT-TfS">
-                                        <rect key="frame" x="0.0" y="504.5" width="366" height="54.5"/>
+                                        <rect key="frame" x="0.0" y="584.5" width="366" height="54.5"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -382,7 +425,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6H-h7-a4l" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                <rect key="frame" x="12" y="802" width="390" height="60"/>
+                                <rect key="frame" x="12" y="790" width="390" height="60"/>
                                 <color key="backgroundColor" name="primary"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="KID-Dj-EmL"/>
@@ -400,12 +443,14 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="g6H-h7-a4l" firstAttribute="bottom" secondItem="3vw-5L-dpp" secondAttribute="bottom" id="4KD-Zy-HoZ"/>
+                            <constraint firstItem="g6H-h7-a4l" firstAttribute="bottom" secondItem="3vw-5L-dpp" secondAttribute="bottom" constant="-12" id="4KD-Zy-HoZ"/>
+                            <constraint firstItem="g6H-h7-a4l" firstAttribute="top" relation="greaterThanOrEqual" secondItem="7Si-ja-Ct7" secondAttribute="bottom" constant="12" id="6aZ-X5-W3A"/>
                             <constraint firstItem="7Si-ja-Ct7" firstAttribute="leading" secondItem="3vw-5L-dpp" secondAttribute="leading" constant="24" id="ABD-78-RUv"/>
                             <constraint firstItem="3vw-5L-dpp" firstAttribute="trailing" secondItem="7Si-ja-Ct7" secondAttribute="trailing" constant="24" id="F2e-Xa-i8R"/>
                             <constraint firstItem="3vw-5L-dpp" firstAttribute="trailing" secondItem="g6H-h7-a4l" secondAttribute="trailing" constant="12" id="eGP-rA-SDu"/>
                             <constraint firstItem="g6H-h7-a4l" firstAttribute="leading" secondItem="3vw-5L-dpp" secondAttribute="leading" constant="12" id="i1H-XZ-eyG"/>
                             <constraint firstItem="7Si-ja-Ct7" firstAttribute="centerY" secondItem="JBD-6z-8Vz" secondAttribute="centerY" id="qMF-pK-2fm"/>
+                            <constraint firstItem="7Si-ja-Ct7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3vw-5L-dpp" secondAttribute="top" constant="12" id="yGx-Ga-AEr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="3vw-5L-dpp"/>
                     </view>
@@ -414,6 +459,7 @@
                         <outlet property="dobTextField" destination="PdN-t6-Ok6" id="FeE-RW-eyb"/>
                         <outlet property="firstnameTextField" destination="xZd-9Y-qb8" id="QHS-gN-edx"/>
                         <outlet property="nameTextField" destination="8Qx-2r-kCe" id="RfL-dU-4jN"/>
+                        <outlet property="scrollView" destination="q5I-IY-ACG" id="rdB-uL-SJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ydg-mw-RXh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

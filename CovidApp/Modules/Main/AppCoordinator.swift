@@ -70,6 +70,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     override func start() {
+        SessionController().clear()
         switch instructor {
         case .onboarding: presentOnboardingFlow()
         case .main:
@@ -85,6 +86,7 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     func presentOnboardingFlow() {
+//        SessionController().clear()
         let onboarding = OnboardingViewController.create()
         onboarding.modalPresentationStyle = .overFullScreen
         onboarding.delegate = self
