@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		023EFC0524323932000A46B7 /* CollectDataInitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */; };
 		023EFC0724336E2F000A46B7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0624336E2F000A46B7 /* Storage.swift */; };
+		023EFC09243386E7000A46B7 /* CovidAppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC08243386E7000A46B7 /* CovidAppApi.swift */; };
+		023EFC0F2433887A000A46B7 /* RegisterRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0E2433887A000A46B7 /* RegisterRoute.swift */; };
+		023EFC112434803C000A46B7 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC102434803C000A46B7 /* Register.swift */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -109,6 +112,9 @@
 /* Begin PBXFileReference section */
 		023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDataInitialCoordinator.swift; sourceTree = "<group>"; };
 		023EFC0624336E2F000A46B7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		023EFC08243386E7000A46B7 /* CovidAppApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAppApi.swift; sourceTree = "<group>"; };
+		023EFC0E2433887A000A46B7 /* RegisterRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRoute.swift; sourceTree = "<group>"; };
+		023EFC102434803C000A46B7 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -222,6 +228,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		023EFC0A2433883C000A46B7 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				023EFC0E2433887A000A46B7 /* RegisterRoute.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		023EFC0B24338842000A46B7 /* User */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		023EFC0C24338854000A46B7 /* Friend */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Friend;
+			sourceTree = "<group>";
+		};
+		023EFC0D24338857000A46B7 /* Metric */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Metric;
+			sourceTree = "<group>";
+		};
+		023EFC12243480BB000A46B7 /* Routes */ = {
+			isa = PBXGroup;
+			children = (
+				023EFC0D24338857000A46B7 /* Metric */,
+				023EFC0C24338854000A46B7 /* Friend */,
+				023EFC0B24338842000A46B7 /* User */,
+				023EFC0A2433883C000A46B7 /* Auth */,
+			);
+			path = Routes;
+			sourceTree = "<group>";
+		};
+		023EFC13243482FA000A46B7 /* CovidApi */ = {
+			isa = PBXGroup;
+			children = (
+				023EFC08243386E7000A46B7 /* CovidAppApi.swift */,
+			);
+			path = CovidApi;
+			sourceTree = "<group>";
+		};
 		02A94401242B8CE100623BC4 = {
 			isa = PBXGroup;
 			children = (
@@ -243,7 +297,6 @@
 			isa = PBXGroup;
 			children = (
 				02A9455D2430A6B600623BC4 /* CovidApp.entitlements */,
-				02A9452C242CFF5A00623BC4 /* Models */,
 				02A94520242CBBF000623BC4 /* Configuration */,
 				02A9451A242CBA4500623BC4 /* Modules */,
 				02A9445F242B99F600623BC4 /* CoordinatorKit */,
@@ -320,6 +373,9 @@
 		02A944E4242BC24900623BC4 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				023EFC13243482FA000A46B7 /* CovidApi */,
+				02A9452C242CFF5A00623BC4 /* Models */,
+				023EFC12243480BB000A46B7 /* Routes */,
 				02A944E5242BC25200623BC4 /* API.swift */,
 				02A944E6242BC25200623BC4 /* RequestObject.swift */,
 			);
@@ -449,6 +505,7 @@
 				02A9452D242CFF6C00623BC4 /* User.swift */,
 				02A9452F242CFF7600623BC4 /* Metric.swift */,
 				02A94543242F602600623BC4 /* Onboarding.swift */,
+				023EFC102434803C000A46B7 /* Register.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -625,6 +682,7 @@
 				02A9451F242CBA7D00623BC4 /* AppCoordinator.swift in Sources */,
 				02A9450D242CB83E00623BC4 /* CardStackTransformProvider.swift in Sources */,
 				02A94502242CB83E00623BC4 /* CardLayoutProvider.swift in Sources */,
+				023EFC0F2433887A000A46B7 /* RegisterRoute.swift in Sources */,
 				02A94536242D117E00623BC4 /* Configuration.swift in Sources */,
 				02A94509242CB83E00623BC4 /* SwipeCardStackDataSource.swift in Sources */,
 				02A94467242B99F600623BC4 /* WindowCoordinator.swift in Sources */,
@@ -676,6 +734,7 @@
 				02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */,
 				02A94513242CB83E00623BC4 /* CGVector+Extensions.swift in Sources */,
 				0285CDAD24322164004DF64A /* CollectInitialDataViewController.swift in Sources */,
+				023EFC112434803C000A46B7 /* Register.swift in Sources */,
 				02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */,
 				02A94548242F95DF00623BC4 /* SceneDelegate.swift in Sources */,
 				02A94510242CB83E00623BC4 /* CardStackStateManager.swift in Sources */,
@@ -683,6 +742,7 @@
 				0285CDA7243216BA004DF64A /* NoFriendsViewController.swift in Sources */,
 				0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */,
 				02A94450242B99AA00623BC4 /* Palette.swift in Sources */,
+				023EFC09243386E7000A46B7 /* CovidAppApi.swift in Sources */,
 				02A94505242CB83E00623BC4 /* CardTransformProvider.swift in Sources */,
 				0285CDA924321850004DF64A /* MainViewModel.swift in Sources */,
 			);

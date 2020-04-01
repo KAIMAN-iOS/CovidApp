@@ -10,13 +10,29 @@ import UIKit
 
 class CollectDataViewController: UIViewController {
 
+    @IBOutlet weak var swipeCardStack: SwipeCardStack!
+    @IBOutlet weak var noButton: ActionButton!
+    @IBOutlet weak var yesButton: ActionButton!
+    @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var rewindButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
+    @IBAction func chooseNo(_ sender: Any) {
+    }
+    
+    @IBAction func chooseYes(_ sender: Any) {
+    }
+    
+    @IBAction func rewind(_ sender: Any) {
+    }
+    
+    @IBAction func close(_ sender: Any) {
+    }
     /*
     // MARK: - Navigation
 

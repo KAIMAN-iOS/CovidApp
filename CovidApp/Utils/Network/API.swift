@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Alamofire
+import PromiseKit
 
 
 // MARK: Protocol API Implementation
@@ -66,6 +67,10 @@ extension API {
             print("• URL: \(url)")
             print("• ERROR")
         }
+        if let headers = dataResponse.response?.headers {
+            print("• HEADERS")
+            print("• \(headers)")
+        }
     }
     
     /**
@@ -85,6 +90,30 @@ extension API {
         return AF.request(urlRequest).responseJSON {(dataResponse) in
             self.printResponse(dataResponse)
             completion(self.handleDataResponse(dataResponse))
+        }
+    }
+    
+    func request<T: Decodable>(_ request: RequestObject<T>) -> DataRequest {
+        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
+        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
+        printRequest(request, urlRequest: urlRequest)
+        return AF.request(urlRequest)
+    }
+    
+    func perform<T: Decodable>(_ request: RequestObject<T>) -> Promise<T> {
+        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
+        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
+        printRequest(request, urlRequest: urlRequest)
+        return Promise<T>.init { resolver in
+                self.request(request)
+                .responseJSON { (dataResponse) in
+                    self.printResponse(dataResponse)
+                    let result: Swift.Result<T, AFError> = self.handleDataResponse(dataResponse)
+                    switch result {
+                    case .success(let data): resolver.fulfill(data)
+                    case .failure(let error): resolver.reject(error)
+                    }
+                }
         }
     }
     
@@ -133,7 +162,7 @@ extension API {
     private func handleResponse<T: Decodable>(data: Data?, code: Int, expectedObject: T.Type) -> (object: T?, error: Error?) {
 
         guard let data = data else {
-            return (nil, NSError())
+            return (nil, AFError.responseValidationFailed(reason: .dataFileNil))
         }
                 
         switch code {
@@ -142,10 +171,10 @@ extension API {
                 let object = try decoder.decode(expectedObject, from: data)
                 return (object,nil)
             } catch {
-                return (nil,error)
+                return (nil, error)
             }
-        default:
-            return (nil, NSError())
+//        case 500: return (nil, AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: 500))))
+        default: return (nil, AFError.responseValidationFailed(reason: .unacceptableStatusCode(code: code)))
         }
     }
     

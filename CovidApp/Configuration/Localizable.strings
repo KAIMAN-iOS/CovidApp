@@ -70,3 +70,7 @@
 "close" = "Fermer";
 "Cancel" = "Annuler";
 "close report title" = "Souhaitez-vous réellement fermer ce formlaire ?";
+
+"refreshTokenFailed" = "Impossible de vous re-connecter pour le moment";
+"cantLogin" = "Impossible de vous connecter pour le moment";
+"Connect with facebook" = "Se connecter avec Facebook";

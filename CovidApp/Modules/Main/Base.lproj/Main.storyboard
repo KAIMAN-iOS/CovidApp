@@ -246,7 +246,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid'house" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-Om-BwE">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="168.5"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-uD-6Ic" customClass="Button" customModule="CovidApp" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-uD-6Ic" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="188.5" width="390" height="60"/>
                                         <color key="backgroundColor" name="primary"/>
                                         <constraints>
@@ -538,42 +538,40 @@
                                         <rect key="frame" x="0.0" y="768" width="414" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRF-il-v74" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="132.5" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="203" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="dLY-oX-8AH"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x7G-Qn-BGT" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                                <rect key="frame" x="140.5" y="0.0" width="133" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="50" id="5Ie-B2-szG"/>
-                                                </constraints>
-                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="chooseNo:" destination="QB9-3u-h8S" eventType="touchUpInside" id="DOH-vQ-TXi"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfC-df-dYr" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                                <rect key="frame" x="281.5" y="0.0" width="132.5" height="50"/>
+                                                <rect key="frame" x="211" y="0.0" width="203" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="1UR-vt-LZC"/>
                                                 </constraints>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="chooseYes:" destination="QB9-3u-h8S" eventType="touchUpInside" id="Xne-e8-lXs"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cie-Ml-Sys" customClass="SwipeCardStack" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="768"/>
+                                        <rect key="frame" x="12" y="0.0" width="390" height="768"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="YJj-Xf-wbv" firstAttribute="leading" secondItem="eNF-89-0g2" secondAttribute="leading" id="40f-tu-ZFH"/>
-                                    <constraint firstItem="Cie-Ml-Sys" firstAttribute="leading" secondItem="eNF-89-0g2" secondAttribute="leading" id="Ha0-oh-Gh2"/>
+                                    <constraint firstItem="Cie-Ml-Sys" firstAttribute="leading" secondItem="eNF-89-0g2" secondAttribute="leading" constant="12" id="Ha0-oh-Gh2"/>
                                     <constraint firstItem="Cie-Ml-Sys" firstAttribute="top" secondItem="eNF-89-0g2" secondAttribute="top" id="UPa-dj-NOD"/>
-                                    <constraint firstAttribute="trailing" secondItem="Cie-Ml-Sys" secondAttribute="trailing" id="V3Z-qd-neK"/>
+                                    <constraint firstAttribute="trailing" secondItem="Cie-Ml-Sys" secondAttribute="trailing" constant="12" id="V3Z-qd-neK"/>
                                     <constraint firstAttribute="bottom" secondItem="YJj-Xf-wbv" secondAttribute="bottom" id="YfJ-kx-L83"/>
                                     <constraint firstItem="YJj-Xf-wbv" firstAttribute="top" secondItem="Cie-Ml-Sys" secondAttribute="bottom" id="gal-tJ-nSL"/>
                                     <constraint firstAttribute="trailing" secondItem="YJj-Xf-wbv" secondAttribute="trailing" id="yg7-QE-qcy"/>
@@ -587,19 +585,41 @@
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <action selector="close:" destination="QB9-3u-h8S" eventType="touchUpInside" id="9Zs-F0-ma3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnU-Wb-bde">
+                                <rect key="frame" x="9" y="53" width="45" height="45"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="gobackward" catalog="system"/>
+                                <connections>
+                                    <action selector="rewind:" destination="QB9-3u-h8S" eventType="touchUpInside" id="QcF-Bd-sDs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="primary"/>
                         <constraints>
+                            <constraint firstItem="hnU-Wb-bde" firstAttribute="top" secondItem="uLD-gC-vgy" secondAttribute="top" constant="9" id="CIe-Ka-yMn"/>
+                            <constraint firstItem="hnU-Wb-bde" firstAttribute="leading" secondItem="uLD-gC-vgy" secondAttribute="leading" constant="9" id="COz-yU-GIf"/>
                             <constraint firstItem="1fP-KF-5oG" firstAttribute="top" secondItem="uLD-gC-vgy" secondAttribute="top" constant="8" id="F9t-aq-62l"/>
+                            <constraint firstItem="hnU-Wb-bde" firstAttribute="width" secondItem="1fP-KF-5oG" secondAttribute="width" id="JBD-DK-pIR"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="trailing" secondItem="uLD-gC-vgy" secondAttribute="trailing" id="N1a-TO-5sI"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="top" secondItem="uLD-gC-vgy" secondAttribute="top" id="PPw-cF-k49"/>
                             <constraint firstItem="uLD-gC-vgy" firstAttribute="trailing" secondItem="1fP-KF-5oG" secondAttribute="trailing" constant="8" id="TbE-er-oge"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="leading" secondItem="uLD-gC-vgy" secondAttribute="leading" id="cCQ-bw-R8R"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="bottom" secondItem="uLD-gC-vgy" secondAttribute="bottom" id="lal-ou-pR1"/>
+                            <constraint firstItem="hnU-Wb-bde" firstAttribute="height" secondItem="1fP-KF-5oG" secondAttribute="height" id="tLr-IZ-81a"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uLD-gC-vgy"/>
                     </view>
+                    <connections>
+                        <outlet property="closeButton" destination="1fP-KF-5oG" id="bKp-O3-Q3k"/>
+                        <outlet property="noButton" destination="aRF-il-v74" id="Avv-yz-iFS"/>
+                        <outlet property="rewindButton" destination="hnU-Wb-bde" id="0iO-zQ-Voa"/>
+                        <outlet property="swipeCardStack" destination="Cie-Ml-Sys" id="QK7-fj-QNX"/>
+                        <outlet property="yesButton" destination="WfC-df-dYr" id="eTs-1a-v7Z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eqt-sQ-vxo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -772,6 +792,7 @@
         <image name="covid'house" width="168.5" height="168.5"/>
         <image name="facebook" width="42" height="42"/>
         <image name="gear" catalog="system" width="128" height="119"/>
+        <image name="gobackward" catalog="system" width="121" height="128"/>
         <image name="government" width="168.5" height="168.5"/>
         <image name="shareFaces" width="168.5" height="168.5"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

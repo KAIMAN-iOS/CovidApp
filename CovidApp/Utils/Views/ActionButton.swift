@@ -63,7 +63,7 @@ enum ActionButtonType {
     var textColor: UIColor? {
         switch self {
         case .secondary: return Palette.basic.primary.color
-        case .connection, .animated: return Palette.basic.mainTexts.color
+        case .animated: return Palette.basic.mainTexts.color
         case .loading: return UIColor.white.withAlphaComponent(0.7)
         case .alert: return .white
         default: return .white
@@ -93,7 +93,7 @@ enum ActionButtonType {
         switch self {
         case .primary: return Palette.basic.primary.color
         case .secondary: return .white
-        case .connection: return .white
+        case .connection: return Palette.basic.primary.color
         case .smoked: return Palette.basic.lightGray.color
         case .alert: return Palette.basic.alert.color
         case .loading: return Palette.basic.primary.color
@@ -112,7 +112,7 @@ enum ActionButtonType {
             button.backgroundColor = .white
             
         case .connection(let type):
-            button.backgroundColor = .white
+            button.backgroundColor = Palette.basic.primary.color
             button.setImage(type.image, for: .normal)
             button.setTitle(type.title, for: .normal)
             
@@ -249,7 +249,7 @@ class ActionButton: UIButton {
         case .connection:
             contentEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 12)
             titleEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
-            contentHorizontalAlignment = .left
+            contentHorizontalAlignment = .center
             
         case .loading:
             addSubview(loader)

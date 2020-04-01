@@ -48,7 +48,17 @@ class AskEmailViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
-        coordinatorDelegate?.showUserProfileController()
+        continueButton.isLoading = true
+        CovidApi
+            .shared
+            .retrieveToken()
+            .done { [weak self] user in
+                self?.coordinatorDelegate?.showUserProfileController()
+        }
+        .catch { [weak self] error in
+            self?.continueButton.isLoading = false
+            MessageManager.show(.sso(.cantLogin(message: error.localizedDescription)))
+        }
     }
     
     /*

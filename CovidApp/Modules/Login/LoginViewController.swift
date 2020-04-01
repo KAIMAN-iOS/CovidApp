@@ -16,7 +16,12 @@ class LoginViewController: UIViewController {
         return LoginViewController.loadFromStoryboard(identifier: "LoginViewController", storyboardName: "Main")
     }
     
-    @IBOutlet weak var facebookButton: Button!
+    @IBOutlet weak var facebookButton: ActionButton!  {
+        didSet {
+            facebookButton.actionButtonType = .connection(type: .facebook)
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -45,7 +50,7 @@ class LoginViewController: UIViewController {
                             self.coordinatorDelegate?.showEmailController()
                             return
                         }
-                        self.coordinatorDelegate?.showUserProfileController()
+                        self.register()
                 }
                 
             case .failed(let error):
@@ -53,6 +58,22 @@ class LoginViewController: UIViewController {
                 
             default: ()
             }
+        }
+    }
+    
+    func register() {
+        facebookButton.isLoading = true
+        CovidApi
+            .shared
+            .retrieveToken()
+            .done { [weak self] user in
+                self?.coordinatorDelegate?.showUserProfileController()
+        }
+        .catch { [weak self] error in
+            guard let self = self else { return }
+            self.facebookButton.isLoading = false
+            SessionController().clear()
+            MessageManager.show(.sso(.cantLogin(message: error.localizedDescription)), in: self)
         }
     }
     

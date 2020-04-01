@@ -189,11 +189,15 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
         
         case userWasLoggedOut
         case emailNotGranted
+        case refreshTokenFailed
+        case cantLogin(message: String)
         
         func hash(into hasher: inout Hasher) {
             switch self {
             case .userWasLoggedOut: hasher.combine(0)
             case .emailNotGranted: hasher.combine(1)
+            case .refreshTokenFailed: hasher.combine(2)
+            case .cantLogin(let message): hasher.combine(message)
             }
             hasher.combine("MessageTypeSSO")
         }
@@ -204,7 +208,7 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
                 var conf = MessageDisplayConfiguration.alert
                 conf.buttonConfiguration = ButtonConfiguration()
                 return conf
-            case .emailNotGranted: return MessageDisplayConfiguration.alert
+            default: return MessageDisplayConfiguration.alert
             }
         }
 
@@ -212,6 +216,8 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
             switch self {
             case .userWasLoggedOut: return ""
             case .emailNotGranted: return "Oups".local()
+            case .refreshTokenFailed: return "Oups".local()
+            case .cantLogin: return "cantLogin".local()
             }
         }
 
@@ -219,6 +225,8 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
             switch self {
             case .userWasLoggedOut: return "Account logged out".local()
             case .emailNotGranted: return "emailNotGranted".local()
+            case .refreshTokenFailed: return "refreshTokenFailed".local()
+            case .cantLogin(let message): return message
             }
         }
 
