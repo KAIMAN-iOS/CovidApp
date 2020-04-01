@@ -11,6 +11,7 @@ import UIKit
 class MainViewController: UIViewController {
 
     weak var shareDelegate: ShareDelegate? = nil
+    weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     static func create() -> MainViewController {
         return MainViewController.loadFromStoryboard(identifier: "MainViewController", storyboardName: "Main")
     }
@@ -33,6 +34,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func launchReport(_ sender: Any) {
+        coordinatorDelegate?.collectDailyMetrics()
     }
     
     private var noFriendController: NoFriendsViewController!

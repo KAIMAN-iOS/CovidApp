@@ -18,6 +18,7 @@ enum ActionButtonType {
     case alert
     case loading
     case animated
+    case swipeCardButton(isYesButton: Bool)
     
     enum ConnectionType {
         case facebook
@@ -98,6 +99,7 @@ enum ActionButtonType {
         case .alert: return Palette.basic.alert.color
         case .loading: return Palette.basic.primary.color
         case .animated: return .white
+        case .swipeCardButton(let isYesButton): return isYesButton ? Palette.basic.alert.color : Palette.basic.confirmation.color
         }
     }
     
@@ -127,6 +129,8 @@ enum ActionButtonType {
             
         case .animated:
             button.backgroundColor = .white
+            
+        case .swipeCardButton(let isYesButton): button.backgroundColor = isYesButton ? Palette.basic.alert.color : Palette.basic.confirmation.color
         }
     }
 }

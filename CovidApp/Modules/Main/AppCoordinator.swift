@@ -15,6 +15,7 @@ protocol AppCoordinatorDelegate: class {
     func showUserProfileController()
     func showMainController()
     func showInitialMetrics()
+    func collectDailyMetrics()
 }
 
 protocol ShareDelegate: class {
@@ -60,6 +61,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         router.setRootModule(mainController, hideBar: true, animated: false)
         loginController.coordinatorDelegate = self
         mainController.shareDelegate = self
+        mainController.coordinatorDelegate = self
         customize()
     }
     
@@ -128,7 +130,16 @@ extension AppCoordinator: AppCoordinatorDelegate {
     }
     
     func showInitialMetrics() {
-        let coord = CollectDataInitialCoordinator()
+        let coord = CollectDataInitialCoordinator(collectType: .initial)
+        coord.closeDelegate = self
+        coord.coordinatorDelegate = self
+        addChild(coord)
+        router.present(coord, animated: true)
+        coord.start()
+    }
+    
+    func collectDailyMetrics() {
+        let coord = CollectDataInitialCoordinator(collectType: .metrics)
         coord.closeDelegate = self
         coord.coordinatorDelegate = self
         addChild(coord)

@@ -535,10 +535,10 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="YJj-Xf-wbv">
-                                        <rect key="frame" x="0.0" y="768" width="414" height="50"/>
+                                        <rect key="frame" x="18" y="768" width="378" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRF-il-v74" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="203" height="50"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="dLY-oX-8AH"/>
                                                 </constraints>
@@ -549,7 +549,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfC-df-dYr" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                                <rect key="frame" x="211" y="0.0" width="203" height="50"/>
+                                                <rect key="frame" x="193" y="0.0" width="185" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="1UR-vt-LZC"/>
                                                 </constraints>
@@ -561,20 +561,19 @@
                                             </button>
                                         </subviews>
                                     </stackView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cie-Ml-Sys" customClass="SwipeCardStack" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="12" y="0.0" width="390" height="768"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cie-Ml-Sys" customClass="SwipeCardStack" customModule="Shuffle">
+                                        <rect key="frame" x="12" y="71" width="390" height="685"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="YJj-Xf-wbv" firstAttribute="leading" secondItem="eNF-89-0g2" secondAttribute="leading" id="40f-tu-ZFH"/>
+                                    <constraint firstItem="YJj-Xf-wbv" firstAttribute="leading" secondItem="eNF-89-0g2" secondAttribute="leading" constant="18" id="40f-tu-ZFH"/>
                                     <constraint firstItem="Cie-Ml-Sys" firstAttribute="leading" secondItem="eNF-89-0g2" secondAttribute="leading" constant="12" id="Ha0-oh-Gh2"/>
-                                    <constraint firstItem="Cie-Ml-Sys" firstAttribute="top" secondItem="eNF-89-0g2" secondAttribute="top" id="UPa-dj-NOD"/>
                                     <constraint firstAttribute="trailing" secondItem="Cie-Ml-Sys" secondAttribute="trailing" constant="12" id="V3Z-qd-neK"/>
                                     <constraint firstAttribute="bottom" secondItem="YJj-Xf-wbv" secondAttribute="bottom" id="YfJ-kx-L83"/>
-                                    <constraint firstItem="YJj-Xf-wbv" firstAttribute="top" secondItem="Cie-Ml-Sys" secondAttribute="bottom" id="gal-tJ-nSL"/>
-                                    <constraint firstAttribute="trailing" secondItem="YJj-Xf-wbv" secondAttribute="trailing" id="yg7-QE-qcy"/>
+                                    <constraint firstItem="YJj-Xf-wbv" firstAttribute="top" secondItem="Cie-Ml-Sys" secondAttribute="bottom" constant="12" id="gal-tJ-nSL"/>
+                                    <constraint firstAttribute="trailing" secondItem="YJj-Xf-wbv" secondAttribute="trailing" constant="18" id="yg7-QE-qcy"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1fP-KF-5oG">
@@ -606,6 +605,7 @@
                             <constraint firstItem="hnU-Wb-bde" firstAttribute="width" secondItem="1fP-KF-5oG" secondAttribute="width" id="JBD-DK-pIR"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="trailing" secondItem="uLD-gC-vgy" secondAttribute="trailing" id="N1a-TO-5sI"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="top" secondItem="uLD-gC-vgy" secondAttribute="top" id="PPw-cF-k49"/>
+                            <constraint firstItem="Cie-Ml-Sys" firstAttribute="top" secondItem="hnU-Wb-bde" secondAttribute="bottom" constant="17" id="QZb-vL-12a"/>
                             <constraint firstItem="uLD-gC-vgy" firstAttribute="trailing" secondItem="1fP-KF-5oG" secondAttribute="trailing" constant="8" id="TbE-er-oge"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="leading" secondItem="uLD-gC-vgy" secondAttribute="leading" id="cCQ-bw-R8R"/>
                             <constraint firstItem="eNF-89-0g2" firstAttribute="bottom" secondItem="uLD-gC-vgy" secondAttribute="bottom" id="lal-ou-pR1"/>

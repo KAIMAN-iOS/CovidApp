@@ -19,8 +19,9 @@ class SwipeCardContentView: UIView {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var text: UILabel!
     
-    func configure(with metric: Metric) {
-        icon.image = metric.metric.icon
+    func configure(with metric: MetricType) {
+        icon.image = metric.icon
+        text.set(text: metric.text, for: .title)
     }
 
 }

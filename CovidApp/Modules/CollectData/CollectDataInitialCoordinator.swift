@@ -20,6 +20,11 @@ protocol CollectDataInitialCoordinatorDelegate: class {
 //MARK: - AppCoordinator
 class CollectDataInitialCoordinator: Coordinator<DeepLink> {
     
+    enum DataType {
+        case metrics
+        case initial
+    }
+    var collectType: DataType = .initial
     var currentDataIndex = -1
     weak var closeDelegate: CloseDelegate? = nil
     weak var coordinatorDelegate: CollectDataInitialCoordinatorDelegate? = nil
@@ -29,16 +34,32 @@ class CollectDataInitialCoordinator: Coordinator<DeepLink> {
         }
     }
 
-    
-    init() {
-        let router: Router = Router(navigationController: CollectInitialDataViewController.createRootController())
-        super.init(router: router)
+    init(collectType: DataType) {
+        self.collectType = collectType
+        switch collectType {
+        case .initial:
+            let router: Router = Router(navigationController: CollectInitialDataViewController.createRootController())
+            super.init(router: router)
+            
+        case .metrics:
+            let router: Router = Router(navigationController: UINavigationController())
+            super.init(router: router)
+        }
     }
     
     override func start() {
-        Defaults[\.initialValuesFilled] = true
-        pushNextController()
+         switch collectType {
+         case .initial:
+            Defaults[\.initialValuesFilled] = true
+            pushNextController()
+            
+         case .metrics:
+            router.setRootModule(dailyMetricsController, hideBar: true, animated: false)
+            dailyMetricsController.closeDelegate = closeDelegate
+        }
     }
+    
+    let dailyMetricsController: CollectDataViewController = CollectDataViewController.create()
     
     func pushNextController() {
         currentDataIndex += 1
