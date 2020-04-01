@@ -119,3 +119,29 @@ private class CovidAppApi: API {
     }
     
 }
+
+extension API {
+    func request<T: Decodable>(_ request: RequestObject<T>) -> DataRequest {
+        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
+        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
+        printRequest(request, urlRequest: urlRequest)
+        return AF.request(urlRequest)
+    }
+    
+    func perform<T: Decodable>(_ request: RequestObject<T>) -> Promise<T> {
+        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
+        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
+        printRequest(request, urlRequest: urlRequest)
+        return Promise<T>.init { resolver in
+            self.request(request)
+                .responseJSON { (dataResponse) in
+                    self.printResponse(dataResponse)
+                    let result: Swift.Result<T, AFError> = self.handleDataResponse(dataResponse)
+                    switch result {
+                    case .success(let data): resolver.fulfill(data)
+                    case .failure(let error): resolver.reject(error)
+                    }
+            }
+        }
+    }
+}

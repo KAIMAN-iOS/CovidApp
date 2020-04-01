@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Shuffle
 
 class CollectDataViewController: UIViewController {
 

@@ -263,54 +263,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "39E468D2-F683-4FE7-9026-FD0401089C36"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CovidApp/Utils/Network/API.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "perform(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "39E468D2-F683-4FE7-9026-FD0401089C36 - f7e7bf88b44c57ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "(extension in CovidApp):CovidApp.API.perform&lt;A where A1: Swift.Decodable&gt;(CovidApp.RequestObject&lt;A1&gt;) -&gt; PromiseKit.Promise&lt;A1&gt;"
-                  moduleName = "CovidApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jerome/__PROJETS__/CovidApp/CovidApp/CovidApp/Utils/Network/API.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "1194">
-               </Location>
-               <Location
-                  uuid = "39E468D2-F683-4FE7-9026-FD0401089C36 - 684b85cb2eaa3bec"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (PromiseKit.Resolver&lt;A1&gt;) -&gt; () in (extension in CovidApp):CovidApp.API.perform&lt;A where A1: Swift.Decodable&gt;(CovidApp.RequestObject&lt;A1&gt;) -&gt; PromiseKit.Promise&lt;A1&gt;"
-                  moduleName = "CovidApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jerome/__PROJETS__/CovidApp/CovidApp/CovidApp/Utils/Network/API.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "98"
-                  endingLineNumber = "98"
-                  offsetFromSymbolStart = "63">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "ABBA3609-12E4-403E-A78C-C562F5C3AEBD"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -337,22 +289,6 @@
             startingLineNumber = "43"
             endingLineNumber = "43"
             landmarkName = "init(email:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F872C430-95B2-4C91-9A15-A9CD00C0835B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CovidApp/Utils/Network/API.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "perform(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

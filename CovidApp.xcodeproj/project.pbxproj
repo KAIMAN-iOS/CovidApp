@@ -12,6 +12,7 @@
 		023EFC09243386E7000A46B7 /* CovidAppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC08243386E7000A46B7 /* CovidAppApi.swift */; };
 		023EFC0F2433887A000A46B7 /* RegisterRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0E2433887A000A46B7 /* RegisterRoute.swift */; };
 		023EFC112434803C000A46B7 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC102434803C000A46B7 /* Register.swift */; };
+		025E9D712434BCCB001E8B2E /* Shuffle in Frameworks */ = {isa = PBXBuildFile; productRef = 025E9D702434BCCB001E8B2E /* Shuffle */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -53,27 +54,6 @@
 		02A94477242B9E6600623BC4 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A94476242B9E6600623BC4 /* CoreGraphics.framework */; };
 		02A944E7242BC25200623BC4 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944E5242BC25200623BC4 /* API.swift */; };
 		02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944E6242BC25200623BC4 /* RequestObject.swift */; };
-		02A94502242CB83E00623BC4 /* CardLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944EB242CB83E00623BC4 /* CardLayoutProvider.swift */; };
-		02A94503242CB83E00623BC4 /* CardAnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944EC242CB83E00623BC4 /* CardAnimationOptions.swift */; };
-		02A94504242CB83E00623BC4 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944ED242CB83E00623BC4 /* SwipeView.swift */; };
-		02A94505242CB83E00623BC4 /* CardTransformProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944EE242CB83E00623BC4 /* CardTransformProvider.swift */; };
-		02A94506242CB83E00623BC4 /* CardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944EF242CB83E00623BC4 /* CardAnimator.swift */; };
-		02A94507242CB83E00623BC4 /* SwipeCardDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F0242CB83E00623BC4 /* SwipeCardDelegate.swift */; };
-		02A94508242CB83E00623BC4 /* SwipeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F1242CB83E00623BC4 /* SwipeCard.swift */; };
-		02A94509242CB83E00623BC4 /* SwipeCardStackDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F3242CB83E00623BC4 /* SwipeCardStackDataSource.swift */; };
-		02A9450A242CB83E00623BC4 /* CardStackAnimationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F4242CB83E00623BC4 /* CardStackAnimationOptions.swift */; };
-		02A9450B242CB83E00623BC4 /* CardStackAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F5242CB83E00623BC4 /* CardStackAnimator.swift */; };
-		02A9450C242CB83E00623BC4 /* SwipeCardStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F6242CB83E00623BC4 /* SwipeCardStack.swift */; };
-		02A9450D242CB83E00623BC4 /* CardStackTransformProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F7242CB83E00623BC4 /* CardStackTransformProvider.swift */; };
-		02A9450E242CB83E00623BC4 /* SwipeCardStackDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F8242CB83E00623BC4 /* SwipeCardStackDelegate.swift */; };
-		02A9450F242CB83E00623BC4 /* CardStackLayoutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944F9242CB83E00623BC4 /* CardStackLayoutProvider.swift */; };
-		02A94510242CB83E00623BC4 /* CardStackStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944FA242CB83E00623BC4 /* CardStackStateManager.swift */; };
-		02A94511242CB83E00623BC4 /* SwipeDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944FB242CB83E00623BC4 /* SwipeDirection.swift */; };
-		02A94512242CB83E00623BC4 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944FD242CB83E00623BC4 /* Array+Extensions.swift */; };
-		02A94513242CB83E00623BC4 /* CGVector+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944FE242CB83E00623BC4 /* CGVector+Extensions.swift */; };
-		02A94514242CB83E00623BC4 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A944FF242CB83E00623BC4 /* UIView+Extensions.swift */; };
-		02A94515242CB83E00623BC4 /* CGPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94500242CB83E00623BC4 /* CGPoint+Extensions.swift */; };
-		02A94516242CB83E00623BC4 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94501242CB83E00623BC4 /* Animator.swift */; };
 		02A94519242CBA2A00623BC4 /* PaperOnboarding in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94518242CBA2A00623BC4 /* PaperOnboarding */; };
 		02A9451F242CBA7D00623BC4 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9451E242CBA7D00623BC4 /* AppCoordinator.swift */; };
 		02A94522242CC3D000623BC4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94521242CC3D000623BC4 /* MainViewController.swift */; };
@@ -148,27 +128,6 @@
 		02A94478242BB8A300623BC4 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		02A944E5242BC25200623BC4 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		02A944E6242BC25200623BC4 /* RequestObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestObject.swift; sourceTree = "<group>"; };
-		02A944EB242CB83E00623BC4 /* CardLayoutProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardLayoutProvider.swift; sourceTree = "<group>"; };
-		02A944EC242CB83E00623BC4 /* CardAnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimationOptions.swift; sourceTree = "<group>"; };
-		02A944ED242CB83E00623BC4 /* SwipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
-		02A944EE242CB83E00623BC4 /* CardTransformProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardTransformProvider.swift; sourceTree = "<group>"; };
-		02A944EF242CB83E00623BC4 /* CardAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardAnimator.swift; sourceTree = "<group>"; };
-		02A944F0242CB83E00623BC4 /* SwipeCardDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardDelegate.swift; sourceTree = "<group>"; };
-		02A944F1242CB83E00623BC4 /* SwipeCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCard.swift; sourceTree = "<group>"; };
-		02A944F3242CB83E00623BC4 /* SwipeCardStackDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackDataSource.swift; sourceTree = "<group>"; };
-		02A944F4242CB83E00623BC4 /* CardStackAnimationOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackAnimationOptions.swift; sourceTree = "<group>"; };
-		02A944F5242CB83E00623BC4 /* CardStackAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackAnimator.swift; sourceTree = "<group>"; };
-		02A944F6242CB83E00623BC4 /* SwipeCardStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStack.swift; sourceTree = "<group>"; };
-		02A944F7242CB83E00623BC4 /* CardStackTransformProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackTransformProvider.swift; sourceTree = "<group>"; };
-		02A944F8242CB83E00623BC4 /* SwipeCardStackDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeCardStackDelegate.swift; sourceTree = "<group>"; };
-		02A944F9242CB83E00623BC4 /* CardStackLayoutProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackLayoutProvider.swift; sourceTree = "<group>"; };
-		02A944FA242CB83E00623BC4 /* CardStackStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardStackStateManager.swift; sourceTree = "<group>"; };
-		02A944FB242CB83E00623BC4 /* SwipeDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeDirection.swift; sourceTree = "<group>"; };
-		02A944FD242CB83E00623BC4 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
-		02A944FE242CB83E00623BC4 /* CGVector+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+Extensions.swift"; sourceTree = "<group>"; };
-		02A944FF242CB83E00623BC4 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		02A94500242CB83E00623BC4 /* CGPoint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+Extensions.swift"; sourceTree = "<group>"; };
-		02A94501242CB83E00623BC4 /* Animator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 		02A9451E242CBA7D00623BC4 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		02A94521242CC3D000623BC4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		02A94524242CC47D00623BC4 /* CovidSwipeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidSwipeCard.swift; sourceTree = "<group>"; };
@@ -205,6 +164,7 @@
 				02A94540242F5A8D00623BC4 /* FacebookLogin in Frameworks */,
 				02A94519242CBA2A00623BC4 /* PaperOnboarding in Frameworks */,
 				02A94551242FAB0F00623BC4 /* KeychainAccess in Frameworks */,
+				025E9D712434BCCB001E8B2E /* Shuffle in Frameworks */,
 				02A9453E242F5A8D00623BC4 /* FacebookCore in Frameworks */,
 				02A9446C242B9A8300623BC4 /* NSAttributedStringBuilder in Frameworks */,
 				02A945672430B3CC00623BC4 /* IQKeyboardManagerSwift in Frameworks */,
@@ -314,7 +274,6 @@
 			children = (
 				02A9454C242FAA6C00623BC4 /* Manager */,
 				02A94549242FA00F00623BC4 /* Views */,
-				02A944E9242CB83E00623BC4 /* Shuffle */,
 				02A944E4242BC24900623BC4 /* Network */,
 				02A9443E242B99AA00623BC4 /* Ext */,
 				02A9444D242B99AA00623BC4 /* Protocols */,
@@ -380,58 +339,6 @@
 				02A944E6242BC25200623BC4 /* RequestObject.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		02A944E9242CB83E00623BC4 /* Shuffle */ = {
-			isa = PBXGroup;
-			children = (
-				02A944EA242CB83E00623BC4 /* SwipeCard */,
-				02A944F2242CB83E00623BC4 /* SwipeCardStack */,
-				02A944FB242CB83E00623BC4 /* SwipeDirection.swift */,
-				02A944FC242CB83E00623BC4 /* Internal */,
-				02A94501242CB83E00623BC4 /* Animator.swift */,
-			);
-			path = Shuffle;
-			sourceTree = "<group>";
-		};
-		02A944EA242CB83E00623BC4 /* SwipeCard */ = {
-			isa = PBXGroup;
-			children = (
-				02A944EB242CB83E00623BC4 /* CardLayoutProvider.swift */,
-				02A944EC242CB83E00623BC4 /* CardAnimationOptions.swift */,
-				02A944ED242CB83E00623BC4 /* SwipeView.swift */,
-				02A944EE242CB83E00623BC4 /* CardTransformProvider.swift */,
-				02A944EF242CB83E00623BC4 /* CardAnimator.swift */,
-				02A944F0242CB83E00623BC4 /* SwipeCardDelegate.swift */,
-				02A944F1242CB83E00623BC4 /* SwipeCard.swift */,
-			);
-			path = SwipeCard;
-			sourceTree = "<group>";
-		};
-		02A944F2242CB83E00623BC4 /* SwipeCardStack */ = {
-			isa = PBXGroup;
-			children = (
-				02A944F3242CB83E00623BC4 /* SwipeCardStackDataSource.swift */,
-				02A944F4242CB83E00623BC4 /* CardStackAnimationOptions.swift */,
-				02A944F5242CB83E00623BC4 /* CardStackAnimator.swift */,
-				02A944F6242CB83E00623BC4 /* SwipeCardStack.swift */,
-				02A944F7242CB83E00623BC4 /* CardStackTransformProvider.swift */,
-				02A944F8242CB83E00623BC4 /* SwipeCardStackDelegate.swift */,
-				02A944F9242CB83E00623BC4 /* CardStackLayoutProvider.swift */,
-				02A944FA242CB83E00623BC4 /* CardStackStateManager.swift */,
-			);
-			path = SwipeCardStack;
-			sourceTree = "<group>";
-		};
-		02A944FC242CB83E00623BC4 /* Internal */ = {
-			isa = PBXGroup;
-			children = (
-				02A944FD242CB83E00623BC4 /* Array+Extensions.swift */,
-				02A944FE242CB83E00623BC4 /* CGVector+Extensions.swift */,
-				02A944FF242CB83E00623BC4 /* UIView+Extensions.swift */,
-				02A94500242CB83E00623BC4 /* CGPoint+Extensions.swift */,
-			);
-			path = Internal;
 			sourceTree = "<group>";
 		};
 		02A9451A242CBA4500623BC4 /* Modules */ = {
@@ -594,6 +501,7 @@
 				02A94550242FAB0F00623BC4 /* KeychainAccess */,
 				02A94557242FB5D700623BC4 /* NotificationBannerSwift */,
 				02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */,
+				025E9D702434BCCB001E8B2E /* Shuffle */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -640,6 +548,7 @@
 				02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 				02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				025E9D6F2434BCCB001E8B2E /* XCRemoteSwiftPackageReference "Shuffle" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -673,18 +582,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A94457242B99AA00623BC4 /* UITableView+Extension.swift in Sources */,
-				02A9450B242CB83E00623BC4 /* CardStackAnimator.swift in Sources */,
-				02A94503242CB83E00623BC4 /* CardAnimationOptions.swift in Sources */,
 				0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */,
-				02A9450F242CB83E00623BC4 /* CardStackLayoutProvider.swift in Sources */,
 				02A944E7242BC25200623BC4 /* API.swift in Sources */,
-				02A94512242CB83E00623BC4 /* Array+Extensions.swift in Sources */,
 				02A9451F242CBA7D00623BC4 /* AppCoordinator.swift in Sources */,
-				02A9450D242CB83E00623BC4 /* CardStackTransformProvider.swift in Sources */,
-				02A94502242CB83E00623BC4 /* CardLayoutProvider.swift in Sources */,
 				023EFC0F2433887A000A46B7 /* RegisterRoute.swift in Sources */,
 				02A94536242D117E00623BC4 /* Configuration.swift in Sources */,
-				02A94509242CB83E00623BC4 /* SwipeCardStackDataSource.swift in Sources */,
 				02A94467242B99F600623BC4 /* WindowCoordinator.swift in Sources */,
 				02A9456C2430DF1500623BC4 /* MetricStateView.swift in Sources */,
 				02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */,
@@ -699,9 +601,7 @@
 				02A94525242CC47D00623BC4 /* CovidSwipeCard.swift in Sources */,
 				02A945622430AE4A00623BC4 /* AskEmailViewController.swift in Sources */,
 				02A9452B242CC85300623BC4 /* SwipeCardOverlay.swift in Sources */,
-				02A9450A242CB83E00623BC4 /* CardStackAnimationOptions.swift in Sources */,
 				02A945642430AE5500623BC4 /* AskProfileViewController.swift in Sources */,
-				02A94514242CB83E00623BC4 /* UIView+Extensions.swift in Sources */,
 				023EFC0724336E2F000A46B7 /* Storage.swift in Sources */,
 				02A94534242D10E500623BC4 /* UILabel+Ext.swift in Sources */,
 				02A9452E242CFF6C00623BC4 /* User.swift in Sources */,
@@ -713,11 +613,7 @@
 				02A94465242B99F600623BC4 /* WindowRouter.swift in Sources */,
 				02A9445D242B99AA00623BC4 /* TableViewModelable.swift in Sources */,
 				02A94452242B99AA00623BC4 /* StringExt.swift in Sources */,
-				02A94506242CB83E00623BC4 /* CardAnimator.swift in Sources */,
 				02A94466242B99F600623BC4 /* Presentable.swift in Sources */,
-				02A94515242CB83E00623BC4 /* CGPoint+Extensions.swift in Sources */,
-				02A94511242CB83E00623BC4 /* SwipeDirection.swift in Sources */,
-				02A94508242CB83E00623BC4 /* SwipeCard.swift in Sources */,
 				02A9445E242B99AA00623BC4 /* Result.swift in Sources */,
 				02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */,
 				0285CDAB24321D1E004DF64A /* CollectDataViewController.swift in Sources */,
@@ -726,24 +622,16 @@
 				02A94547242F8D4D00623BC4 /* OnboardingViewController.swift in Sources */,
 				02A94544242F602600623BC4 /* Onboarding.swift in Sources */,
 				02A94453242B99AA00623BC4 /* UIViewControllerExt.swift in Sources */,
-				02A94516242CB83E00623BC4 /* Animator.swift in Sources */,
 				02A94555242FAD9200623BC4 /* LoginViewController.swift in Sources */,
-				02A94507242CB83E00623BC4 /* SwipeCardDelegate.swift in Sources */,
-				02A94504242CB83E00623BC4 /* SwipeView.swift in Sources */,
-				02A9450E242CB83E00623BC4 /* SwipeCardStackDelegate.swift in Sources */,
 				02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */,
-				02A94513242CB83E00623BC4 /* CGVector+Extensions.swift in Sources */,
 				0285CDAD24322164004DF64A /* CollectInitialDataViewController.swift in Sources */,
 				023EFC112434803C000A46B7 /* Register.swift in Sources */,
 				02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */,
 				02A94548242F95DF00623BC4 /* SceneDelegate.swift in Sources */,
-				02A94510242CB83E00623BC4 /* CardStackStateManager.swift in Sources */,
-				02A9450C242CB83E00623BC4 /* SwipeCardStack.swift in Sources */,
 				0285CDA7243216BA004DF64A /* NoFriendsViewController.swift in Sources */,
 				0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */,
 				02A94450242B99AA00623BC4 /* Palette.swift in Sources */,
 				023EFC09243386E7000A46B7 /* CovidAppApi.swift in Sources */,
-				02A94505242CB83E00623BC4 /* CardTransformProvider.swift in Sources */,
 				0285CDA924321850004DF64A /* MainViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -954,6 +842,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		025E9D6F2434BCCB001E8B2E /* XCRemoteSwiftPackageReference "Shuffle" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mac-gallagher/Shuffle.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1085,6 +981,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		025E9D702434BCCB001E8B2E /* Shuffle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 025E9D6F2434BCCB001E8B2E /* XCRemoteSwiftPackageReference "Shuffle" */;
+			productName = Shuffle;
+		};
 		02A94422242B923C00623BC4 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */;

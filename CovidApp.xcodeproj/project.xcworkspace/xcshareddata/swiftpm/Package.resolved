@@ -92,6 +92,15 @@
         }
       },
       {
+        "package": "Nimble",
+        "repositoryURL": "https://github.com/Quick/Nimble",
+        "state": {
+          "branch": null,
+          "revision": "7fd118ec8795888bcbbebc1a41f6984454c4cd6f",
+          "version": "8.0.7"
+        }
+      },
+      {
         "package": "NotificationBannerSwift",
         "repositoryURL": "https://github.com/Daltron/NotificationBanner.git",
         "state": {
@@ -125,6 +134,24 @@
           "branch": null,
           "revision": "f14f16cc2602afec1030e4f492100d6d43dca544",
           "version": "6.13.1"
+        }
+      },
+      {
+        "package": "Quick",
+        "repositoryURL": "https://github.com/Quick/Quick",
+        "state": {
+          "branch": null,
+          "revision": "33682c2f6230c60614861dfc61df267e11a1602f",
+          "version": "2.2.0"
+        }
+      },
+      {
+        "package": "Shuffle",
+        "repositoryURL": "https://github.com/mac-gallagher/Shuffle.git",
+        "state": {
+          "branch": "master",
+          "revision": "e30d9f4096acd4eb198abf10ec5ea86460a39964",
+          "version": null
         }
       },
       {
