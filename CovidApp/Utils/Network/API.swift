@@ -18,7 +18,7 @@ protocol API {
     var commonHeaders: HTTPHeaders? { get }
     var commonParameters: Parameters? { get }
     var decoder: JSONDecoder { get }
-    func send<T>(_ request: RequestObject<T>, completion: @escaping (_ result: Swift.Result<T, AFError>) -> Void) -> Request
+    func perform<T: Decodable>(_ request: RequestObject<T>) -> Promise<T>
 }
 
 
@@ -70,26 +70,6 @@ extension API {
         if let headers = dataResponse.response?.headers {
             print("• HEADERS")
             print("• \(headers)")
-        }
-    }
-    
-    /**
-     Envoi d'une requête au serveur.
-     - Parameter request: Objet RequestObject, dont le type générique est le type d'objet attendu en retour du webservice (après décodage).
-     - Parameter completion: Fonction executée en retour de la requête: Soit success avec l'objet attendu, soit failure avec une erreur.
-     - Returns: L'objet Request d'Alamofire, pour avoir la possibilité de cancel() la requête.
-     */
-    @discardableResult
-    func send<T: Decodable>(_ request: RequestObject<T>, completion: @escaping (_ result: Swift.Result<T, AFError>) -> Void) -> Request {
-        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
-        
-        printRequest(request, urlRequest: urlRequest)
-        
-        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
-        
-        return AF.request(urlRequest).responseJSON {(dataResponse) in
-            self.printResponse(dataResponse)
-            completion(self.handleDataResponse(dataResponse))
         }
     }
     
@@ -154,4 +134,38 @@ extension API {
         }
     }
     
+    //MARK:- Alamofire5 and Promise implementation
+    func dataRequest<T: Decodable>(_ request: RequestObject<T>) -> DataRequest {
+        var headers: HTTPHeaders = HTTPHeaders()
+        commonHeaders?.forEach({ headers.add($0) })
+        request.headers?.forEach({ headers.add($0) })
+        let dataRequest = AF.request(baseURL.appendingPathComponent(request.endpoint ?? ""), method: request.method, parameters: request.parameters, encoder: JSONParameterEncoder.default, headers: headers, interceptor: nil)
+        printDataRequest(request: dataRequest)
+        return dataRequest
+    }
+    
+    func perform<T: Decodable>(_ request: RequestObject<T>) -> Promise<T> {
+        return Promise<T>.init { resolver in
+            self.dataRequest(request)
+                .responseJSON { (dataResponse) in
+                    self.printResponse(dataResponse)
+                    let result: Swift.Result<T, AFError> = self.handleDataResponse(dataResponse)
+                    switch result {
+                    case .success(let data): resolver.fulfill(data)
+                    case .failure(let error): resolver.reject(error)
+                    }
+            }
+        }
+    }
+    
+    private func printDataRequest(request: DataRequest) {
+        print("\n💬💬💬 Request:")
+        if let url = request.convertible.urlRequest?.url { print("• URL: \(url)")}
+        if let headers = request.convertible.urlRequest?.allHTTPHeaderFields { print("• Headers: \(headers))") }
+        if let method = request.convertible.urlRequest?.method { print("• Method: \(method)") }
+        
+        if let params = request.convertible.urlRequest?.httpBody {
+            print("• Parameters: \(String(data: params, encoding: .utf8) ?? "")")
+        }
+    }
 }

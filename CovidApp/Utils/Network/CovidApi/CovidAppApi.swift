@@ -33,8 +33,60 @@ struct CovidApi {
     func retrieveToken()  -> Promise<RegisterResponse> {
         return register()
     }
+    
+    func send(dailyMetrics: Metrics) -> Promise<User> {
+        return Promise<User>.init(error: ApiError.noEmail)
+    }
+    
+    func updateUser(name: String, firstname: String, dob: Date) -> Promise<CurrentUser> {
+        let route = UpdateUserRoute(name: name, firstname: firstname, dob: dob)
+        return perform(route: route)
+    }
+    
+    func post(metric: Metrics) -> Promise<CurrentUser> {
+        let route = PostMetricRoute(metric: metric)
+        return perform(route: route)
+    }
+    
+    func postInitial(answer: Answers) -> Promise<CurrentUser> {
+        let route = PostInitialMetricsRoute(answer: answer)
+        return perform(route: route)
+    }
 }
 
+//MARK:- Internal class for API
+private class CovidAppApi: API {
+    // Singleton
+    static let shared: CovidAppApi = CovidAppApi()
+    
+    /// URL de base de l'api Transport de Brest.
+    var baseURL: URL {
+        URL(string: "http://api.kaiman.fr/public/api")!
+    }
+    
+    /// Headers communs à tous les appels (aucun pour cette api)/
+    var commonHeaders: HTTPHeaders? {
+        var header = HTTPHeaders.init([HTTPHeader.contentType("application/json")])
+        if let token = SessionController().token {
+            header.add(HTTPHeader.authorization(bearerToken: token))
+        }
+        return header
+    }
+    
+    var decoder: JSONDecoder {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
+        return jsonDecoder
+    }
+}
+
+//MARK:- Common parameters Encodable base class
+// make all routes pamraetrs inherit from this class to allow common parameters...
+class CovidAppApiCommonParameters: RequestParameters {
+}
+
+
+//MARK:- Covid Private extension
 private extension CovidApi {
     func perform<T>(route: RequestObject<T>, showMessageOnFail: Bool = true) -> Promise<T> {
         return Promise<T>.init { resolver in
@@ -74,74 +126,6 @@ private extension CovidApi {
                 default: return Promise<T>.init(error: error)
                 }
     
-        }
-    }
-    
-//    func perform<T>(route: RequestObject<T>, showMessageOnFail: Bool = true) -> Promise<T> {
-//        var guarantee = Guarantee()
-//        firstly { () -> Guarantee<T> in
-//
-//        }
-//    }
-}
-
-
-private class CovidAppApi: API {
-    // MARK: - Properties
-    
-    // Singleton
-    static let shared: CovidAppApi = CovidAppApi()
-    
-    /// URL de base de l'api Transport de Brest.
-    var baseURL: URL {
-        URL(string: "http://api.kaiman.fr/public/api")!
-    }
-    
-    /// Headers communs à tous les appels (aucun pour cette api)/
-    var commonHeaders: HTTPHeaders? {
-        var header = HTTPHeaders.init([HTTPHeader.contentType("application/json")])
-        if let token = SessionController().token {
-            header.add(HTTPHeader.authorization(bearerToken: token))
-        }
-        return header
-    }
-    
-    /// Paramètres communs à tous les appels: format = json.
-    var commonParameters: Parameters? {
-//        ["format": "json"]
-        nil
-    }
-    
-    var decoder: JSONDecoder {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
-        return jsonDecoder
-    }
-    
-}
-
-extension API {
-    func request<T: Decodable>(_ request: RequestObject<T>) -> DataRequest {
-        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
-        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
-        printRequest(request, urlRequest: urlRequest)
-        return AF.request(urlRequest)
-    }
-    
-    func perform<T: Decodable>(_ request: RequestObject<T>) -> Promise<T> {
-        var urlRequest = try! request.asURLRequest(baseURL: baseURL, commonHeaders: commonHeaders, commonParameters: commonParameters)
-        commonHeaders?.forEach({ urlRequest.setValue($0.value, forHTTPHeaderField: $0.name) })
-        printRequest(request, urlRequest: urlRequest)
-        return Promise<T>.init { resolver in
-            self.request(request)
-                .responseJSON { (dataResponse) in
-                    self.printResponse(dataResponse)
-                    let result: Swift.Result<T, AFError> = self.handleDataResponse(dataResponse)
-                    switch result {
-                    case .success(let data): resolver.fulfill(data)
-                    case .failure(let error): resolver.reject(error)
-                    }
-            }
         }
     }
 }

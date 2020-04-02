@@ -26,6 +26,7 @@ class CollectDataInitialCoordinator: Coordinator<DeepLink> {
     }
     var collectType: DataType = .initial
     var currentDataIndex = -1
+    weak var collectDelegate: CollectDailyMetricsDelegate? = nil
     weak var closeDelegate: CloseDelegate? = nil
     weak var coordinatorDelegate: CollectDataInitialCoordinatorDelegate? = nil
     private var answers: Answers = Answers()  {
@@ -56,6 +57,7 @@ class CollectDataInitialCoordinator: Coordinator<DeepLink> {
          case .metrics:
             router.setRootModule(dailyMetricsController, hideBar: true, animated: false)
             dailyMetricsController.closeDelegate = closeDelegate
+            dailyMetricsController.collectDelegate = collectDelegate
         }
     }
     

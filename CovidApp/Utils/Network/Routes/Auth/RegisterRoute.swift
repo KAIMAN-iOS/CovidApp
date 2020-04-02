@@ -34,8 +34,9 @@ class RegisterRoute: RequestObject<RegisterResponse> {
         return JSONEncoding.default
     }
     
-    override var parameters: Parameters? {
-        ["username" :  email! as Any]
+    override var parameters: RequestParameters? {
+        return LoginParameter(username: email!)
+//        ["username" :  email! as Any]
     }
         // MARK: - Initializers
     let email: String!
@@ -44,4 +45,22 @@ class RegisterRoute: RequestObject<RegisterResponse> {
         self.email = email
     }
     
+}
+
+class LoginParameter: CovidAppApiCommonParameters {
+    let username: String
+    init(username: String) {
+        self.username = username
+    }
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case username = "username"
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        try super.encode(to: encoder)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(username, forKey: .username)
+    }
 }

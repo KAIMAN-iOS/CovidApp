@@ -7,3 +7,70 @@
 //
 
 import Foundation
+
+class User: Decodable {
+    private (set) var id: Int
+    private (set) var name: String
+    private (set) var firstname: String
+    private (set) var birthdate: Date
+    private (set) var cp: String?
+    private (set) var metrics: [Metrics]
+    
+    init() {
+        id = 0
+        name = ""
+        firstname = ""
+        birthdate = Date(timeIntervalSince1970: 0)
+        cp = nil
+        metrics = []
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+        case name = "lastname"
+        case firstname = "firstname"
+        case birthdate = "birthdate"
+        case cp = "cp"
+        case metrics = "datas"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        //mandatory
+        id = try container.decode(Int.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        firstname = try container.decode(String.self, forKey: .firstname)
+        if let metrics: [MetricsApiWrapper] = try? container.decode([MetricsApiWrapper].self, forKey: .metrics) {
+            self.metrics = metrics.compactMap({ $0.asMetrics })
+        } else {
+            self.metrics = []
+        }
+        let dateAsString: String = try container.decode(String.self, forKey: .birthdate)
+        guard let date = DateFormatter.apiDateFormatter.date(from: dateAsString) else {
+            throw DecodingError.keyNotFound(CodingKeys.birthdate, DecodingError.Context(codingPath: [CodingKeys.birthdate], debugDescription: ""))
+        }
+        birthdate = date
+        //optional
+        cp = try container.decodeIfPresent(String.self, forKey: .cp)
+    }
+}
+
+class CurrentUser: User {
+    private (set) var sharedUsers: [User]
+    
+    override init() {
+        sharedUsers = []
+        super.init()
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case sharedUsers = "sharedUsers"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        //mandatory
+        sharedUsers = try container.decodeIfPresent([User].self, forKey: .sharedUsers) ?? []
+        try super.init(from: decoder)
+    }
+}

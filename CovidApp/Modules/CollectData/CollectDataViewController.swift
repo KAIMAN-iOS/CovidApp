@@ -9,8 +9,13 @@
 import UIKit
 import Shuffle
 
+protocol CollectDailyMetricsDelegate: class {
+    func didCollect(data: Metrics)
+}
+
 class CollectDataViewController: UIViewController {
 
+    weak var collectDelegate: CollectDailyMetricsDelegate? = nil
     weak var closeDelegate: CloseDelegate? = nil
     static func create() -> CollectDataViewController {
         return CollectDataViewController.loadFromStoryboard(identifier: "CollectDataViewController", storyboardName: "Main")
@@ -33,6 +38,8 @@ class CollectDataViewController: UIViewController {
 
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var rewindButton: UIButton!
+    
+    var metrics: [Metric] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +82,10 @@ class CollectDataViewController: UIViewController {
 
 extension CollectDataViewController: SwipeCardStackDelegate {
     func cardStack(_ cardStack: SwipeCardStack, didSwipeCardAt index: Int, with direction: SwipeDirection) {
-        
+        metrics.append(Metric(metric: MetricType.allCases[index], value: direction == .right))
+        if index == MetricType.allCases.count - 1 {
+            collectDelegate?.didCollect(data: Metrics(metrics: metrics, date: Date(), coordinates: nil))
+        }
     }
 }
 

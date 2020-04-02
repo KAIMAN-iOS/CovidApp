@@ -67,6 +67,9 @@ class LoginViewController: UIViewController {
             .shared
             .retrieveToken()
             .done { [weak self] user in
+                var session = SessionController()
+                session.token = user.token
+                session.refreshToken = user.refreshToken
                 self?.coordinatorDelegate?.showUserProfileController()
         }
         .catch { [weak self] error in

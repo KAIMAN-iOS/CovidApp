@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyUserDefaults
+import SwiftLocation
+import UserNotifications
 
 //MARK: - Protocols
 protocol AppCoordinatorDelegate: class {
@@ -27,6 +29,8 @@ extension DefaultsKeys {
     var username: DefaultsKey<String?> { .init("username") }
     var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
     var initialValuesFilled: DefaultsKey<Bool> { .init("initialValuesFilled", defaultValue: false) }
+    var alreadyRequestedNotifications: DefaultsKey<Bool> { .init("alreadyRequestedNotifications", defaultValue: false) }
+    var collectedFirstData: DefaultsKey<Bool> { .init("collectedFirstData", defaultValue: false) }
 }
 
 fileprivate var onboardingWasShown: Bool {
@@ -91,6 +95,109 @@ class AppCoordinator: Coordinator<DeepLink> {
         onboarding.delegate = self
         mainController.present(onboarding, animated: true)
     }
+    
+    
+    lazy var bulletinManager: BLTNItemManager = {
+        let manager = BLTNItemManager(rootItem: locationItem)
+        if #available(iOS 12.0, *) {
+            manager.backgroundViewStyle = .blurredDark
+        }
+        return manager
+    }()
+    
+    lazy var locationItem: BLTNPageItem = {
+        let page = BLTNPageItem(title: "ask location".local())
+        page.requiresCloseButton = false
+        page.image = UIImage(named: "shareLocation")
+        page.descriptionText = "ask for location".local()
+        page.actionButtonTitle = "Activate".local()
+        page.alternativeButtonTitle = "Not now".local()
+        
+        page.actionHandler = { item in
+            self.bulletinManager.dismissBulletin()
+            
+            LocationManager.shared.onAuthorizationChange.add { [weak self] state in
+                guard state != .undetermined else { return }
+                guard let self = self else { return }
+//                switch state {
+//                case .available, .restricted:
+//                    self.map.showsUserLocation = true
+//                    self.centerOnUser()
+//
+//                default: ()
+//                }
+            }
+            LocationManager.shared.requireUserAuthorization(.whenInUse)
+        }
+        page.alternativeHandler = { [weak self] item in
+            guard let self = self else { return }
+            self.bulletinManager.dismissBulletin()
+        }
+        return page
+    } ()
+    
+    lazy var notificationItem: BLTNPageItem = {
+        let page = BLTNPageItem(title: "ask notification".local())
+        page.requiresCloseButton = false
+        page.image = UIImage(named: "sharePhone")
+        page.descriptionText = "ask for notification".local()
+        page.actionButtonTitle = "Activate notification".local()
+        
+        page.actionHandler = { item in
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+                Defaults[\.alreadyRequestedNotifications] = true
+                if let error = error {
+                    // Handle the error here.
+                }
+                // Enable or disable features based on the authorization.
+            }
+        }
+        return page
+    } ()
+    
+    func askForLocation() {
+        if LocationManager.state == .undetermined {
+            bulletinManager.showBulletin(above: mainController)
+        }
+    }
+    
+    func askForNotification() {
+        if Defaults[\.alreadyRequestedNotifications] == false {
+            bulletinManager.push(item: notificationItem)
+            bulletinManager.showBulletin(above: mainController)
+        }
+    }
+    
+    func send(dailyData: Metrics) {
+        CovidApi
+            .shared
+            .post(metric: dailyData)
+            .done { _ in
+            
+        }.catch { error in
+            
+        }
+    }
+    
+    func appendLocation(to dailyData: Metrics) {
+        guard LocationManager.state == .available || LocationManager.state == .restricted else {
+            send(dailyData: dailyData)
+            return
+        }
+        
+        LocationManager.shared.locateFromGPS(.significant, accuracy: .house) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .failure: self.send(dailyData: dailyData)
+                
+            case .success(let location):
+                var updatedData = dailyData
+                updatedData.update(coordinates: location)
+                self.send(dailyData: updatedData)
+            }
+        }
+    }
 }
 
 //MARK: - AppCoordinator extensions
@@ -127,6 +234,11 @@ extension AppCoordinator: AppCoordinatorDelegate {
         if Defaults[\.initialValuesFilled] == false {
             self.showInitialMetrics()
         }
+        
+        if Defaults[\.alreadyRequestedNotifications] == false {
+            Defaults[\.alreadyRequestedNotifications] = true
+            askForNotification()
+        }
     }
     
     func showInitialMetrics() {
@@ -140,8 +252,8 @@ extension AppCoordinator: AppCoordinatorDelegate {
     
     func collectDailyMetrics() {
         let coord = CollectDataInitialCoordinator(collectType: .metrics)
-        coord.closeDelegate = self
         coord.coordinatorDelegate = self
+        coord.collectDelegate = self
         addChild(coord)
         router.present(coord, animated: true)
         coord.start()
@@ -157,5 +269,28 @@ extension AppCoordinator: ShareDelegate {
 extension AppCoordinator: CollectDataInitialCoordinatorDelegate {
     func didFinishCollect(data: Answers) {
         mainController.dismiss(animated: true, completion: nil)
+        CovidApi.shared.postInitial(answer: data).done { _ in
+            
+        }.catch { error in
+            
+        }
     }
 }
+
+extension AppCoordinator: CollectDailyMetricsDelegate {
+    func didCollect(data: Metrics) {
+        mainController.dismiss(animated: true, completion: nil)
+        
+        if LocationManager.state == .undetermined {
+            askForLocation()
+            LocationManager.shared.onAuthorizationChange.add { [weak self] state in
+                guard let self = self else { return }
+                self.appendLocation(to: data)
+            }
+        } else {
+            appendLocation(to: data)
+        }
+        
+    }
+}
+

@@ -74,3 +74,11 @@
 "refreshTokenFailed" = "Impossible de vous re-connecter pour le moment";
 "cantLogin" = "Impossible de vous connecter pour le moment";
 "Connect with facebook" = "Se connecter avec Facebook";
+
+"ask location" = "CovidApp a besoin de votre position";
+"ask for location" = "Vos données de géolocalisation seront associées de mamière anonyme à vos données de santé afin que les pouvoirs publics et les professionnels de santé puissent visualiser la répartition des cas sains et des cas suspects, en donc leur permetre de mieux anticiper les moyens par secteur géographique";
+"Activate" = "J'autorise le partage";
+"Not now" = "Je ne souhaite pas partager ma position";
+"ask notification" = "Rappels journaliers";
+"ask for notification" = "Le but de CovidApp est de collecter des données quotidienne sur l'état des santé des personnes restant à domicile. Pour vous aider, CovidApp vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
+"Activate notification" = "J'ai compris";

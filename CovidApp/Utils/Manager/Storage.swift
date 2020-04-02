@@ -137,10 +137,22 @@ class CodableStorage {
     }
 }
 
-struct DataStorage {
+class DataStorage {
     private static let instance = DataStorage()
     private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])))
-    init() {}
+    private var storedMetrics: StoredMetrics!  {
+        didSet {
+            try? DataStorage.instance.save(storedMetrics, for: "StoredMetrics")
+        }
+    }
+
+    init() {
+        if let store: StoredMetrics = try? storage.fetch(for: "StoredMetrics") {
+            storedMetrics = store
+        } else {
+            storedMetrics = StoredMetrics()
+        }
+    }
     
     func fetch<T: Decodable>(for key: String) throws -> T {
         return try storage.fetch(for: key)
@@ -155,14 +167,44 @@ struct DataStorage {
     }
     
     func fecthAnswers() throws -> Answers? {
-        return nil
+        let answers: Answers? = try? storage.fetch(for: "Answers")
+        return answers
     }
     
     func save(_ metrics: Metrics) throws {
-        
+        storedMetrics.append(metrics)
     }
     
     func fecthMetrics() throws -> [Metrics] {
-        return []
+        return storedMetrics.metrics
+    }
+    
+    func sendRemainingMetrics() {
+        DataStorage.instance
+            .storedMetrics.metrics.forEach { [weak self] metrics in
+                CovidApi.shared
+                    .send(dailyMetrics: metrics)
+                    .done { [weak self] user in
+                        guard let self = self else { return }
+                        self.storedMetrics.remove(metrics)
+                    }
+                    .catch { [weak self] error in
+                        
+                    }
+        }
+    }
+}
+
+private struct StoredMetrics: Codable {
+    private (set) var metrics: [Metrics] = []
+    
+    mutating func append(_ metrics: Metrics) {
+        self.metrics.append(metrics)
+    }
+    
+    mutating func remove(_ metrics: Metrics) {
+        if let index = self.metrics.firstIndex(of: metrics) {
+            self.metrics.remove(at: index)
+        }
     }
 }

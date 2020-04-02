@@ -23,7 +23,7 @@ class RequestObject<ExpectedObject: Decodable> {
     
     let uniqueId: String = UUID().uuidString
     
-    var parameters: Parameters? {
+    var parameters: RequestParameters? {
         return nil
     }
     
@@ -50,40 +50,12 @@ class RequestObject<ExpectedObject: Decodable> {
         }
     }
     
-    func asURLRequest(baseURL: URL, commonHeaders: HTTPHeaders?, commonParameters: Parameters?) throws -> URLRequest {
-        let url: URL
-        
-        if let endpoint = endpoint {
-            url = baseURL.appendingPathComponent(endpoint)
-        } else {
-            url = baseURL
-        }
-        
-        var request = URLRequest(url: url)
-        headers?.forEach({ request.setValue($0.value, forHTTPHeaderField: $0.name) })
-        request.httpMethod = method.rawValue
-        commonHeaders?.forEach({ request.setValue($0.value, forHTTPHeaderField: $0.name) })
-        
-        let allParameters: Parameters?
-        
-        switch (commonParameters != nil, parameters != nil) {
-        case (true, true):
-            allParameters = commonParameters!.merging(parameters!, uniquingKeysWith: { (current, _)  in current })
-        case (false, true):
-            allParameters = parameters!
-        case (true, false):
-            allParameters = commonParameters!
-        default:
-            allParameters = parameters
-        }
-        
-        return try encoding.encode(request, with: allParameters)
-    }
-    
     func createMultiPartFormData(_ mpfd: MultipartFormData) {}
     
 }
 
+class RequestParameters: Encodable {
+}
 
 
 

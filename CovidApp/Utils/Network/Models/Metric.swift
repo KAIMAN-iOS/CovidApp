@@ -14,7 +14,7 @@ enum RawValueError: Error {
     case unknownTypeForEnum
 }
 
-protocol Parametarable {
+protocol Parametarable: Encodable {
     var parameters: [String : Any] { get }
 }
 
@@ -53,6 +53,26 @@ enum Validation {
         case .notApplicable: return "notApplicable"
         case .ratherNotAnswer: return "ratherNotAnswer"
         case .value(let intValue): return "value-\(intValue)"
+        }
+    }
+    
+    static func from(value: String) -> Validation? {
+        switch value {
+        case "yes": return .yes
+        case "continue": return .continue
+        case "end": return .end
+        case "no": return .no
+        case "dontKnow": return .dontKnow
+        case "notApplicable": return .notApplicable
+        case "ratherNotAnswer": return .ratherNotAnswer
+        default:
+            if let range = value.range(of: "value-") {
+                let intValueAsString = value[range.upperBound..<value.endIndex]
+                if let intValue = Int(String(intValueAsString)) {
+                    return .value(intValue)
+                }
+            }
+            return nil
         }
     }
     
@@ -206,6 +226,32 @@ enum GovernmentMetrics: Int, CaseIterable {
         }
     }
     
+    static func from(key: String) -> GovernmentMetrics? {
+        switch key {
+        case "fever": return .fever
+        case "cough": return .cough
+        case "taste": return .taste
+        case "throatSoreness": return .throatSoreness
+        case "diarrhea": return .diarrhea
+        case "tired": return .tired
+        case "eatDrink": return .eatDrink
+        case "breathingIssues": return .breathingIssues
+        case "age": return .age
+        case "height": return .height
+        case "weight": return .weight
+        case "heartDisease": return .heartDisease
+        case "diabetese": return .diabetese
+        case "cancer": return .cancer
+        case "breathingIllness": return .breathingIllness
+        case "kidney": return .kidney
+        case "liver": return .liver
+        case "pregnant": return .pregnant
+        case "immunodefense": return .immunodefense
+        case "immunosupressant": return .immunosupressant
+        default: return nil
+        }
+    }
+    
     var validationButtons: [Validation] {
         var defaultValues: [Validation] = [.yes, .no]
         switch self {
@@ -271,21 +317,40 @@ extension GovernmentMetrics: Codable {
 }
 
 //MARK: - Answers
-struct Answers {
+class Answers: RequestParameters, Decodable {
     internal var data: [GovernmentMetrics : Validation] = [:]
     
-    mutating func append(metric: GovernmentMetrics, for validation: Validation) {
+    func append(metric: GovernmentMetrics, for validation: Validation) {
         data[metric] = validation
     }
     
-    mutating func remove(metric: GovernmentMetrics) {
+    func remove(metric: GovernmentMetrics) {
         data.removeValue(forKey: metric)
+    }
+    
+    override init() { }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.unkeyedContainer()
+        data.forEach { metric, validation in
+            let answer: [String:String] = [metric.key : validation.value]
+            try? container.encode(answer)
+        }
+    }
+    
+    required init(from decoder: Decoder) throws {
+        var container = try decoder.unkeyedContainer()
+        var wrappedValue: [String:String] = [:]
+        while !container.isAtEnd {
+            wrappedValue = try container.decode([String:String].self)
+            if let key = GovernmentMetrics.from(key: wrappedValue.first?.key ?? ""),
+                let value = Validation.from(value: wrappedValue.first?.value ?? "") {
+                data[key] = value
+            }
+        }
     }
 }
 
-extension Answers: Codable {
-    
-}
 
 extension Answers: Parametarable {
     var parameters: [String : Any] {
@@ -391,10 +456,23 @@ extension Metric: Parametarable {
     }
 }
 
-struct Metrics {
+struct Metrics: Hashable {
+    static func == (lhs: Metrics, rhs: Metrics) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
     let metrics: [Metric]
     let date: Date
-    let coordinates: Coordinate?
+    private (set) var coordinates: Coordinate?
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(date)
+    }
+    
+    mutating func update(coordinates location: CLLocation) {
+        coordinates = Coordinate(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+    }
+    
 }
 
 struct Coordinate: Codable {
@@ -436,3 +514,69 @@ extension Metrics: Parametarable {
         return param
     }
 }
+
+// used for mapping the API format
+class MetricsApiWrapper: RequestParameters, Decodable {
+    var asMetrics: Metrics {
+        return Metrics(metrics: [], date: Date(), coordinates: nil)
+    }
+    
+    let hasFever: Bool
+    let hasDrippingNose: Bool
+    let hasThroatSoreness: Bool
+    let hasCough: Bool
+    let hasBreatingIssues: Bool
+    let resultDate: String // ISO 8601
+    let latitude: Double?
+    let longitude: Double?
+    
+    enum CodingKeys: String, CodingKey {
+        case hasFever = "hasFever"
+        case hasDrippingNose = "hasDrippingNose"
+        case hasThroatSoreness = "hasThroatSoreness"
+        case hasCough = "hasCough"
+        case hasBreatingIssues = "hasBreatingIssues"
+        case resultDate = "resultDate"
+        case latitude = "latitude"
+        case longitude = "longitude"
+    }
+    
+    init(metrics: Metrics) {
+        hasFever = metrics.metrics.filter({ $0.metric == .fever }).first?.value ?? false
+        hasDrippingNose = metrics.metrics.filter({ $0.metric == .drippingNose }).first?.value ?? false
+        hasThroatSoreness = metrics.metrics.filter({ $0.metric == .throatSoreness }).first?.value ?? false
+        hasCough = metrics.metrics.filter({ $0.metric == .cough }).first?.value ?? false
+        hasBreatingIssues = metrics.metrics.filter({ $0.metric == .breathingIssues }).first?.value ?? false
+        resultDate = metrics.date.toISO()
+        latitude = metrics.coordinates?.latitude
+        longitude = metrics.coordinates?.longitude
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        //mandatory
+        hasFever = try container.decode(Bool.self, forKey: .hasFever)
+        hasDrippingNose = try container.decode(Bool.self, forKey: .hasDrippingNose)
+        hasThroatSoreness = try container.decode(Bool.self, forKey: .hasThroatSoreness)
+        hasCough = try container.decode(Bool.self, forKey: .hasCough)
+        hasBreatingIssues = try container.decode(Bool.self, forKey: .hasBreatingIssues)
+        resultDate = try container.decode(String.self, forKey: .resultDate)
+        //optional
+        latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
+        longitude = try container.decodeIfPresent(Double.self, forKey: .longitude)
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(hasFever, forKey: .hasFever)
+        try container.encode(hasDrippingNose, forKey: .hasDrippingNose)
+        try container.encode(hasThroatSoreness, forKey: .hasThroatSoreness)
+        try container.encode(hasCough, forKey: .hasCough)
+        try container.encode(hasBreatingIssues, forKey: .hasBreatingIssues)
+        try container.encode(resultDate, forKey: .resultDate)
+        try container.encodeIfPresent(latitude, forKey: .latitude)
+        try container.encodeIfPresent(longitude, forKey: .longitude)
+    }
+    
+}
+

@@ -64,6 +64,7 @@ class AskProfileViewController: UIViewController {
         
         if let date = SessionController().birthday {
             dobTextField.textField.text = DateFormatter.readableDateFormatter.string(from: date)
+            dobTextField.validateField()
         }
         
         // observe the isValid from ttf
@@ -90,10 +91,21 @@ class AskProfileViewController: UIViewController {
     }
     
     @IBAction func `continue`(_ sender: Any) {
+        guard let name = nameTextField.textField.text, let firstname = firstnameTextField.textField.text, let dob = DateFormatter.readableDateFormatter.date(from: dobTextField.textField.text ?? "") else {
+            return
+        }
         var session = SessionController()
-        session.name  = nameTextField.textField.text
-        session.firstname  = firstnameTextField.textField.text
-        session.birthday  = DateFormatter.readableDateFormatter.date(from: dobTextField.textField.text ?? "")
-        coordinatorDelegate?.showMainController()
+        session.name  = name
+        session.firstname  = firstname
+        session.birthday  = dob
+        
+        CovidApi
+            .shared
+            .updateUser(name: name, firstname: firstname, dob: dob)
+            .done { [weak self] user in
+                self?.coordinatorDelegate?.showMainController()
+            }.catch { _ in
+                
+            }
     }
 }
