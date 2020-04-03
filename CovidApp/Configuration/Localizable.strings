@@ -82,3 +82,4 @@
 "ask notification" = "Rappels journaliers";
 "ask for notification" = "Le but de CovidApp est de collecter des données quotidienne sur l'état des santé des personnes restant à domicile. Pour vous aider, CovidApp vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
 "Activate notification" = "J'ai compris";
+"loading, please wait" = "Réxupération des dernières données";

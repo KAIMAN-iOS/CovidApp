@@ -142,32 +142,32 @@ class DataStorage {
     private let storage = CodableStorage(storage: DiskStorage(path: URL(fileURLWithPath: NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0])))
     private var storedMetrics: StoredMetrics!  {
         didSet {
-            try? DataStorage.instance.save(storedMetrics, for: "StoredMetrics")
+            try? DataStorage.instance.save(storedMetrics, for: DataManagerKey.storedMetrics.key)
         }
     }
 
     init() {
-        if let store: StoredMetrics = try? storage.fetch(for: "StoredMetrics") {
+        if let store: StoredMetrics = try? storage.fetch(for: DataManagerKey.storedMetrics.key) {
             storedMetrics = store
         } else {
             storedMetrics = StoredMetrics()
         }
     }
     
-    func fetch<T: Decodable>(for key: String) throws -> T {
+    func fetch<T: Decodable>(for key: StorageKey) throws -> T {
         return try storage.fetch(for: key)
     }
     
-    func save<T: Encodable>(_ value: T, for key: String) throws {
+    func save<T: Encodable>(_ value: T, for key: StorageKey) throws {
         try storage.save(value, for: key)
     }
     
     func save(_ answers: Answers) throws {
-        try storage.save(answers, for: "Answers")
+        try storage.save(answers, for: DataManagerKey.answers.key)
     }
     
     func fecthAnswers() throws -> Answers? {
-        let answers: Answers? = try? storage.fetch(for: "Answers")
+        let answers: Answers? = try? storage.fetch(for: DataManagerKey.answers.key)
         return answers
     }
     
@@ -183,7 +183,7 @@ class DataStorage {
         DataStorage.instance
             .storedMetrics.metrics.forEach { [weak self] metrics in
                 CovidApi.shared
-                    .send(dailyMetrics: metrics)
+                    .post(metric: metrics, saveOnFail: false)
                     .done { [weak self] user in
                         guard let self = self else { return }
                         self.storedMetrics.remove(metrics)
@@ -192,6 +192,10 @@ class DataStorage {
                         
                     }
         }
+    }
+    
+    func save(_ user: CurrentUser) throws {
+        try save(user, for: DataManagerKey.currentUser.key)
     }
 }
 

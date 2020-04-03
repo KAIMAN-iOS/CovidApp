@@ -98,7 +98,9 @@ extension API {
 
         let handling = handleResponse(data: dataResponse.data, code: code, expectedObject: T.self)
         
-        if let error = handling.error {
+        if let error = handling.error as? AFError {
+            return returnError(error)
+        } else if let error = handling.error {
             return returnError(AFError.responseSerializationFailed(reason: .customSerializationFailed(error: error)))
         } else if let object = handling.object {
             return returnSuccess(object)

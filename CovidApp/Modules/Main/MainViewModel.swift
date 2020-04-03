@@ -14,6 +14,29 @@ enum CollectionViewType {
 
 class MainViewModel {
     func numberOfItems(in section: Int, for type: CollectionViewType) -> Int {
-        return 0
+        guard let user = user else { return 0 }
+        switch type {
+        case .metrics: return user.metrics.count
+        case .friends: return user.sharedUsers.count
+        }
+    }
+    
+    private (set) var user: CurrentUser? = nil
+    init() {
+        user = try? DataManager().retrieve(for: DataManagerKey.currentUser.key)
+    }
+    
+    func loadUser(completion: @escaping (() -> Void)) {
+        if SessionController().userLoggedIn == true {
+            CovidApi.shared.retrieveUser().done { [weak self] user in
+                guard let self = self else { return }
+                self.user = user
+                completion()
+            }.catch { error in
+                //TODO: Handle th error
+            }
+        } else {
+            completion()
+        }
     }
 }

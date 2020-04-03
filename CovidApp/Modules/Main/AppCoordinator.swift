@@ -76,7 +76,6 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     override func start() {
-//        SessionController().clear()
         switch instructor {
         case .onboarding: presentOnboardingFlow()
         case .main:
@@ -119,13 +118,6 @@ class AppCoordinator: Coordinator<DeepLink> {
             LocationManager.shared.onAuthorizationChange.add { [weak self] state in
                 guard state != .undetermined else { return }
                 guard let self = self else { return }
-//                switch state {
-//                case .available, .restricted:
-//                    self.map.showsUserLocation = true
-//                    self.centerOnUser()
-//
-//                default: ()
-//                }
             }
             LocationManager.shared.requireUserAuthorization(.whenInUse)
         }
@@ -173,11 +165,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         CovidApi
             .shared
             .post(metric: dailyData)
-            .done { _ in
-            
-        }.catch { error in
-            
-        }
+            .done { _ in }
     }
     
     func appendLocation(to dailyData: Metrics) {

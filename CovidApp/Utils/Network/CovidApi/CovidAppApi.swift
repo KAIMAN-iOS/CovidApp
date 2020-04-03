@@ -27,30 +27,45 @@ struct CovidApi {
         guard let route = RegisterRoute(email: SessionController().email) else {
             return Promise<RegisterResponse>.init(error: ApiError.noEmail)
         }
-        return api.perform(route)
+        return api.perform(route).get { response in
+            var session = SessionController()
+            session.token = response.token
+            session.refreshToken = response.refreshToken
+        }
     }
     
     func retrieveToken()  -> Promise<RegisterResponse> {
-        return register()
-    }
-    
-    func send(dailyMetrics: Metrics) -> Promise<User> {
-        return Promise<User>.init(error: ApiError.noEmail)
+        return register().get { response in
+            var session = SessionController()
+            session.token = response.token
+            session.refreshToken = response.refreshToken
+        }
     }
     
     func updateUser(name: String, firstname: String, dob: Date) -> Promise<CurrentUser> {
         let route = UpdateUserRoute(name: name, firstname: firstname, dob: dob)
-        return perform(route: route)
+        return perform(route: route).get { user in
+            DataManager().store(user)
+        }
     }
     
-    func post(metric: Metrics) -> Promise<CurrentUser> {
+    func post(metric: Metrics, saveOnFail: Bool = true) -> Promise<CurrentUser> {
         let route = PostMetricRoute(metric: metric)
-        return perform(route: route)
+        return perform(route: route).recover { error -> Promise<CurrentUser> in
+            if saveOnFail { DataManager().store(metric) }
+            return Promise<CurrentUser>.init(error: error)
+        }
     }
     
     func postInitial(answer: Answers) -> Promise<CurrentUser> {
         let route = PostInitialMetricsRoute(answer: answer)
         return perform(route: route)
+    }
+    
+    func retrieveUser() -> Promise<CurrentUser> {
+        return perform(route: RetrieveUserRoute()).get { user in
+            DataManager().store(user)
+        }
     }
 }
 
@@ -106,7 +121,7 @@ private extension CovidApi {
     func performAndRetry<T>(route: RequestObject<T>) -> Promise<T> {
         func refresh() -> Promise<T> {
             register()
-                .then { _ -> Promise<T> in
+                .then { response -> Promise<T> in
                     self.performAndRetry(route: route)
             }
         }

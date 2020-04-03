@@ -40,6 +40,7 @@ class MainViewController: UIViewController {
     private var noFriendController: NoFriendsViewController!
     private lazy var collectionType: [UICollectionView : CollectionViewType] = [reportsCollectionView : .metrics, friendsCollectionView : .friends]
     let viewModel = MainViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let ctrl = children.compactMap({ $0 as? NoFriendsViewController }).first else {
@@ -47,8 +48,22 @@ class MainViewController: UIViewController {
         }
         noFriendController = ctrl
         noFriendController.shareDelegate = shareDelegate
-        
         handleLayout()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        loadUser()
+    }
+    
+    private func loadUser() {
+        MessageManager.show(.basic(.loadingPleaseWait), in: self)
+        viewModel
+            .loadUser { [weak self] in
+            guard let self = self else { return }
+            // finally update the UI
+            self.handleLayout()
+        }
     }
     
     private func handleLayout() {

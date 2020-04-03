@@ -73,3 +73,29 @@ class UpdateUserParameter: CovidAppApiCommonParameters {
         try container.encode(dob, forKey: .dob)
     }
 }
+
+// MARK: - UpdateUserRoute RequestObject
+
+/**
+ Obtenir les arrêts d’une ligne.
+ - Returns: les arrêts dans l’ordre pour une ligne et une destination
+ */
+class RetrieveUserRoute: RequestObject<CurrentUser> {
+    // MARK: - RequestObject Protocol
+    
+    override var method: HTTPMethod {
+        .get
+    }
+    
+    override var endpoint: String? {
+        "user/current"
+    }
+    
+    override var encoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
+    override var parameters: RequestParameters? {
+        return nil
+    }
+}

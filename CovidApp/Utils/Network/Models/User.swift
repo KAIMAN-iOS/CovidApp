@@ -8,7 +8,7 @@
 
 import Foundation
 
-class User: Decodable {
+class User: Codable {
     private (set) var id: Int
     private (set) var name: String
     private (set) var firstname: String
@@ -53,6 +53,16 @@ class User: Decodable {
         //optional
         cp = try container.decodeIfPresent(String.self, forKey: .cp)
     }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(firstname, forKey: .firstname)
+        try container.encode(birthdate, forKey: .birthdate)
+        try container.encode(cp, forKey: .cp)
+        try container.encode(metrics, forKey: .metrics)
+    }
 }
 
 class CurrentUser: User {
@@ -72,5 +82,11 @@ class CurrentUser: User {
         //mandatory
         sharedUsers = try container.decodeIfPresent([User].self, forKey: .sharedUsers) ?? []
         try super.init(from: decoder)
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(sharedUsers, forKey: .sharedUsers)
+        try super.encode(to: encoder)
     }
 }
