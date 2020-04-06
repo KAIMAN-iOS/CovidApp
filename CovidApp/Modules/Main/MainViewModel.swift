@@ -21,6 +21,20 @@ class MainViewModel {
         }
     }
     
+    func configureCell(at indexPath: IndexPath, in collectionView: UICollectionView, for type: CollectionViewType) -> UICollectionViewCell {
+        guard let user = user else { return UICollectionViewCell()  }
+        switch type {
+        case .metrics:
+            if let cell: MetricStatesCell = collectionView.automaticallyDequeueReusableCell(forIndexPath: indexPath) {
+                cell.configure(user.metrics.reversed()[indexPath.row])
+                return cell
+            }
+            
+        case .friends: ()
+        }
+        return UICollectionViewCell()
+    }
+    
     private (set) var user: CurrentUser? = nil
     init() {
         user = try? DataManager().retrieve(for: DataManagerKey.currentUser.key)

@@ -12,15 +12,30 @@ class MetricStateView: UIView {
 
     @IBOutlet weak var backgroundView: UIView!  {
         didSet {
-//            cornerRadius = 5.0
-            backgroundView.setAsDefaultCard()
+            backgroundView.roundedCorners = true
         }
     }
 
-    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var metricsIcon: UIImageView!
+    @IBOutlet weak var dateContainer: UIView!
+    @IBOutlet weak var day: UILabel!
+    @IBOutlet weak var month: UILabel!
     
-    func configure(with metricState: MetricState) {
+    func configure(with metricState: Metric) {
         backgroundView.backgroundColor = metricState.color
-        icon.image = metricState.metricIcon
+        metricsIcon.image = metricState.metric.metricIcon
+        dateContainer.isHidden = true
+    }
+    
+    func configure(with date: Date) {
+        let compo = Calendar.current.dateComponents([.day, .month], from: date)
+        day.text = String(format: "%0.2d", compo.day!)
+        month.text = String(format: "%0.2d", compo.month!)
+        metricsIcon.isHidden = true
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        backgroundView.cornerRadius = backgroundView.bounds.midY
     }
 }

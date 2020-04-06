@@ -59,7 +59,7 @@ class User: Codable {
         try container.encode(id, forKey: .id)
         try container.encode(name, forKey: .name)
         try container.encode(firstname, forKey: .firstname)
-        try container.encode(birthdate, forKey: .birthdate)
+        try container.encode(DateFormatter.apiDateFormatter.string(from: birthdate), forKey: .birthdate)
         try container.encode(cp, forKey: .cp)
         try container.encode(metrics, forKey: .metrics)
     }

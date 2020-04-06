@@ -174,3 +174,15 @@ extension UITableView {
     }
     
 }
+
+extension UICollectionView {
+    func automaticallyDequeueReusableCell<T: Identifiable>(forIndexPath indexPath: IndexPath) -> T? {
+        let identifier = T.identifier
+        return self.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? T
+    }
+    
+    func register(cell: Identifiable.Type) {
+        let nib = UINib(nibName: cell.identifier, bundle: nil)
+        self.register(nib, forCellWithReuseIdentifier: cell.identifier)
+    }
+}

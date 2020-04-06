@@ -26,7 +26,12 @@ class MainViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var reportsCollectionView: UICollectionView!
+    @IBOutlet weak var reportsCollectionView: UICollectionView!  {
+        didSet {
+            reportsCollectionView.register(cell: MetricStatesCell.self)
+        }
+    }
+
     @IBOutlet weak var friendsCollectionView: UICollectionView!
     @IBOutlet weak var bottomContainerView: UIView!
     
@@ -70,10 +75,17 @@ class MainViewController: UIViewController {
         let numberOfMetrics = viewModel.numberOfItems(in: 0, for: .metrics)
         noResultView.isHidden = numberOfMetrics > 0
         reportsCollectionView.isHidden = numberOfMetrics == 0
+        if numberOfMetrics > 0 {
+            reportsCollectionView.reloadData()
+            reportsCollectionView.layoutIfNeeded()
+            reportsCollectionView.scrollToItem(at: IndexPath(row: viewModel.numberOfItems(in: 0, for: collectionType[reportsCollectionView]!) - 1, section: 0), at: .right, animated: false)
+        }
         let numberOfFriends = viewModel.numberOfItems(in: 0, for: .friends)
         noFriendController.view.isHidden = numberOfFriends > 0
         friendsCollectionView.isHidden = numberOfFriends == 0
-//        bottomContainerView.isHidden = numberOfFriends == 0 && numberOfMetrics == 0
+        if numberOfFriends > 0 {
+            friendsCollectionView.reloadData()
+        }
     }
     
     @IBAction func showSettings(_ sender: Any) {
@@ -87,7 +99,15 @@ extension MainViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return UICollectionViewCell()
+        guard let type = collectionType[collectionView] else { return UICollectionViewCell() }
+        return viewModel.configureCell(at: indexPath, in: collectionView, for: type)
+    }
+}
+
+extension MainViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 224, height: 152)
     }
 }
 

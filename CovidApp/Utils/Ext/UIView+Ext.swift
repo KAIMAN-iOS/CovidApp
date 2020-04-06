@@ -98,6 +98,43 @@ extension UIView {
 }
 
 extension UIView {
+    func addShadow(roundCorners: Bool = true, shadowOffset: CGSize = CGSize(width: 0, height: 4), shadowRadius: CGFloat = 4.0, shadowOpacity: Float = 0.2, useMotionEffect: Bool = true) {
+        if roundCorners {
+            layer.cornerRadius = frame.width / 2
+        }
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = shadowOffset
+        self.layer.shadowRadius = shadowRadius
+        self.layer.shadowOpacity = shadowOpacity
+        
+        if useMotionEffect == true {
+            addShadowMotion()
+        }
+    }
+    
+    func addShadowMotion() {
+        let horizontalEffect = UIInterpolatingMotionEffect(
+            keyPath: "layer.shadowOffset.width",
+            type: .tiltAlongHorizontalAxis)
+        horizontalEffect.minimumRelativeValue = 16
+        horizontalEffect.maximumRelativeValue = -16
+        
+        let verticalEffect = UIInterpolatingMotionEffect(
+            keyPath: "layer.shadowOffset.height",
+            type: .tiltAlongVerticalAxis)
+        verticalEffect.minimumRelativeValue = 16
+        verticalEffect.maximumRelativeValue = -16
+        
+        let effectGroup = UIMotionEffectGroup()
+        effectGroup.motionEffects = [ horizontalEffect,
+                                      verticalEffect ]
+        
+        addMotionEffect(effectGroup)
+    }
+}
+
+
+extension UIView {
     
     func addCardBorder(with color: UIColor = UIColor.systemGray) {
         cornerRadius = 10
@@ -105,10 +142,12 @@ extension UIView {
         layer.borderWidth = 1.0
     }
     
-    func setAsDefaultCard(with color: UIColor = UIColor.lightGray) {
+    func setAsDefaultCard(with color: UIColor = UIColor.lightGray, adddShadow: Bool = true) {
         addCardBorder(with: color)
         clipsToBounds = false
-//        addShadow(roundCorners: false, shadowOffset: .zero, shadowOpacity: 0.25, useMotionEffect: true)
+        if adddShadow {
+            addShadow(roundCorners: false, shadowOffset: .zero, shadowOpacity: 0.25, useMotionEffect: true)
+        }
     }
     
     func round(corners: UIRectCorner,
@@ -407,5 +446,14 @@ extension UIView {
         let animator = UIViewPropertyAnimator(duration: duration, dampingRatio: damping, animations: animationBlock)
         layoutIfNeeded()
         animator.startAnimation()
+    }
+}
+
+extension UIStackView {
+    func clear(from: Int = 0, to: Int? = nil) {
+        arrangedSubviews[from..<(to == nil ? arrangedSubviews.count : to!)].forEach { (view) in
+            removeArrangedSubview(view)
+            view.removeFromSuperview()
+        }
     }
 }

@@ -363,28 +363,42 @@ extension Answers: Parametarable {
 }
 
 //MARK: - MetricState
-enum MetricState {
-    case fine
-    case condition(_: MetricType)
-    
-    var color: UIColor {
-        switch self {
-        case .fine: return Palette.basic.confirmation.color
-        case .condition: return Palette.basic.alert.color
-        }
-    }
-    
-    var metricIcon: UIImage? {
-        switch self {
-        case .fine: return UIImage(named: "Metrics-Fine")
-        case .condition(let metric): return metric.metricIcon
-        }
-    }
-}
-
-struct MetricStates {
-    var metrics: [MetricState]
-}
+//enum MetricState {
+//    case fine
+//    case condition(_: MetricType)
+//    
+//    var color: UIColor {
+//        switch self {
+//        case .fine: return Palette.basic.confirmation.color
+//        case .condition: return Palette.basic.alert.color
+//        }
+//    }
+//    
+//    var textColor: UIColor {
+//        switch self {
+//        case .fine: return Palette.basic.mainTexts.color
+//        case .condition: return .white
+//        }
+//    }
+//    
+//    var displayText: String {
+//        switch self {
+//        case .fine: return "fine".local()
+//        case .condition(let metric): return metric.shortDisplayText
+//        }
+//    }
+//    
+//    var metricIcon: UIImage? {
+//        switch self {
+//        case .fine: return UIImage(named: "Metrics-Fine")
+//        case .condition(let metric): return metric.metricIcon
+//        }
+//    }
+//}
+//
+//struct MetricStates {
+//    var metrics: [MetricState]
+//}
 
 //MARK: - MetricType
 enum MetricType: Int, CaseIterable {
@@ -411,6 +425,16 @@ enum MetricType: Int, CaseIterable {
         case .fever: return UIImage(named: "Metrics-Fever")
         case .throatSoreness: return UIImage(named: "Metrics-ThroatSoreness")
         case .breathingIssues: return UIImage(named: "Metrics-BreathingIssues")
+        }
+    }
+    
+    var shortDisplayText: String {
+        switch self {
+        case .drippingNose: return "drippingNose short description".local()
+        case .cough: return "cough short description".local()
+        case .fever: return "fever short description".local()
+        case .throatSoreness: return "throatSoreness short description".local()
+        case .breathingIssues: return "breathingIssues short description".local()
         }
     }
     
@@ -444,6 +468,18 @@ extension MetricType: Codable {
 struct Metric {
     let metric: MetricType
     let value: Bool
+    
+    var color: UIColor {
+        return value == false ? Palette.basic.alert.color : Palette.basic.confirmation.color
+    }
+    
+    var textColor: UIColor {
+        return .white
+    }
+    
+    var displayText: String {
+        return metric.shortDisplayText
+    }
 }
 
 extension Metric: Codable {
@@ -518,7 +554,11 @@ extension Metrics: Parametarable {
 // used for mapping the API format
 class MetricsApiWrapper: RequestParameters, Decodable {
     var asMetrics: Metrics {
-        return Metrics(metrics: [], date: Date(), coordinates: nil)
+        var coordinate: Coordinate? = nil
+        if let lat = latitude, let lon = longitude {
+            coordinate = Coordinate(latitude: lat, longitude: lon)
+        }
+        return Metrics(metrics: [Metric(metric: .fever, value: hasFever), Metric(metric: .drippingNose, value: hasDrippingNose), Metric(metric: .throatSoreness, value: hasThroatSoreness), Metric(metric: .cough, value: hasCough), Metric(metric: .breathingIssues, value: hasBreatingIssues)], date: Date(), coordinates: coordinate)
     }
     
     let hasFever: Bool
@@ -561,9 +601,8 @@ class MetricsApiWrapper: RequestParameters, Decodable {
         hasCough = try container.decode(Bool.self, forKey: .hasCough)
         hasBreatingIssues = try container.decode(Bool.self, forKey: .hasBreatingIssues)
         resultDate = try container.decode(String.self, forKey: .resultDate)
-        //optional
-        latitude = try container.decodeIfPresent(Double.self, forKey: .latitude)
-        longitude = try container.decodeIfPresent(Double.self, forKey: .longitude)
+        latitude = try? container.decodeIfPresent(Double.self, forKey: .latitude)
+        longitude = try? container.decodeIfPresent(Double.self, forKey: .longitude)
     }
     
     override func encode(to encoder: Encoder) throws {

@@ -20,19 +20,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0SS-Ua-JiO">
-                                <rect key="frame" x="0.0" y="52" width="414" height="844"/>
+                                <rect key="frame" x="12" y="52" width="390" height="844"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G50-J0-zXU">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="28.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="28.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Tableau de bord" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mDk-8p-947">
-                                                <rect key="frame" x="145.5" y="4" width="123.5" height="20.5"/>
+                                                <rect key="frame" x="133.5" y="4" width="123.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWE-0N-klq">
-                                                <rect key="frame" x="380" y="1.5" width="26" height="26"/>
+                                                <rect key="frame" x="356" y="1.5" width="26" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="26" id="dTC-GK-uZ7"/>
                                                     <constraint firstAttribute="width" constant="26" id="zyY-u9-soT"/>
@@ -55,25 +55,25 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="SQg-DA-Sae">
-                                        <rect key="frame" x="0.0" y="36.5" width="414" height="172.5"/>
+                                        <rect key="frame" x="0.0" y="36.5" width="390" height="172.5"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="lsX-3g-IP0">
-                                                <rect key="frame" x="16" y="4" width="382" height="164.5"/>
+                                                <rect key="frame" x="16" y="4" width="358" height="164.5"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="750" image="government" translatesAutoresizingMaskIntoConstraints="NO" id="mxg-jz-syT">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="358" height="60"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="60" id="Noz-Zf-1ph"/>
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Vos résultats journaliers apparaîtront ici dés que vous aurez enregistré votre premier questionnaire" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDa-Xv-OCK">
-                                                        <rect key="frame" x="0.0" y="72" width="382" height="30.5"/>
+                                                        <rect key="frame" x="0.0" y="72" width="358" height="30.5"/>
                                                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                                                         <color key="textColor" name="primary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iaH-1Y-5DA" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="114.5" width="382" height="50"/>
+                                                        <rect key="frame" x="0.0" y="114.5" width="358" height="50"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="6vQ-rE-JGZ"/>
                                                         </constraints>
@@ -95,15 +95,23 @@
                                         </constraints>
                                     </view>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="176" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Jy3-Gp-PUt">
-                                        <rect key="frame" x="0.0" y="217" width="414" height="176"/>
+                                        <rect key="frame" x="0.0" y="217" width="390" height="152"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <collectionViewLayout key="collectionViewLayout" id="6hy-zH-82x" customClass="CollectionViewFlowLayout" customModule="CovidApp" customModuleProvider="target"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="152" id="78Z-4B-uEP"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5ji-Pq-71k">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
                                         <cells>
                                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Nwe-xL-K6O">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <rect key="frame" x="0.0" y="12" width="128" height="128"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="X28-44-uT6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </collectionViewCellContentView>
                                             </collectionViewCell>
@@ -114,10 +122,10 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wm2-oT-yxF">
-                                        <rect key="frame" x="0.0" y="401" width="414" height="443"/>
+                                        <rect key="frame" x="0.0" y="377" width="390" height="467"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e08-MA-RAF">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="467"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vuv-Ac-Mx5">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -141,7 +149,7 @@
                                                 </connections>
                                             </collectionView>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-A4-gZo">
-                                                <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="390" height="467"/>
                                                 <connections>
                                                     <segue destination="3p7-2O-U8q" kind="embed" id="nJv-kM-Ncm"/>
                                                 </connections>
@@ -165,8 +173,8 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="0SS-Ua-JiO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="FzY-u7-wzG"/>
-                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ns3-MA-AZS"/>
-                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ajR-IL-MRq"/>
+                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-12" id="Ns3-MA-AZS"/>
+                            <constraint firstItem="0SS-Ua-JiO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="12" id="ajR-IL-MRq"/>
                             <constraint firstAttribute="bottom" secondItem="0SS-Ua-JiO" secondAttribute="bottom" id="hSl-0c-pw7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -473,26 +481,26 @@
             <objects>
                 <viewController storyboardIdentifier="NoFriendsViewController" id="3p7-2O-U8q" customClass="NoFriendsViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8W9-Hc-4P5">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="443"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="467"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="ptP-ub-WmD">
-                                <rect key="frame" x="24" y="68" width="366" height="307"/>
+                                <rect key="frame" x="24" y="68" width="342" height="331"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" image="shareFaces" translatesAutoresizingMaskIntoConstraints="NO" id="Kkh-wo-8ow">
-                                        <rect key="frame" x="0.0" y="0.0" width="366" height="142.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="166.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="9mq-Ah-BAE"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C'est toujours meilleur quand on partage." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2j-8r-r7L">
-                                        <rect key="frame" x="0.0" y="189.5" width="366" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="213.5" width="342" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4y-sa-wtM" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="257" width="366" height="50"/>
+                                        <rect key="frame" x="0.0" y="281" width="342" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="avt-gP-hQg"/>
                                         </constraints>
