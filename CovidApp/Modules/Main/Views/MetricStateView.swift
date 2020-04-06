@@ -22,7 +22,10 @@ class MetricStateView: UIView {
     @IBOutlet weak var month: UILabel!
     
     func configure(with metricState: Metric) {
-        backgroundView.backgroundColor = metricState.color
+        backgroundView.backgroundColor = .clear
+        backgroundView.layer.borderColor = metricState.color.cgColor
+        backgroundView.layer.borderWidth = 2
+        metricsIcon.tintColor = metricState.color
         metricsIcon.image = metricState.metric.metricIcon
         dateContainer.isHidden = true
     }
@@ -32,6 +35,7 @@ class MetricStateView: UIView {
         day.text = String(format: "%0.2d", compo.day!)
         month.text = String(format: "%0.2d", compo.month!)
         metricsIcon.isHidden = true
+        backgroundView.backgroundColor = Palette.basic.primary.color
     }
     
     override func layoutSubviews() {
