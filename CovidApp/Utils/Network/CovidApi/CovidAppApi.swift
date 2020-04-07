@@ -71,6 +71,10 @@ struct CovidApi {
     func retrieveFriends() -> Promise<[Friend]> {
         return perform(route: FriendRoute())
     }
+    
+    func deleteFriend(with id: Int) -> Promise<EmptyResponseData> {
+        return perform(route: DeleteFriendRoute(id: id))
+    }
 }
 
 //MARK:- Internal class for API

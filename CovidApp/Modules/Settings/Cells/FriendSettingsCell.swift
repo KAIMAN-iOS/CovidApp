@@ -10,6 +10,7 @@ import UIKit
 
 class FriendSettingsCell: UITableViewCell {
 
+    weak var deleteFriendDelegate: DeleteFriendDelegate? = nil
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
@@ -21,11 +22,14 @@ class FriendSettingsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    private var id: Int!
     func configure(with friend: Friend) {
+        id = friend.id
         icon.image = friend.icon
         name.set(text: friend.userName, for: .default)
     }
 
     @IBAction func deleteFriend(_ sender: Any) {
+        deleteFriendDelegate?.deleteFriend(with: id)
     }
 }

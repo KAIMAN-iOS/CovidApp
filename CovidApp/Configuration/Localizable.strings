@@ -92,3 +92,6 @@
 
 "settings" = "Paramètres";
 "reminder time" = "Heure de rappel : %@";
+"Attention" = "Attention";
+"About to Delete friend" = "Vous êtes sur le point de supprimer le partage envers un ami. Souhaitez vous continuer ?";
+"confirm delete" = "Supprimer";

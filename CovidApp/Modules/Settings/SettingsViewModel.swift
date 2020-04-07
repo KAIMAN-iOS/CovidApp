@@ -9,8 +9,13 @@
 import Foundation
 import PromiseKit
 
+protocol DeleteFriendDelegate: class {
+    func deleteFriend(with id: Int)
+}
+
 class SettingsViewModel {
     
+    weak var deleteFriendDelegate: DeleteFriendDelegate? = nil
     weak var notificationDelegate: DailyNotificationDelegate? = nil
     private var friends: [Friend] = []
     func retrieveFriends() -> Promise<[Friend]> {
@@ -34,6 +39,10 @@ class SettingsViewModel {
             return true
         }
         return false
+    }
+    
+    func deleteFriend(with id: Int) -> Promise<EmptyResponseData> {
+        return CovidApi.shared.deleteFriend(with: id)
     }
 }
 
@@ -59,6 +68,7 @@ extension SettingsViewModel: TableViewModelable {
                 return UITableViewCell()
             }
             cell.configure(with: friends[indexPath.row])
+            cell.deleteFriendDelegate = deleteFriendDelegate
             return cell
         }
     }

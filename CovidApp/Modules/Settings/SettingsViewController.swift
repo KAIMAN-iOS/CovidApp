@@ -29,13 +29,19 @@ class SettingsViewController: UIViewController {
         super.viewDidLoad()
         title = "settings".local()
         viewModel.notificationDelegate = notificationDelegate
+        viewModel.deleteFriendDelegate = self
+        retrieveFriends()
+    }
+    
+    private func retrieveFriends() {
+        activityIndicator.startAnimating()
         viewModel.retrieveFriends()
             .ensure { [weak self] in
                 self?.activityIndicator.stopAnimating()
         }
-            .done { [weak self] friends in
-                guard let self = self else { return }
-                self.tableView.reloadData()
+        .done { [weak self] friends in
+            guard let self = self else { return }
+            self.tableView.reloadData()
         }.catch { error in
             // TODO:
         }
@@ -79,6 +85,26 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return viewModel.configureCell(at: indexPath, in: tableView)
+    }
+}
+
+extension SettingsViewController: DeleteFriendDelegate {
+    func deleteFriend(with id: Int) {
+        let alert = UIAlertController(title: "Attention".local(), message: "About to Delete friend".local(), preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "confirm delete".local(), style: .destructive, handler: { [weak self] _ in
+//            self?.dismiss(animated: true, completion: nil)
+            self?.activityIndicator.startAnimating()
+            self?.viewModel.deleteFriend(with: id).done { [weak self] _ in
+                self?.retrieveFriends()
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: { [weak self] _ in
+//            self?.dismiss(animated: true, completion: nil)
+        }))
+        
+        present(alert, animated: true, completion: nil)
     }
 }
 

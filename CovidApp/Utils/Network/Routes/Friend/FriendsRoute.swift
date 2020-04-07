@@ -35,3 +35,48 @@ class FriendRoute: RequestObject<[Friend]> {
         return nil
     }
 }
+
+class DeleteFriendRoute: RequestObject<EmptyResponseData> {
+    // MARK: - RequestObject Protocol
+    
+    override var method: HTTPMethod {
+        .post
+    }
+    
+    override var endpoint: String? {
+        "friend/delete"
+    }
+    
+    override var encoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
+    override var parameters: RequestParameters? {
+        return DeleteFriendParameter(id: id)
+    }
+    
+    let id: Int!
+    init(id: Int) {
+        self.id = id
+    }
+}
+
+class DeleteFriendParameter: CovidAppApiCommonParameters {
+    let id: Int
+    
+    init(id: Int) {
+        self.id = id
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id = "id"
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        try super.encode(to: encoder)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+    }
+}
+
+
