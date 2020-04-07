@@ -7,31 +7,35 @@
 //
 
 import Foundation
+import LetterAvatarKit
 
-class User: Codable {
+class EmptyResponseData: Codable {
+}
+
+class BasicUser: Codable {
     private (set) var id: Int
     private (set) var name: String
     private (set) var firstname: String
-    private (set) var birthdate: Date
-    private (set) var cp: String?
-    private (set) var metrics: [Metrics]
     
     init() {
         id = 0
         name = ""
         firstname = ""
-        birthdate = Date(timeIntervalSince1970: 0)
-        cp = nil
-        metrics = []
+    }
+    
+    var icon: UIImage? {
+        let color = UIColor.random()
+        return LetterAvatarMaker().setCircle(true).setUsername(userName).setLettersColor(color.luminanceValue).setBackgroundColors([color]).build()
+    }
+    
+    var userName: String {
+        return firstname + " " + name
     }
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "lastname"
         case firstname = "firstname"
-        case birthdate = "birthdate"
-        case cp = "cp"
-        case metrics = "datas"
     }
     
     required init(from decoder: Decoder) throws {
@@ -40,6 +44,36 @@ class User: Codable {
         id = try container.decode(Int.self, forKey: .id)
         name = try container.decode(String.self, forKey: .name)
         firstname = try container.decode(String.self, forKey: .firstname)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(firstname, forKey: .firstname)
+    }
+}
+
+class User: BasicUser {
+    private (set) var birthdate: Date
+    private (set) var cp: String?
+    private (set) var metrics: [Metrics]
+    
+    override init() {
+        birthdate = Date(timeIntervalSince1970: 0)
+        cp = nil
+        metrics = []
+        super.init()
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case birthdate = "birthdate"
+        case cp = "cp"
+        case metrics = "datas"
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
         if let metrics: [MetricsApiWrapper] = try? container.decode([MetricsApiWrapper].self, forKey: .metrics) {
             self.metrics = metrics.compactMap({ $0.asMetrics })
         } else {
@@ -52,16 +86,15 @@ class User: Codable {
         birthdate = date
         //optional
         cp = try container.decodeIfPresent(String.self, forKey: .cp)
+        try super.init(from: decoder)
     }
     
-    func encode(to encoder: Encoder) throws {
+    override func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
-        try container.encode(name, forKey: .name)
-        try container.encode(firstname, forKey: .firstname)
         try container.encode(DateFormatter.apiDateFormatter.string(from: birthdate), forKey: .birthdate)
         try container.encode(cp, forKey: .cp)
         try container.encode(metrics.compactMap({ MetricsApiWrapper(metrics: $0) }), forKey: .metrics)
+        try super.encode(to: encoder)
     }
 }
 

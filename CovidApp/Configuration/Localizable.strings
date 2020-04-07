@@ -89,3 +89,6 @@
 "fever short description" = "Fièvre";
 "throatSoreness short description" = "Gorge";
 "breathingIssues short description" = "Respiration";
+
+"settings" = "Paramètres";
+"reminder time" = "Heure de rappel : %@";

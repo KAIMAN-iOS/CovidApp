@@ -46,6 +46,15 @@
 		026929282435C09400DDB8E2 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 026929272435C09400DDB8E2 /* DataManager.swift */; };
 		0269292A24360D9600DDB8E2 /* UserRoutes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269292924360D9600DDB8E2 /* UserRoutes.swift */; };
 		0269292C2436227D00DDB8E2 /* MetricRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0269292B2436227D00DDB8E2 /* MetricRoute.swift */; };
+		02742C1D243B4ED100C04A6A /* LetterAvatarKit in Frameworks */ = {isa = PBXBuildFile; productRef = 02742C1C243B4ED100C04A6A /* LetterAvatarKit */; };
+		02742C1F243B503400C04A6A /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C1E243B503400C04A6A /* UIColor+Ext.swift */; };
+		02742C22243B5DEB00C04A6A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C21243B5DEB00C04A6A /* SettingsViewController.swift */; };
+		02742C25243B5E4F00C04A6A /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C23243B5E4F00C04A6A /* HeaderView.swift */; };
+		02742C26243B5E4F00C04A6A /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02742C24243B5E4F00C04A6A /* HeaderView.xib */; };
+		02742C28243C61D100C04A6A /* FriendsRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C27243C61D100C04A6A /* FriendsRoute.swift */; };
+		02742C2A243C62AA00C04A6A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C29243C62AA00C04A6A /* SettingsViewModel.swift */; };
+		02742C2D243C648300C04A6A /* NotificationSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C2C243C648300C04A6A /* NotificationSettingsCell.swift */; };
+		02742C2F243C649500C04A6A /* FriendSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C2E243C649500C04A6A /* FriendSettingsCell.swift */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -166,6 +175,14 @@
 		026929272435C09400DDB8E2 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		0269292924360D9600DDB8E2 /* UserRoutes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRoutes.swift; sourceTree = "<group>"; };
 		0269292B2436227D00DDB8E2 /* MetricRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricRoute.swift; sourceTree = "<group>"; };
+		02742C1E243B503400C04A6A /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		02742C21243B5DEB00C04A6A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		02742C23243B5E4F00C04A6A /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		02742C24243B5E4F00C04A6A /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		02742C27243C61D100C04A6A /* FriendsRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsRoute.swift; sourceTree = "<group>"; };
+		02742C29243C62AA00C04A6A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		02742C2C243C648300C04A6A /* NotificationSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsCell.swift; sourceTree = "<group>"; };
+		02742C2E243C649500C04A6A /* FriendSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSettingsCell.swift; sourceTree = "<group>"; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -244,6 +261,7 @@
 				02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */,
 				02A9446F242B9BA300623BC4 /* PromiseKit in Frameworks */,
 				025E9DC12434F14C001E8B2E /* SwiftLocation in Frameworks */,
+				02742C1D243B4ED100C04A6A /* LetterAvatarKit in Frameworks */,
 				02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */,
 				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
 				02A9442C242B93FB00623BC4 /* Hero in Frameworks */,
@@ -279,6 +297,7 @@
 		023EFC0C24338854000A46B7 /* Friend */ = {
 			isa = PBXGroup;
 			children = (
+				02742C27243C61D100C04A6A /* FriendsRoute.swift */,
 			);
 			path = Friend;
 			sourceTree = "<group>";
@@ -423,6 +442,25 @@
 			path = Animations;
 			sourceTree = "<group>";
 		};
+		02742C20243B5DDA00C04A6A /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				02742C2B243C646700C04A6A /* Cells */,
+				02742C21243B5DEB00C04A6A /* SettingsViewController.swift */,
+				02742C29243C62AA00C04A6A /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		02742C2B243C646700C04A6A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				02742C2C243C648300C04A6A /* NotificationSettingsCell.swift */,
+				02742C2E243C649500C04A6A /* FriendSettingsCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		02A94401242B8CE100623BC4 = {
 			isa = PBXGroup;
 			children = (
@@ -482,6 +520,7 @@
 				02A9443F242B99AA00623BC4 /* UIView+Ext.swift */,
 				02A94441242B99AA00623BC4 /* UIViewControllerExt.swift */,
 				02A945682430CFD900623BC4 /* Date+Ext.swift */,
+				02742C1E243B503400C04A6A /* UIColor+Ext.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -531,6 +570,7 @@
 		02A9451A242CBA4500623BC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				02742C20243B5DDA00C04A6A /* Settings */,
 				02A945602430ADFA00623BC4 /* UserProfile */,
 				02A94553242FAD3A00623BC4 /* Login */,
 				02A9451D242CBA5000623BC4 /* CollectData */,
@@ -608,6 +648,8 @@
 		02A94549242FA00F00623BC4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02742C23243B5E4F00C04A6A /* HeaderView.swift */,
+				02742C24243B5E4F00C04A6A /* HeaderView.xib */,
 				025E9D752434E9E3001E8B2E /* BuletinBoard */,
 				02A9455E2430AA9E00623BC4 /* ErrorTextField.swift */,
 				02A9455B243098D500623BC4 /* ActionButton.swift */,
@@ -693,6 +735,7 @@
 				02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */,
 				025E9D702434BCCB001E8B2E /* Shuffle */,
 				025E9DC02434F14C001E8B2E /* SwiftLocation */,
+				02742C1C243B4ED100C04A6A /* LetterAvatarKit */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -741,6 +784,7 @@
 				02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				025E9D6F2434BCCB001E8B2E /* XCRemoteSwiftPackageReference "Shuffle" */,
 				025E9DBF2434F14C001E8B2E /* XCRemoteSwiftPackageReference "SwiftLocation" */,
+				02742C1B243B4ED100C04A6A /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -762,6 +806,7 @@
 				02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */,
 				02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */,
 				025E9DBE2434EE70001E8B2E /* BulletinAssets.xcassets in Resources */,
+				02742C26243B5E4F00C04A6A /* HeaderView.xib in Resources */,
 				02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */,
 				02A94415242B8CE100623BC4 /* Main.storyboard in Resources */,
 			);
@@ -790,11 +835,13 @@
 				025E9DA02434E9E3001E8B2E /* BLTNItemManager.swift in Sources */,
 				02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */,
 				025E9DAE2434E9E3001E8B2E /* ContinuousMaskLayer.swift in Sources */,
+				02742C2F243C649500C04A6A /* FriendSettingsCell.swift in Sources */,
 				02A94454242B99AA00623BC4 /* CLLocation+Extensions.swift in Sources */,
 				02A94469242B99F600623BC4 /* Coordinator.swift in Sources */,
 				025E9DBB2434E9E3001E8B2E /* BulletinDismissAnimationController.swift in Sources */,
 				02A94529242CC6B500623BC4 /* SwipeCardContentView.swift in Sources */,
 				025E9DB72434E9E3001E8B2E /* UIColor+Luminance.swift in Sources */,
+				02742C1F243B503400C04A6A /* UIColor+Ext.swift in Sources */,
 				02A9440E242B8CE100623BC4 /* AppDelegate.swift in Sources */,
 				025E9DA52434E9E3001E8B2E /* BLTNSpacing.swift in Sources */,
 				02A94455242B99AA00623BC4 /* Double+Extensions.swift in Sources */,
@@ -816,6 +863,7 @@
 				025E9DB62434E9E3001E8B2E /* UIView+SafeAnchors.swift in Sources */,
 				02A94456242B99AA00623BC4 /* UIImageExt.swift in Sources */,
 				02A94468242B99F600623BC4 /* Router.swift in Sources */,
+				02742C2D243C648300C04A6A /* NotificationSettingsCell.swift in Sources */,
 				025E9DA92434E9E3001E8B2E /* BulletinViewController.swift in Sources */,
 				02A94522242CC3D000623BC4 /* MainViewController.swift in Sources */,
 				025E9DA82434E9E3001E8B2E /* BLTNActionItem.m in Sources */,
@@ -826,6 +874,7 @@
 				025E9DB52434E9E3001E8B2E /* UIButton+BackgroundColor.swift in Sources */,
 				025E9DBA2434E9E3001E8B2E /* AnimationChain.swift in Sources */,
 				02A94465242B99F600623BC4 /* WindowRouter.swift in Sources */,
+				02742C2A243C62AA00C04A6A /* SettingsViewModel.swift in Sources */,
 				02A9445D242B99AA00623BC4 /* TableViewModelable.swift in Sources */,
 				02A94452242B99AA00623BC4 /* StringExt.swift in Sources */,
 				02A94466242B99F600623BC4 /* Presentable.swift in Sources */,
@@ -834,9 +883,12 @@
 				02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */,
 				0285CDAB24321D1E004DF64A /* CollectDataViewController.swift in Sources */,
 				025E9DAD2434E9E3001E8B2E /* UIView+RoundedView.swift in Sources */,
+				02742C28243C61D100C04A6A /* FriendsRoute.swift in Sources */,
 				025E9DA72434E9E3001E8B2E /* BLTNPageItem.m in Sources */,
 				02A9454B242FA02200623BC4 /* UIButton+Ext.swift in Sources */,
+				02742C22243B5DEB00C04A6A /* SettingsViewController.swift in Sources */,
 				02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */,
+				02742C25243B5E4F00C04A6A /* HeaderView.swift in Sources */,
 				025E9DAF2434E9E3001E8B2E /* RoundedViewProtocol.swift in Sources */,
 				0269292C2436227D00DDB8E2 /* MetricRoute.swift in Sources */,
 				025E9DB92434E9E3001E8B2E /* BulletinSwipeInteractionController.swift in Sources */,
@@ -1086,6 +1138,14 @@
 				minimumVersion = 4.2.0;
 			};
 		};
+		02742C1B243B4ED100C04A6A /* XCRemoteSwiftPackageReference "LetterAvatarKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vpeschenkov/LetterAvatarKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.2;
+			};
+		};
 		02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1226,6 +1286,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 025E9DBF2434F14C001E8B2E /* XCRemoteSwiftPackageReference "SwiftLocation" */;
 			productName = SwiftLocation;
+		};
+		02742C1C243B4ED100C04A6A /* LetterAvatarKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02742C1B243B4ED100C04A6A /* XCRemoteSwiftPackageReference "LetterAvatarKit" */;
+			productName = LetterAvatarKit;
 		};
 		02A94422242B923C00623BC4 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

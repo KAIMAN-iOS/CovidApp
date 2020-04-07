@@ -16,6 +16,13 @@ extension DateFormatter {
         return f
     } ()
     
+    static let timeOnlyFormatter: DateFormatter = {
+        let f = DateFormatter()
+        f.timeStyle = .short
+        f.dateStyle = .none
+        return f
+    } ()
+    
     static let facebookDateFormatter: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "MM/dd/yyyy"

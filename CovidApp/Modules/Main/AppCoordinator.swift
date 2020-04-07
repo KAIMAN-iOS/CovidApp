@@ -18,6 +18,11 @@ protocol AppCoordinatorDelegate: class {
     func showMainController()
     func showInitialMetrics()
     func collectDailyMetrics()
+    func showSettings()
+}
+
+protocol DailyNotificationDelegate: class {
+    func updateDailyNotification(for date: Date)
 }
 
 protocol ShareDelegate: class {
@@ -30,7 +35,10 @@ extension DefaultsKeys {
     var onboardingWasShown: DefaultsKey<Bool> { .init("onboardingWasShown", defaultValue: false) }
     var initialValuesFilled: DefaultsKey<Bool> { .init("initialValuesFilled", defaultValue: false) }
     var alreadyRequestedNotifications: DefaultsKey<Bool> { .init("alreadyRequestedNotifications", defaultValue: false) }
+    var notificationsEnabled: DefaultsKey<Bool> { .init("notificationsEnabled", defaultValue: false) }
     var collectedFirstData: DefaultsKey<Bool> { .init("collectedFirstData", defaultValue: false) }
+    var hourForNotification: DefaultsKey<Date?> { .init("hourForNotification", defaultValue: nil) }
+    var dailyNotificationId: DefaultsKey<String> { .init("dailyNotificationId", defaultValue: UUID().uuidString) }
 }
 
 fileprivate var onboardingWasShown: Bool {
@@ -96,13 +104,15 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     
-    lazy var bulletinManager: BLTNItemManager = {
-        let manager = BLTNItemManager(rootItem: locationItem)
+    var bulletinManager: BLTNItemManager?
+    
+    func showBulletin(for item: BLTNItem) {
+        bulletinManager = BLTNItemManager(rootItem: item)
         if #available(iOS 12.0, *) {
-            manager.backgroundViewStyle = .blurredDark
+            bulletinManager?.backgroundViewStyle = .blurredDark
         }
-        return manager
-    }()
+        bulletinManager?.showBulletin(above: mainController)
+    }
     
     lazy var locationItem: BLTNPageItem = {
         let page = BLTNPageItem(title: "ask location".local())
@@ -113,7 +123,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         page.alternativeButtonTitle = "Not now".local()
         
         page.actionHandler = { item in
-            self.bulletinManager.dismissBulletin()
+            self.bulletinManager?.dismissBulletin()
             
             LocationManager.shared.onAuthorizationChange.add { [weak self] state in
                 guard state != .undetermined else { return }
@@ -123,7 +133,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         }
         page.alternativeHandler = { [weak self] item in
             guard let self = self else { return }
-            self.bulletinManager.dismissBulletin()
+            self.bulletinManager?.dismissBulletin()
         }
         return page
     } ()
@@ -136,28 +146,37 @@ class AppCoordinator: Coordinator<DeepLink> {
         page.actionButtonTitle = "Activate notification".local()
         
         page.actionHandler = { item in
+            self.bulletinManager?.dismissBulletin()
             let center = UNUserNotificationCenter.current()
-            center.requestAuthorization(options: [.alert, .sound]) { granted, error in
+            center.requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
+                guard let self = self else { return }
                 Defaults[\.alreadyRequestedNotifications] = true
-                if let error = error {
-                    // Handle the error here.
+                Defaults[\.notificationsEnabled] = granted
+                if granted {
+                    self.updateNotificationsForDefaultAlarm()
                 }
-                // Enable or disable features based on the authorization.
             }
         }
         return page
     } ()
     
+    func updateNotificationsForDefaultAlarm() {
+        var compo = DateComponents()
+        compo.hour = 10
+        if let date = Calendar.current.date(from: compo) {
+            updateDailyNotification(for: date)
+        }
+    }
+    
     func askForLocation() {
         if LocationManager.state == .undetermined {
-            bulletinManager.showBulletin(above: mainController)
+            showBulletin(for: locationItem)
         }
     }
     
     func askForNotification() {
         if Defaults[\.alreadyRequestedNotifications] == false {
-            bulletinManager.push(item: notificationItem)
-            bulletinManager.showBulletin(above: mainController)
+            showBulletin(for: notificationItem)
         }
     }
     
@@ -165,7 +184,7 @@ class AppCoordinator: Coordinator<DeepLink> {
         CovidApi
             .shared
             .post(metric: dailyData)
-            .done { _ in }
+//            .done { _ in }
     }
     
     func appendLocation(to dailyData: Metrics) {
@@ -192,14 +211,24 @@ class AppCoordinator: Coordinator<DeepLink> {
 extension AppCoordinator: CloseDelegate {
     func close(_ controller: UIViewController) {
         
+        defer {
+            // recheck for controller to ask for notification once controller has been dismiss
+            mainController.dismiss(animated: true) { [weak self] in
+                switch controller {
+                case is CollectInitialDataViewController:
+                    self?.askForNotification()
+                    
+                default: ()
+                }
+            }
+            start()
+        }
+        
         switch controller {
         case is OnboardingViewController:
             Defaults[\.onboardingWasShown] = true
-            fallthrough
             
-        default:
-            mainController.dismiss(animated: true) { }
-            start()
+        default: ()
         }
     }
 }
@@ -222,10 +251,15 @@ extension AppCoordinator: AppCoordinatorDelegate {
         if Defaults[\.initialValuesFilled] == false {
             self.showInitialMetrics()
         }
-        
-        if Defaults[\.alreadyRequestedNotifications] == false {
-            Defaults[\.alreadyRequestedNotifications] = true
-            askForNotification()
+        // add a callback to check if the user denied notifications then enables them....
+         if Defaults[\.alreadyRequestedNotifications] == true, Defaults[\.hourForNotification] == nil {
+            let center = UNUserNotificationCenter.current()
+            center.requestAuthorization(options: [.alert, .sound]) { [weak self] granted, error in
+                guard let self = self else { return }
+                if granted {
+                    self.updateNotificationsForDefaultAlarm()
+                }
+            }
         }
     }
     
@@ -246,6 +280,13 @@ extension AppCoordinator: AppCoordinatorDelegate {
         router.present(coord, animated: true)
         coord.start()
     }
+    
+    func showSettings() {
+        let nav = SettingsViewController.createNavigationStack()
+        (nav.viewControllers.first as? SettingsViewController)?.closeDelegate = self
+        (nav.viewControllers.first as? SettingsViewController)?.notificationDelegate = self
+        router.present(nav, animated: true)
+    }
 }
 
 extension AppCoordinator: ShareDelegate {
@@ -257,6 +298,7 @@ extension AppCoordinator: ShareDelegate {
 extension AppCoordinator: CollectDataInitialCoordinatorDelegate {
     func didFinishCollect(data: Answers) {
         mainController.dismiss(animated: true, completion: nil)
+        askForNotification()
         CovidApi.shared.postInitial(answer: data).done { _ in
             
         }.catch { error in
@@ -282,3 +324,47 @@ extension AppCoordinator: CollectDailyMetricsDelegate {
     }
 }
 
+extension AppCoordinator: DailyNotificationDelegate {
+        
+    func updateDailyNotification(for date: Date) {
+        Defaults[\.hourForNotification] = date
+        let center = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "It's time".local()
+        content.body = "Answer your 5 questions".local()
+        content.categoryIdentifier = "alarm"
+        content.sound = UNNotificationSound.default
+        let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        // removes previous notifications just in case...
+        center.removeAllPendingNotificationRequests()
+        let request = UNNotificationRequest(identifier: Defaults[\.dailyNotificationId], content: content, trigger: trigger)
+        center.add(request)
+    }
+}
+
+extension AppCoordinator: UNUserNotificationCenterDelegate {
+    func handleTapOn(_ request: UNNotificationRequest) {
+        // if it was a local notification, we have it in our container notificationDatas
+        if request.identifier == Defaults[\.dailyNotificationId] {
+            collectDailyMetrics()
+        } else { // otherwise it is a remote notification
+            //TODO:
+//            handleRemoteNotificationData(request.content.userInfo, title: request.content.title, body: request.content.body)
+        }
+    }
+    
+    /// called when the user clicks on a specific action
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        defer {
+            completionHandler()
+        }
+        // open a notification from outside the app
+        handleTapOn(response.notification.request)
+    }
+    
+    /// called when a notification is delivered to the foreground app
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound])
+    }
+}

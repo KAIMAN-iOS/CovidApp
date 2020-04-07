@@ -36,6 +36,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var bottomContainerView: UIView!
     
     @IBAction func settingsBUtton(_ sender: Any) {
+        coordinatorDelegate?.showSettings()
     }
     
     @IBAction func launchReport(_ sender: Any) {

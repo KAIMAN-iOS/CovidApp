@@ -74,6 +74,15 @@
         }
       },
       {
+        "package": "LetterAvatarKit",
+        "repositoryURL": "https://github.com/vpeschenkov/LetterAvatarKit.git",
+        "state": {
+          "branch": null,
+          "revision": "218b48b379ec40166b89a048faa62eaa8d206b70",
+          "version": "1.2.2"
+        }
+      },
+      {
         "package": "MarqueeLabel",
         "repositoryURL": "https://github.com/cbpowell/MarqueeLabel",
         "state": {

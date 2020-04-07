@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="5Be-9A-jzh" customClass="HeaderView" customModule="CMM" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="82"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbl-jD-NM0">
+                    <rect key="frame" x="20" y="10" width="374" height="59"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="rbl-jD-NM0" secondAttribute="trailing" constant="20" id="2wc-1r-w1Y"/>
+                <constraint firstItem="rbl-jD-NM0" firstAttribute="top" secondItem="5Be-9A-jzh" secondAttribute="top" constant="10" id="Atj-mi-ucq"/>
+                <constraint firstItem="rbl-jD-NM0" firstAttribute="leading" secondItem="5Be-9A-jzh" secondAttribute="leading" constant="20" id="EDj-wY-cPi"/>
+                <constraint firstItem="bWk-w2-6P7" firstAttribute="bottom" secondItem="rbl-jD-NM0" secondAttribute="bottom" constant="13" id="EKl-2U-uWa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="bWk-w2-6P7"/>
+            <connections>
+                <outlet property="label" destination="rbl-jD-NM0" id="Sd8-0A-BvH"/>
+            </connections>
+            <point key="canvasLocation" x="-288.40579710144931" y="-279.91071428571428"/>
+        </view>
+    </objects>
+</document>

@@ -38,7 +38,7 @@
                                                     <constraint firstAttribute="width" constant="26" id="zyY-u9-soT"/>
                                                 </constraints>
                                                 <color key="tintColor" name="primary"/>
-                                                <state key="normal" image="gear" catalog="system"/>
+                                                <state key="normal" image="appSettings"/>
                                                 <connections>
                                                     <action selector="settingsBUtton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bM0-Bt-m8t"/>
                                                     <action selector="showSettings:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ale-4x-XHB"/>
@@ -591,7 +591,8 @@
                                     <constraint firstAttribute="height" constant="45" id="nbw-31-eUo"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="14" minY="14" maxX="14" maxY="14"/>
+                                <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="close:" destination="QB9-3u-h8S" eventType="touchUpInside" id="9Zs-F0-ma3"/>
                                 </connections>
@@ -751,7 +752,8 @@
                                 <rect key="frame" x="349" y="0.0" width="45" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" image="xmark" catalog="system"/>
+                                <inset key="imageEdgeInsets" minX="14" minY="14" maxX="14" maxY="14"/>
+                                <state key="normal" image="close"/>
                                 <connections>
                                     <action selector="close:" destination="mvy-yB-2SZ" eventType="touchUpInside" id="2c5-bS-GCi"/>
                                 </connections>
@@ -795,15 +797,179 @@
             </objects>
             <point key="canvasLocation" x="921.73913043478262" y="2169.6428571428569"/>
         </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="IoV-Fz-0hh">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="YVz-g0-Jx8" customClass="SettingsViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jzD-v9-gmJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nqc-Z9-PJy">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationSettingsCell" rowHeight="268" id="hsO-xr-eXw" customClass="NotificationSettingsCell" customModule="CovidApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="268"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hsO-xr-eXw" id="91g-oA-6MG">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="268"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Cio-CP-ZUs">
+                                                    <rect key="frame" x="18" y="12" width="378" height="244"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Heure de rappel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Qo-Vn-kok">
+                                                            <rect key="frame" x="0.0" y="0.0" width="378" height="20.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="NPa-TF-o3h">
+                                                            <rect key="frame" x="0.0" y="28.5" width="378" height="215.5"/>
+                                                            <connections>
+                                                                <action selector="timeChange:" destination="hsO-xr-eXw" eventType="valueChanged" id="Ta0-c9-1pe"/>
+                                                            </connections>
+                                                        </datePicker>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Cio-CP-ZUs" secondAttribute="bottom" constant="12" id="8d4-kE-Plf"/>
+                                                <constraint firstAttribute="trailing" secondItem="Cio-CP-ZUs" secondAttribute="trailing" constant="18" id="Y16-dn-cTt"/>
+                                                <constraint firstItem="Cio-CP-ZUs" firstAttribute="top" secondItem="91g-oA-6MG" secondAttribute="top" constant="12" id="r8z-yK-kfE"/>
+                                                <constraint firstItem="Cio-CP-ZUs" firstAttribute="leading" secondItem="91g-oA-6MG" secondAttribute="leading" constant="18" id="zLk-Ez-bCm"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="datePicker" destination="NPa-TF-o3h" id="NQ7-YV-Avk"/>
+                                            <outlet property="hourLabel" destination="1Qo-Vn-kok" id="RRg-aG-TCI"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendSettingsCell" rowHeight="70" id="635-GU-Me6" customClass="FriendSettingsCell" customModule="CovidApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="296" width="414" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="635-GU-Me6" id="TlO-of-YYU">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QEZ-GZ-cdl">
+                                                    <rect key="frame" x="8" y="8" width="54" height="54"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="QEZ-GZ-cdl" secondAttribute="height" multiplier="1:1" id="ATL-Yj-a9F"/>
+                                                        <constraint firstAttribute="height" constant="54" id="kew-hN-kiD"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jt2-RO-4vG">
+                                                    <rect key="frame" x="70" y="25" width="42" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFv-h1-Ix6">
+                                                    <rect key="frame" x="352" y="14" width="42" height="42"/>
+                                                    <color key="tintColor" name="alert"/>
+                                                    <inset key="imageEdgeInsets" minX="14" minY="14" maxX="14" maxY="14"/>
+                                                    <state key="normal" image="close"/>
+                                                    <connections>
+                                                        <action selector="deleteFriend:" destination="635-GU-Me6" eventType="touchUpInside" id="wMr-ey-bRV"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="oFv-h1-Ix6" secondAttribute="trailing" id="4zj-Lm-mIF"/>
+                                                <constraint firstItem="QEZ-GZ-cdl" firstAttribute="top" secondItem="TlO-of-YYU" secondAttribute="top" constant="8" id="SUh-bX-sso"/>
+                                                <constraint firstItem="jt2-RO-4vG" firstAttribute="centerY" secondItem="TlO-of-YYU" secondAttribute="centerY" id="awr-cu-Amb"/>
+                                                <constraint firstAttribute="bottom" secondItem="QEZ-GZ-cdl" secondAttribute="bottom" constant="8" id="hw3-ko-xFT"/>
+                                                <constraint firstItem="oFv-h1-Ix6" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jt2-RO-4vG" secondAttribute="trailing" id="lUl-Iu-T2N"/>
+                                                <constraint firstItem="oFv-h1-Ix6" firstAttribute="centerY" secondItem="TlO-of-YYU" secondAttribute="centerY" id="tW5-bL-lhY"/>
+                                                <constraint firstItem="QEZ-GZ-cdl" firstAttribute="leading" secondItem="TlO-of-YYU" secondAttribute="leading" constant="8" id="wan-1l-LsI"/>
+                                                <constraint firstItem="jt2-RO-4vG" firstAttribute="leading" secondItem="QEZ-GZ-cdl" secondAttribute="trailing" constant="8" id="zKl-nm-deX"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="deleteButton" destination="oFv-h1-Ix6" id="uYE-Jf-Uma"/>
+                                            <outlet property="icon" destination="QEZ-GZ-cdl" id="c1a-sy-0uw"/>
+                                            <outlet property="name" destination="jt2-RO-4vG" id="6Nl-0x-IXZ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YVz-g0-Jx8" id="ZdX-iR-lce"/>
+                                    <outlet property="delegate" destination="YVz-g0-Jx8" id="LLE-Mi-aAd"/>
+                                </connections>
+                            </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="1bf-ad-42J">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                <color key="tintColor" name="primary"/>
+                                <color key="color" name="primary"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="APS-Zw-YhG" firstAttribute="bottom" secondItem="nqc-Z9-PJy" secondAttribute="bottom" id="DGO-xa-a7d"/>
+                            <constraint firstItem="APS-Zw-YhG" firstAttribute="trailing" secondItem="nqc-Z9-PJy" secondAttribute="trailing" id="DcP-YC-Kld"/>
+                            <constraint firstItem="nqc-Z9-PJy" firstAttribute="leading" secondItem="APS-Zw-YhG" secondAttribute="leading" id="fh8-e5-e9k"/>
+                            <constraint firstItem="1bf-ad-42J" firstAttribute="centerY" secondItem="jzD-v9-gmJ" secondAttribute="centerY" id="oip-BG-0zJ"/>
+                            <constraint firstItem="1bf-ad-42J" firstAttribute="centerX" secondItem="jzD-v9-gmJ" secondAttribute="centerX" id="v2a-nN-cpX"/>
+                            <constraint firstItem="nqc-Z9-PJy" firstAttribute="top" secondItem="APS-Zw-YhG" secondAttribute="top" id="y89-Ng-oou"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="APS-Zw-YhG"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="TUP-E0-IT4">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Sqy-Qf-BJ0">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dR2-NS-akF">
+                                <rect key="frame" x="349" y="0.0" width="45" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="14" minY="14" maxX="14" maxY="14"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="close:" destination="YVz-g0-Jx8" eventType="touchUpInside" id="NeA-35-Y08"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="activityIndicator" destination="1bf-ad-42J" id="y4H-7O-5ii"/>
+                        <outlet property="tableView" destination="nqc-Z9-PJy" id="8vZ-tL-Zpt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TO2-Y9-YVm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1831.8840579710147" y="2833.9285714285711"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kFR-Xk-Pm9">
+            <objects>
+                <navigationController storyboardIdentifier="SettingsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="Igl-mW-Z7p" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zbq-Mm-W06">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" name="primary"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="YVz-g0-Jx8" kind="relationship" relationship="rootViewController" id="v6l-za-Ast"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVP-vw-6IT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="922" y="2834"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="appSettings" width="42" height="42"/>
+        <image name="close" width="42" height="42"/>
         <image name="covid'house" width="168.5" height="168.5"/>
         <image name="facebook" width="42" height="42"/>
-        <image name="gear" catalog="system" width="128" height="119"/>
         <image name="gobackward" catalog="system" width="121" height="128"/>
         <image name="government" width="168.5" height="168.5"/>
         <image name="shareFaces" width="168.5" height="168.5"/>
-        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="alert">
+            <color red="0.6029999852180481" green="0.17599999904632568" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="background">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

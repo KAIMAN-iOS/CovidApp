@@ -67,6 +67,10 @@ struct CovidApi {
             DataManager().store(user)
         }
     }
+    
+    func retrieveFriends() -> Promise<[Friend]> {
+        return perform(route: FriendRoute())
+    }
 }
 
 //MARK:- Internal class for API
