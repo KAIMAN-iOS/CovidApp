@@ -19,6 +19,7 @@ protocol AppCoordinatorDelegate: class {
     func showInitialMetrics()
     func collectDailyMetrics()
     func showSettings()
+    func showMetricsDetail(for user: User)
 }
 
 protocol DailyNotificationDelegate: class {
@@ -305,6 +306,13 @@ extension AppCoordinator: AppCoordinatorDelegate {
         (nav.viewControllers.first as? SettingsViewController)?.notificationDelegate = self
         (nav.viewControllers.first as? SettingsViewController)?.shareDelegate = self
         router.present(nav, animated: true)
+    }
+    
+    func showMetricsDetail(for user: User) {
+        let ctrl = MetricsCollectionViewController.create(with: user)
+        router.push(ctrl, animated: true) {
+            self.router.navigationController.setNavigationBarHidden(true, animated: true)
+        }
     }
 }
 

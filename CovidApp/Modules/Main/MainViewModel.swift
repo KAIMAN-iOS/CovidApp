@@ -14,6 +14,7 @@ enum CollectionViewType {
 
 class MainViewModel {
     weak var shareDelegate: ShareDelegate? = nil
+    weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     func numberOfItems(in section: Int, for type: CollectionViewType) -> Int {
         guard let user = user else { return 0 }
         switch type {
@@ -64,6 +65,8 @@ class MainViewModel {
         case .friends:
             if indexPath.row == user?.sharedUsers.count {
                 shareDelegate?.share()
+            } else {
+                coordinatorDelegate?.showMetricsDetail(for: user!.sharedUsers[indexPath.row])
             }
             
         default: ()

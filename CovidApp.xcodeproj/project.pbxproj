@@ -57,6 +57,8 @@
 		02742C2F243C649500C04A6A /* FriendSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C2E243C649500C04A6A /* FriendSettingsCell.swift */; };
 		02742C32243DADB000C04A6A /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C30243DADB000C04A6A /* FriendCollectionCell.swift */; };
 		02742C33243DADB000C04A6A /* FriendCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02742C31243DADB000C04A6A /* FriendCollectionCell.xib */; };
+		02742C36243DBB9500C04A6A /* MetricsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C35243DBB9500C04A6A /* MetricsCollectionViewController.swift */; };
+		02742C38243DBC1700C04A6A /* MetricsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C37243DBC1700C04A6A /* MetricsCollectionViewModel.swift */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -187,6 +189,8 @@
 		02742C2E243C649500C04A6A /* FriendSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSettingsCell.swift; sourceTree = "<group>"; };
 		02742C30243DADB000C04A6A /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
 		02742C31243DADB000C04A6A /* FriendCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionCell.xib; sourceTree = "<group>"; };
+		02742C35243DBB9500C04A6A /* MetricsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsCollectionViewController.swift; sourceTree = "<group>"; };
+		02742C37243DBC1700C04A6A /* MetricsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsCollectionViewModel.swift; sourceTree = "<group>"; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -465,6 +469,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		02742C34243DBB6200C04A6A /* MetricsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				02742C35243DBB9500C04A6A /* MetricsCollectionViewController.swift */,
+				02742C37243DBC1700C04A6A /* MetricsCollectionViewModel.swift */,
+			);
+			path = MetricsDetails;
+			sourceTree = "<group>";
+		};
 		02A94401242B8CE100623BC4 = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +587,7 @@
 		02A9451A242CBA4500623BC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				02742C34243DBB6200C04A6A /* MetricsDetails */,
 				02A9451D242CBA5000623BC4 /* CollectData */,
 				02A94553242FAD3A00623BC4 /* Login */,
 				02A9451B242CBA4800623BC4 /* Main */,
@@ -856,6 +870,7 @@
 				026929282435C09400DDB8E2 /* DataManager.swift in Sources */,
 				02A94451242B99AA00623BC4 /* UIView+Ext.swift in Sources */,
 				023EFC0524323932000A46B7 /* CollectDataInitialCoordinator.swift in Sources */,
+				02742C36243DBB9500C04A6A /* MetricsCollectionViewController.swift in Sources */,
 				02A94525242CC47D00623BC4 /* CovidSwipeCard.swift in Sources */,
 				025E9DB32434E9E3001E8B2E /* BLTNContainerView.swift in Sources */,
 				02A945622430AE4A00623BC4 /* AskEmailViewController.swift in Sources */,
@@ -888,6 +903,7 @@
 				025E9DB22434E9E3001E8B2E /* BLTNTitleLabelContainer.swift in Sources */,
 				02A9445E242B99AA00623BC4 /* Result.swift in Sources */,
 				02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */,
+				02742C38243DBC1700C04A6A /* MetricsCollectionViewModel.swift in Sources */,
 				0285CDAB24321D1E004DF64A /* CollectDataViewController.swift in Sources */,
 				025E9DAD2434E9E3001E8B2E /* UIView+RoundedView.swift in Sources */,
 				02742C28243C61D100C04A6A /* FriendsRoute.swift in Sources */,

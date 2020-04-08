@@ -60,6 +60,7 @@ class MainViewController: UIViewController {
         noFriendController = ctrl
         noFriendController.shareDelegate = shareDelegate
         viewModel.shareDelegate = shareDelegate
+        viewModel.coordinatorDelegate = coordinatorDelegate
         handleLayout()
     }
     
