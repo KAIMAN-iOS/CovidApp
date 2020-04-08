@@ -55,6 +55,8 @@
 		02742C2A243C62AA00C04A6A /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C29243C62AA00C04A6A /* SettingsViewModel.swift */; };
 		02742C2D243C648300C04A6A /* NotificationSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C2C243C648300C04A6A /* NotificationSettingsCell.swift */; };
 		02742C2F243C649500C04A6A /* FriendSettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C2E243C649500C04A6A /* FriendSettingsCell.swift */; };
+		02742C32243DADB000C04A6A /* FriendCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C30243DADB000C04A6A /* FriendCollectionCell.swift */; };
+		02742C33243DADB000C04A6A /* FriendCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02742C31243DADB000C04A6A /* FriendCollectionCell.xib */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -183,6 +185,8 @@
 		02742C29243C62AA00C04A6A /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		02742C2C243C648300C04A6A /* NotificationSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsCell.swift; sourceTree = "<group>"; };
 		02742C2E243C649500C04A6A /* FriendSettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendSettingsCell.swift; sourceTree = "<group>"; };
+		02742C30243DADB000C04A6A /* FriendCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCollectionCell.swift; sourceTree = "<group>"; };
+		02742C31243DADB000C04A6A /* FriendCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionCell.xib; sourceTree = "<group>"; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -484,7 +488,6 @@
 				02A9455D2430A6B600623BC4 /* CovidApp.entitlements */,
 				02A94520242CBBF000623BC4 /* Configuration */,
 				02A9451A242CBA4500623BC4 /* Modules */,
-				02A9445F242B99F600623BC4 /* CoordinatorKit */,
 				02A9443C242B99AA00623BC4 /* Utils */,
 				02A9440D242B8CE100623BC4 /* AppDelegate.swift */,
 				02A94478242BB8A300623BC4 /* SceneDelegate.swift */,
@@ -497,11 +500,12 @@
 		02A9443C242B99AA00623BC4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				02A9454C242FAA6C00623BC4 /* Manager */,
-				02A94549242FA00F00623BC4 /* Views */,
-				02A944E4242BC24900623BC4 /* Network */,
+				02A9445F242B99F600623BC4 /* CoordinatorKit */,
 				02A9443E242B99AA00623BC4 /* Ext */,
+				02A9454C242FAA6C00623BC4 /* Manager */,
+				02A944E4242BC24900623BC4 /* Network */,
 				02A9444D242B99AA00623BC4 /* Protocols */,
+				02A94549242FA00F00623BC4 /* Views */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -570,12 +574,12 @@
 		02A9451A242CBA4500623BC4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				02A9451D242CBA5000623BC4 /* CollectData */,
+				02A94553242FAD3A00623BC4 /* Login */,
+				02A9451B242CBA4800623BC4 /* Main */,
+				02A9451C242CBA4C00623BC4 /* Onboarding */,
 				02742C20243B5DDA00C04A6A /* Settings */,
 				02A945602430ADFA00623BC4 /* UserProfile */,
-				02A94553242FAD3A00623BC4 /* Login */,
-				02A9451D242CBA5000623BC4 /* CollectData */,
-				02A9451C242CBA4C00623BC4 /* Onboarding */,
-				02A9451B242CBA4800623BC4 /* Main */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -694,6 +698,8 @@
 				0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */,
 				0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */,
 				0285CDA6243216BA004DF64A /* NoFriendsViewController.swift */,
+				02742C30243DADB000C04A6A /* FriendCollectionCell.swift */,
+				02742C31243DADB000C04A6A /* FriendCollectionCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -809,6 +815,7 @@
 				02742C26243B5E4F00C04A6A /* HeaderView.xib in Resources */,
 				02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */,
 				02A94415242B8CE100623BC4 /* Main.storyboard in Resources */,
+				02742C33243DADB000C04A6A /* FriendCollectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -897,6 +904,7 @@
 				02A94453242B99AA00623BC4 /* UIViewControllerExt.swift in Sources */,
 				02A94555242FAD9200623BC4 /* LoginViewController.swift in Sources */,
 				02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */,
+				02742C32243DADB000C04A6A /* FriendCollectionCell.swift in Sources */,
 				0285CDAD24322164004DF64A /* CollectInitialDataViewController.swift in Sources */,
 				023EFC112434803C000A46B7 /* Register.swift in Sources */,
 				02A944E8242BC25200623BC4 /* RequestObject.swift in Sources */,

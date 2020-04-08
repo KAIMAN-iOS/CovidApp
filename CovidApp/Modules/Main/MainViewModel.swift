@@ -13,11 +13,12 @@ enum CollectionViewType {
 }
 
 class MainViewModel {
+    weak var shareDelegate: ShareDelegate? = nil
     func numberOfItems(in section: Int, for type: CollectionViewType) -> Int {
         guard let user = user else { return 0 }
         switch type {
         case .metrics: return user.user.metrics.count
-        case .friends: return user.sharedUsers.count
+        case .friends: return user.sharedUsers.count > 0 ? user.sharedUsers.count + 1 : 0
         }
     }
     
@@ -30,7 +31,11 @@ class MainViewModel {
                 return cell
             }
             
-        case .friends: ()
+        case .friends:
+            if let cell: FriendCollectionCell = collectionView.automaticallyDequeueReusableCell(forIndexPath: indexPath) {
+                cell.configure(with:  indexPath.row == user.sharedUsers.count ? .add : .friend(user.sharedUsers[indexPath.row]))
+                return cell
+            }
         }
         return UICollectionViewCell()
     }
@@ -51,6 +56,17 @@ class MainViewModel {
             }
         } else {
             completion()
+        }
+    }
+    
+    func didSelectCell(at indexPath: IndexPath, for type: CollectionViewType) {
+        switch type {
+        case .friends:
+            if indexPath.row == user?.sharedUsers.count {
+                shareDelegate?.share()
+            }
+            
+        default: ()
         }
     }
 }

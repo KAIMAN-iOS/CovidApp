@@ -99,3 +99,6 @@
 "userNotLoggedIn" = "Vous n'êtes pas encore connecté";
 "addFriendFailed" = "Impossible d'ajouter cet ami pour l'instant. Merci de ré-essayer plus tard";
 "share format" = "http://api.kaiman.fr/public/api/share/%@";
+"add a friend" = "Ajouter un ami";
+"Notification" = "Notifications";
+"friend list" = "Je partage mes données avec";

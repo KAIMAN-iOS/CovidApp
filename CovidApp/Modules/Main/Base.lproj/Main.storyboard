@@ -124,8 +124,14 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wm2-oT-yxF">
                                         <rect key="frame" x="0.0" y="377" width="390" height="467"/>
                                         <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-A4-gZo">
+                                                <rect key="frame" x="0.0" y="36.5" width="390" height="430.5"/>
+                                                <connections>
+                                                    <segue destination="3p7-2O-U8q" kind="embed" id="nJv-kM-Ncm"/>
+                                                </connections>
+                                            </containerView>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e08-MA-RAF">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="467"/>
+                                                <rect key="frame" x="0.0" y="36.5" width="390" height="430.5"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vuv-Ac-Mx5">
                                                     <size key="itemSize" width="128" height="128"/>
@@ -148,22 +154,24 @@
                                                     <outlet property="delegate" destination="BYZ-38-t0r" id="NN0-Yg-x0t"/>
                                                 </connections>
                                             </collectionView>
-                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ey7-A4-gZo">
-                                                <rect key="frame" x="0.0" y="0.0" width="390" height="467"/>
-                                                <connections>
-                                                    <segue destination="3p7-2O-U8q" kind="embed" id="nJv-kM-Ncm"/>
-                                                </connections>
-                                            </containerView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ma famille et amis" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TFe-RM-Tym">
+                                                <rect key="frame" x="8" y="8" width="137.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstItem="ey7-A4-gZo" firstAttribute="leading" secondItem="wm2-oT-yxF" secondAttribute="leading" id="CoK-zv-ZBa"/>
                                             <constraint firstAttribute="bottom" secondItem="e08-MA-RAF" secondAttribute="bottom" id="Ffg-bh-Y5I"/>
                                             <constraint firstAttribute="trailing" secondItem="e08-MA-RAF" secondAttribute="trailing" id="afd-Md-jZ6"/>
+                                            <constraint firstItem="TFe-RM-Tym" firstAttribute="leading" secondItem="wm2-oT-yxF" secondAttribute="leading" constant="8" id="flT-ml-Bhr"/>
                                             <constraint firstItem="e08-MA-RAF" firstAttribute="leading" secondItem="wm2-oT-yxF" secondAttribute="leading" id="jn4-3r-AMA"/>
-                                            <constraint firstItem="e08-MA-RAF" firstAttribute="top" secondItem="wm2-oT-yxF" secondAttribute="top" id="nBU-8b-NvA"/>
-                                            <constraint firstItem="ey7-A4-gZo" firstAttribute="top" secondItem="wm2-oT-yxF" secondAttribute="top" id="oBj-e6-MkR"/>
+                                            <constraint firstItem="TFe-RM-Tym" firstAttribute="top" secondItem="wm2-oT-yxF" secondAttribute="top" constant="8" id="msM-Fi-FNA"/>
+                                            <constraint firstItem="e08-MA-RAF" firstAttribute="top" secondItem="TFe-RM-Tym" secondAttribute="bottom" constant="8" id="neA-AV-qHC"/>
                                             <constraint firstAttribute="trailing" secondItem="ey7-A4-gZo" secondAttribute="trailing" id="pYr-kw-YC1"/>
+                                            <constraint firstItem="ey7-A4-gZo" firstAttribute="top" secondItem="TFe-RM-Tym" secondAttribute="bottom" constant="8" id="ud9-3O-zM7"/>
                                             <constraint firstAttribute="bottom" secondItem="ey7-A4-gZo" secondAttribute="bottom" id="yWv-Fi-onH"/>
                                         </constraints>
                                     </view>
@@ -481,26 +489,26 @@
             <objects>
                 <viewController storyboardIdentifier="NoFriendsViewController" id="3p7-2O-U8q" customClass="NoFriendsViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8W9-Hc-4P5">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="467"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="430.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="ptP-ub-WmD">
-                                <rect key="frame" x="24" y="68" width="342" height="331"/>
+                                <rect key="frame" x="24" y="68" width="342" height="294.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" verticalCompressionResistancePriority="749" image="shareFaces" translatesAutoresizingMaskIntoConstraints="NO" id="Kkh-wo-8ow">
-                                        <rect key="frame" x="0.0" y="0.0" width="342" height="166.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="342" height="130"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="9mq-Ah-BAE"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C'est toujours meilleur quand on partage." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2j-8r-r7L">
-                                        <rect key="frame" x="0.0" y="213.5" width="342" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="177" width="342" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4y-sa-wtM" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="281" width="342" height="50"/>
+                                        <rect key="frame" x="0.0" y="244.5" width="342" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="avt-gP-hQg"/>
                                         </constraints>

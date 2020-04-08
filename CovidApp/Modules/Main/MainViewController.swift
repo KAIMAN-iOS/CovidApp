@@ -32,7 +32,12 @@ class MainViewController: UIViewController {
         }
     }
 
-    @IBOutlet weak var friendsCollectionView: UICollectionView!
+    @IBOutlet weak var friendsCollectionView: UICollectionView!  {
+        didSet {
+            friendsCollectionView.register(cell: FriendCollectionCell.self)
+        }
+    }
+
     @IBOutlet weak var bottomContainerView: UIView!
     
     @IBAction func settingsBUtton(_ sender: Any) {
@@ -54,6 +59,7 @@ class MainViewController: UIViewController {
         }
         noFriendController = ctrl
         noFriendController.shareDelegate = shareDelegate
+        viewModel.shareDelegate = shareDelegate
         handleLayout()
     }
     
@@ -114,6 +120,6 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 
 extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        viewModel.didSelectCell(at: indexPath, for: collectionType[collectionView]!)
     }
 }
