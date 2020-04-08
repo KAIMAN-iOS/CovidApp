@@ -83,6 +83,24 @@ class AppCoordinator: Coordinator<DeepLink> {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.white]
     }
     
+    func open(from link: DeepLink) {
+        switch link {
+        case .share(let userId):
+            guard SessionController().userLoggedIn == true else {
+                MessageManager.show(.request(.userNotLoggedIn), in: mainController)
+                return
+            }
+            CovidApi.shared.addFriend(with: userId).done { [weak self] _ in
+                self?.mainController.loadUser()
+            }.catch { [weak self] error in
+                guard let self = self else { return }
+                MessageManager.show(.request(.addFriendFailed), in: self.mainController)
+            }
+            
+        default: ()
+        }
+    }
+    
     override func start() {
         switch instructor {
         case .onboarding: presentOnboardingFlow()
@@ -285,13 +303,16 @@ extension AppCoordinator: AppCoordinatorDelegate {
         let nav = SettingsViewController.createNavigationStack()
         (nav.viewControllers.first as? SettingsViewController)?.closeDelegate = self
         (nav.viewControllers.first as? SettingsViewController)?.notificationDelegate = self
+        (nav.viewControllers.first as? SettingsViewController)?.shareDelegate = self
         router.present(nav, animated: true)
     }
 }
 
 extension AppCoordinator: ShareDelegate {
     func share() {
-        
+        let sharedString = String(format: "share format".local(), SessionController().email ?? "")
+        let image = UIImage(named:"AppIcon60x60")!
+        mainController.showShareViewController(with:[sharedString, image])
     }
 }
 

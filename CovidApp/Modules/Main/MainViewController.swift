@@ -62,7 +62,7 @@ class MainViewController: UIViewController {
         loadUser()
     }
     
-    private func loadUser() {
+    func loadUser() {
         MessageManager.show(.basic(.loadingPleaseWait), in: self)
         viewModel
             .loadUser { [weak self] in

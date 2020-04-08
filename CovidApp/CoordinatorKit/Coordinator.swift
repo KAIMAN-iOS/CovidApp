@@ -60,6 +60,16 @@ open class Coordinator<DeepLinkType>: PresentableCoordinator<DeepLinkType>, Coor
 }
 
 enum DeepLink {
-    case auth
+    case share(userEmail: String)
     case home
+    
+    static var scheme: String = "covidapp"
+    
+    static func from(route: String) -> DeepLink? {
+        //
+        if let range = route.range(of: "share"), let userEmail = Optional.some(route[route.index(after: range.upperBound)..<route.endIndex]), String(userEmail).isValidEmail {
+            return .share(userEmail: String(userEmail))
+        }
+        return nil
+    }
 }

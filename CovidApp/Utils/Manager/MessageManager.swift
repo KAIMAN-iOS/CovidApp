@@ -147,19 +147,23 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
         case noNetwork
         case noResult
         case serverError
+        case userNotLoggedIn
+        case addFriendFailed
 
         func hash(into hasher: inout Hasher) {
             switch self {
             case .noNetwork: hasher.combine(0)
             case .noResult: hasher.combine(1)
             case .serverError: hasher.combine(2)
+            case .userNotLoggedIn: hasher.combine(2)
+            case .addFriendFailed: hasher.combine(2)
             }
             hasher.combine("MessageTypeRequest")
         }
         
         var configuration: MessageDisplayConfiguration {
             switch self {
-            default: return MessageDisplayConfiguration.card
+            default: return MessageDisplayConfiguration.notification
             }
         }
 
@@ -174,6 +178,8 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
             case .noNetwork: return "no network".local()
             case .noResult: return "search no result small text".local()
             case .serverError: return "Server error".local()
+            case .userNotLoggedIn: return "Server error".local()
+            case .addFriendFailed: return "Server error".local()
             }
         }
 

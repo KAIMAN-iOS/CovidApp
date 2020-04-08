@@ -31,7 +31,7 @@ extension UIViewController {
     
     
     func showShareViewController(with items: [Any],
-                                 excludedActivityTypes: [UIActivity.ActivityType] = [.airDrop, .addToReadingList, .assignToContact, .copyToPasteboard, .openInIBooks, .saveToCameraRoll]) {
+                                 excludedActivityTypes: [UIActivity.ActivityType] = [.addToReadingList, .assignToContact, .copyToPasteboard, .openInIBooks, .saveToCameraRoll]) {
         let shareController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         shareController.excludedActivityTypes = excludedActivityTypes
         

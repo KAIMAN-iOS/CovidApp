@@ -10,6 +10,7 @@ import UIKit
 
 class SettingsViewController: UIViewController {
 
+    weak var shareDelegate: ShareDelegate? = nil
     weak var notificationDelegate: DailyNotificationDelegate? = nil
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     static func createNavigationStack() -> UINavigationController {
@@ -31,8 +32,10 @@ class SettingsViewController: UIViewController {
         viewModel.notificationDelegate = notificationDelegate
         viewModel.deleteFriendDelegate = self
         retrieveFriends()
+        backgroundView.shareDelegate = shareDelegate
     }
     
+    let backgroundView: NoFriendsViewController = NoFriendsViewController.create()
     private func retrieveFriends() {
         activityIndicator.startAnimating()
         viewModel.retrieveFriends()
@@ -41,9 +44,15 @@ class SettingsViewController: UIViewController {
         }
         .done { [weak self] friends in
             guard let self = self else { return }
+            guard friends.count > 0 else {
+                self.tableView.backgroundView = self.backgroundView.view
+                return
+            }
+            self.tableView.backgroundView = nil
             self.tableView.reloadData()
         }.catch { error in
-            // TODO:
+            MessageManager.show(.request(.serverError))
+            self.tableView.backgroundView = self.backgroundView.view
         }
     }
     

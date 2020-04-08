@@ -74,12 +74,13 @@ class User: BasicUser {
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        print("🐞 \(container.allKeys)")
         if let metrics: [MetricsApiWrapper] = try? container.decode([MetricsApiWrapper].self, forKey: .metrics) {
             self.metrics = metrics.compactMap({ $0.asMetrics })
         } else {
             self.metrics = []
         }
-        let dateAsString: String = try container.decode(String.self, forKey: .birthdate)
+        let dateAsString: String = try container.decodeIfPresent(String.self, forKey: .birthdate) ?? ""
         guard let date = DateFormatter.apiDateFormatter.date(from: dateAsString) else {
             throw DecodingError.keyNotFound(CodingKeys.birthdate, DecodingError.Context(codingPath: [CodingKeys.birthdate], debugDescription: ""))
         }
@@ -98,28 +99,30 @@ class User: BasicUser {
     }
 }
 
-class CurrentUser: User {
+class CurrentUser: Codable {
     private (set) var sharedUsers: [User]
+    private (set) var user: User
     
-    override init() {
+    init() {
         sharedUsers = []
-        super.init()
+        user = User()
     }
     
     enum CodingKeys: String, CodingKey {
-        case sharedUsers = "sharedUsers"
+        case sharedUsers = "shared"
+        case currentUser = "current"
     }
     
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         //mandatory
         sharedUsers = try container.decodeIfPresent([User].self, forKey: .sharedUsers) ?? []
-        try super.init(from: decoder)
+        user = try container.decode(User.self, forKey: .currentUser)
     }
     
-    override func encode(to encoder: Encoder) throws {
+    func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(sharedUsers, forKey: .sharedUsers)
-        try super.encode(to: encoder)
+        try container.encode(user, forKey: .currentUser)
     }
 }

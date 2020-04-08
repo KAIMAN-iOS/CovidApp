@@ -95,3 +95,7 @@
 "Attention" = "Attention";
 "About to Delete friend" = "Vous êtes sur le point de supprimer le partage envers un ami. Souhaitez vous continuer ?";
 "confirm delete" = "Supprimer";
+
+"userNotLoggedIn" = "Vous n'êtes pas encore connecté";
+"addFriendFailed" = "Impossible d'ajouter cet ami pour l'instant. Merci de ré-essayer plus tard";
+"share format" = "http://api.kaiman.fr/public/api/share/%@";

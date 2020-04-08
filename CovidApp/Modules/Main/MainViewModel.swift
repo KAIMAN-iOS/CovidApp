@@ -16,7 +16,7 @@ class MainViewModel {
     func numberOfItems(in section: Int, for type: CollectionViewType) -> Int {
         guard let user = user else { return 0 }
         switch type {
-        case .metrics: return user.metrics.count
+        case .metrics: return user.user.metrics.count
         case .friends: return user.sharedUsers.count
         }
     }
@@ -26,7 +26,7 @@ class MainViewModel {
         switch type {
         case .metrics:
             if let cell: MetricStatesCell = collectionView.automaticallyDequeueReusableCell(forIndexPath: indexPath) {
-                cell.configure(user.metrics.reversed()[indexPath.row])
+                cell.configure(user.user.metrics.reversed()[indexPath.row])
                 return cell
             }
             

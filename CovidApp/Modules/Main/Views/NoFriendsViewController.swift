@@ -10,6 +10,9 @@ import UIKit
 
 class NoFriendsViewController: UIViewController {
 
+    static func create() -> NoFriendsViewController {
+        return NoFriendsViewController.loadFromStoryboard(identifier: "NoFriendsViewController", storyboardName: "Main")
+    }
     weak var shareDelegate: ShareDelegate? = nil
     @IBOutlet weak var addFriendsButton: ActionButton!  {
         didSet {

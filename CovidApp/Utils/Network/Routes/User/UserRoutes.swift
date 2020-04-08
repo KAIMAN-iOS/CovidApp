@@ -88,7 +88,7 @@ class RetrieveUserRoute: RequestObject<CurrentUser> {
     }
     
     override var endpoint: String? {
-        "user/current"
+        "user/current2"
     }
     
     override var encoding: ParameterEncoding {

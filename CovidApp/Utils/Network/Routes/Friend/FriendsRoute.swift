@@ -52,7 +52,7 @@ class DeleteFriendRoute: RequestObject<EmptyResponseData> {
     }
     
     override var parameters: RequestParameters? {
-        return DeleteFriendParameter(id: id)
+        return FriendIdParameter(id: id)
     }
     
     let id: Int!
@@ -61,7 +61,32 @@ class DeleteFriendRoute: RequestObject<EmptyResponseData> {
     }
 }
 
-class DeleteFriendParameter: CovidAppApiCommonParameters {
+class AddFriendRoute: RequestObject<EmptyResponseData> {
+    // MARK: - RequestObject Protocol
+    
+    override var method: HTTPMethod {
+        .post
+    }
+    
+    override var endpoint: String? {
+        "friend/post"
+    }
+    
+    override var encoding: ParameterEncoding {
+        return JSONEncoding.default
+    }
+    
+    override var parameters: RequestParameters? {
+        return FriendEmailParameter(email: email)
+    }
+    
+    let email: String!
+    init(email: String) {
+        self.email = email
+    }
+}
+
+class FriendIdParameter: CovidAppApiCommonParameters {
     let id: Int
     
     init(id: Int) {
@@ -79,4 +104,22 @@ class DeleteFriendParameter: CovidAppApiCommonParameters {
     }
 }
 
+
+class FriendEmailParameter: CovidAppApiCommonParameters {
+    let email: String
+    
+    init(email: String) {
+        self.email = email
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case email = "username"
+    }
+    
+    override func encode(to encoder: Encoder) throws {
+        try super.encode(to: encoder)
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(email, forKey: .email)
+    }
+}
 
