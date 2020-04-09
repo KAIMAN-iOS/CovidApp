@@ -10,6 +10,7 @@ import UIKit
 import NotificationBannerSwift
 import SnapKit
 import AudioToolbox
+import Loaf
 
 public protocol MessageConfigurable {
     var configuration: MessageDisplayConfiguration { get }
@@ -149,14 +150,16 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
         case serverError
         case userNotLoggedIn
         case addFriendFailed
+        case cantAddSelf
 
         func hash(into hasher: inout Hasher) {
             switch self {
             case .noNetwork: hasher.combine(0)
             case .noResult: hasher.combine(1)
             case .serverError: hasher.combine(2)
-            case .userNotLoggedIn: hasher.combine(2)
-            case .addFriendFailed: hasher.combine(2)
+            case .userNotLoggedIn: hasher.combine(3)
+            case .addFriendFailed: hasher.combine(4)
+            case .cantAddSelf: hasher.combine(5)
             }
             hasher.combine("MessageTypeRequest")
         }
@@ -178,8 +181,9 @@ enum MessageType: MessageConfigurable, MessageDisplayable, Hashable {
             case .noNetwork: return "no network".local()
             case .noResult: return "search no result small text".local()
             case .serverError: return "Server error".local()
-            case .userNotLoggedIn: return "Server error".local()
-            case .addFriendFailed: return "Server error".local()
+            case .userNotLoggedIn: return "userNotLoggedIn".local()
+            case .addFriendFailed: return "addFriendFailed".local()
+            case .cantAddSelf: return "cantAddSelf".local()
             }
         }
 
@@ -251,7 +255,7 @@ public struct MessageDisplayConfiguration {
     var containerView: UIView? = nil
     var duration: Double = 5.0
     var interactiveHide: Bool = true
-    var bannerStyle: BannerStyle = .info
+    var bannerStyle: Loaf.State = .success
     var vibrate: Bool = false
     var buttonConfiguration: ButtonConfiguration? = nil
     var delegate: NotificationBannerDelegate?
@@ -260,7 +264,7 @@ public struct MessageDisplayConfiguration {
     var closeTapHandler: ((_ button: UIButton) -> Void)? = nil
     static var line = MessageDisplayConfiguration(displayType: .line, bannerStyle: .success)
     static var card = MessageDisplayConfiguration(displayType: .card, bannerStyle: .success)
-    static var alert = MessageDisplayConfiguration(bannerStyle: .danger)
+    static var alert = MessageDisplayConfiguration(bannerStyle: .error)
     static var notification = MessageDisplayConfiguration()
     
     public static func make(customizeBlock: (inout MessageDisplayConfiguration) -> Void) -> MessageDisplayConfiguration {
@@ -284,6 +288,15 @@ public enum MessageDisplayType {
     case line // just a simple line
     case card // a card like notificaction with a shadow and round borders
     case points
+}
+
+extension UIViewController {
+    static var windowController: UIViewController {
+        if #available(iOS 13.0, *) {
+            return UIApplication.shared.connectedScenes.compactMap({ $0.delegate }).compactMap({ $0 as? SceneDelegate }).first!.appCoordinator.router.navigationController
+        }
+        return (UIApplication.shared.delegate as! AppDelegate).appCoordinator.router.navigationController
+    }
 }
 
 //MARK: - MessageManager
@@ -315,37 +328,22 @@ class MessageManager {
         
         switch conf.displayType {
         case .line:
-            let banner = StatusBarNotificationBanner(title: type.title, style: conf.bannerStyle)
-            banner.delegate = self
-            banner.show(on: viewController)
+            let loaf = Loaf("\(type.title)\(type.body != nil ? "\n\(type.body!)" : "")", state: conf.bannerStyle, location: .top, presentingDirection: .vertical, dismissingDirection: .vertical, sender: UIViewController.windowController)
+            loaf.show(Loaf.Duration.average) {  reason in
+                self.queue.removeFirst()
+            }
             
         case .card:
-            let banner = FloatingNotificationBanner(title: type.title, subtitle: type.body, leftView: UIImageView(image: conf.icon), style: conf.bannerStyle, iconPosition: .center)
-            banner.delegate = self
-            banner.show(on: viewController)
+            let loaf = Loaf("\(type.title)\(type.body != nil ? "\n\(type.body!)" : "")", state: .custom(Loaf.Style(backgroundColor: Palette.basic.primary.color, textColor: .white, icon: conf.icon)), location: .top, presentingDirection: .vertical, dismissingDirection: .vertical, sender: UIViewController.windowController)
+            loaf.show(Loaf.Duration.average) { reason in
+                self.queue.removeFirst()
+            }
             
         default:
-            let banner = NotificationBanner(title: type.title, subtitle: type.body, leftView: UIImageView(image: conf.icon), style: conf.bannerStyle)
-            banner.delegate = self
-            banner.show(on: viewController)
+            let loaf = Loaf("\(type.title)\(type.body != nil ? "\n\(type.body!)" : "")", state: .custom(Loaf.Style(backgroundColor: Palette.basic.primary.color, textColor: .white, icon: conf.icon)), location: .top, presentingDirection: .vertical, dismissingDirection: .vertical, sender: UIViewController.windowController)
+            loaf.show(Loaf.Duration.average) { reason in
+                self.queue.removeFirst()
+            }
         }
-    }
-}
-
-extension MessageManager: NotificationBannerDelegate {
-    func notificationBannerWillAppear(_ banner: BaseNotificationBanner) {
-        
-    }
-    
-    func notificationBannerDidAppear(_ banner: BaseNotificationBanner) {
-        
-    }
-    
-    func notificationBannerWillDisappear(_ banner: BaseNotificationBanner) {
-        queue.removeFirst()
-    }
-    
-    func notificationBannerDidDisappear(_ banner: BaseNotificationBanner) {
-        
     }
 }

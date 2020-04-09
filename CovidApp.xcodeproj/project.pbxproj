@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02276312243F85DB00F3BAF3 /* CovidAppMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02276311243F85DB00F3BAF3 /* CovidAppMetaData.swift */; };
+		02276314243F861B00F3BAF3 /* LinkPresentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02276313243F861A00F3BAF3 /* LinkPresentation.framework */; };
 		023EFC0524323932000A46B7 /* CollectDataInitialCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */; };
 		023EFC0724336E2F000A46B7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC0624336E2F000A46B7 /* Storage.swift */; };
 		023EFC09243386E7000A46B7 /* CovidAppApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 023EFC08243386E7000A46B7 /* CovidAppApi.swift */; };
@@ -59,6 +61,14 @@
 		02742C33243DADB000C04A6A /* FriendCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02742C31243DADB000C04A6A /* FriendCollectionCell.xib */; };
 		02742C36243DBB9500C04A6A /* MetricsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C35243DBB9500C04A6A /* MetricsCollectionViewController.swift */; };
 		02742C38243DBC1700C04A6A /* MetricsCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02742C37243DBC1700C04A6A /* MetricsCollectionViewModel.swift */; };
+		02742C3A243DBE2B00C04A6A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C39243DBE2B00C04A6A /* CoreLocation.framework */; };
+		02742C3C243DBE3B00C04A6A /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C3B243DBE3B00C04A6A /* AudioToolbox.framework */; };
+		02742C3E243DBE4600C04A6A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C3D243DBE4600C04A6A /* AVFoundation.framework */; };
+		02742C43243DBE8400C04A6A /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C3F243DBE8400C04A6A /* UserNotifications.framework */; };
+		02742C44243DBE8400C04A6A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C40243DBE8400C04A6A /* MessageUI.framework */; };
+		02742C45243DBE8500C04A6A /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C41243DBE8400C04A6A /* UserNotificationsUI.framework */; };
+		02742C46243DBE8500C04A6A /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02742C42243DBE8400C04A6A /* Messages.framework */; };
+		02742C4C243F22FB00C04A6A /* Loaf in Frameworks */ = {isa = PBXBuildFile; productRef = 02742C4B243F22FB00C04A6A /* Loaf */; };
 		0285CDA22431EDF2004DF64A /* MetricStatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */; };
 		0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */; };
 		0285CDA52431EFDB004DF64A /* DynamicHeightCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */; };
@@ -136,6 +146,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		02276311243F85DB00F3BAF3 /* CovidAppMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAppMetaData.swift; sourceTree = "<group>"; };
+		02276313243F861A00F3BAF3 /* LinkPresentation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LinkPresentation.framework; path = System/Library/Frameworks/LinkPresentation.framework; sourceTree = SDKROOT; };
 		023EFC0424323932000A46B7 /* CollectDataInitialCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectDataInitialCoordinator.swift; sourceTree = "<group>"; };
 		023EFC0624336E2F000A46B7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		023EFC08243386E7000A46B7 /* CovidAppApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovidAppApi.swift; sourceTree = "<group>"; };
@@ -191,6 +203,13 @@
 		02742C31243DADB000C04A6A /* FriendCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendCollectionCell.xib; sourceTree = "<group>"; };
 		02742C35243DBB9500C04A6A /* MetricsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsCollectionViewController.swift; sourceTree = "<group>"; };
 		02742C37243DBC1700C04A6A /* MetricsCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricsCollectionViewModel.swift; sourceTree = "<group>"; };
+		02742C39243DBE2B00C04A6A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		02742C3B243DBE3B00C04A6A /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		02742C3D243DBE4600C04A6A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		02742C3F243DBE8400C04A6A /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		02742C40243DBE8400C04A6A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		02742C41243DBE8400C04A6A /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
+		02742C42243DBE8400C04A6A /* Messages.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Messages.framework; path = System/Library/Frameworks/Messages.framework; sourceTree = SDKROOT; };
 		0285CDA02431EDF2004DF64A /* MetricStatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStatesCell.swift; sourceTree = "<group>"; };
 		0285CDA12431EDF2004DF64A /* MetricStatesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStatesCell.xib; sourceTree = "<group>"; };
 		0285CDA42431EFDB004DF64A /* DynamicHeightCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightCollectionView.swift; sourceTree = "<group>"; };
@@ -257,11 +276,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02276314243F861B00F3BAF3 /* LinkPresentation.framework in Frameworks */,
 				02A94540242F5A8D00623BC4 /* FacebookLogin in Frameworks */,
 				02A94519242CBA2A00623BC4 /* PaperOnboarding in Frameworks */,
 				02A94551242FAB0F00623BC4 /* KeychainAccess in Frameworks */,
 				025E9D712434BCCB001E8B2E /* Shuffle in Frameworks */,
 				02A9453E242F5A8D00623BC4 /* FacebookCore in Frameworks */,
+				02742C4C243F22FB00C04A6A /* Loaf in Frameworks */,
 				02A9446C242B9A8300623BC4 /* NSAttributedStringBuilder in Frameworks */,
 				02A945672430B3CC00623BC4 /* IQKeyboardManagerSwift in Frameworks */,
 				02A94472242B9C2300623BC4 /* PMKCoreLocation in Frameworks */,
@@ -269,6 +290,11 @@
 				02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */,
 				02A9446F242B9BA300623BC4 /* PromiseKit in Frameworks */,
 				025E9DC12434F14C001E8B2E /* SwiftLocation in Frameworks */,
+				02742C3E243DBE4600C04A6A /* AVFoundation.framework in Frameworks */,
+				02742C3C243DBE3B00C04A6A /* AudioToolbox.framework in Frameworks */,
+				02742C46243DBE8500C04A6A /* Messages.framework in Frameworks */,
+				02742C44243DBE8400C04A6A /* MessageUI.framework in Frameworks */,
+				02742C3A243DBE2B00C04A6A /* CoreLocation.framework in Frameworks */,
 				02742C1D243B4ED100C04A6A /* LetterAvatarKit in Frameworks */,
 				02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */,
 				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
@@ -277,15 +303,25 @@
 				02A94542242F5A8D00623BC4 /* FacebookShare in Frameworks */,
 				02A9442F242B954900623BC4 /* SwiftyUserDefaults in Frameworks */,
 				02A94477242B9E6600623BC4 /* CoreGraphics.framework in Frameworks */,
+				02742C43243DBE8400C04A6A /* UserNotifications.framework in Frameworks */,
 				02A94435242B977300623BC4 /* SwiftDate in Frameworks */,
 				02A94423242B923C00623BC4 /* Alamofire in Frameworks */,
 				02A94432242B961F00623BC4 /* AlamofireImage in Frameworks */,
+				02742C45243DBE8500C04A6A /* UserNotificationsUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02276310243F85CF00F3BAF3 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				02276311243F85DB00F3BAF3 /* CovidAppMetaData.swift */,
+			);
+			path = Share;
+			sourceTree = "<group>";
+		};
 		023EFC0A2433883C000A46B7 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
@@ -513,6 +549,7 @@
 		02A9443C242B99AA00623BC4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				02276310243F85CF00F3BAF3 /* Share */,
 				02A9445F242B99F600623BC4 /* CoordinatorKit */,
 				02A9443E242B99AA00623BC4 /* Ext */,
 				02A9454C242FAA6C00623BC4 /* Manager */,
@@ -566,6 +603,14 @@
 		02A94473242B9DA300623BC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02276313243F861A00F3BAF3 /* LinkPresentation.framework */,
+				02742C42243DBE8400C04A6A /* Messages.framework */,
+				02742C40243DBE8400C04A6A /* MessageUI.framework */,
+				02742C3F243DBE8400C04A6A /* UserNotifications.framework */,
+				02742C41243DBE8400C04A6A /* UserNotificationsUI.framework */,
+				02742C3D243DBE4600C04A6A /* AVFoundation.framework */,
+				02742C3B243DBE3B00C04A6A /* AudioToolbox.framework */,
+				02742C39243DBE2B00C04A6A /* CoreLocation.framework */,
 				02A94476242B9E6600623BC4 /* CoreGraphics.framework */,
 				02A94474242B9DA300623BC4 /* UIKit.framework */,
 			);
@@ -756,6 +801,7 @@
 				025E9D702434BCCB001E8B2E /* Shuffle */,
 				025E9DC02434F14C001E8B2E /* SwiftLocation */,
 				02742C1C243B4ED100C04A6A /* LetterAvatarKit */,
+				02742C4B243F22FB00C04A6A /* Loaf */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -805,6 +851,7 @@
 				025E9D6F2434BCCB001E8B2E /* XCRemoteSwiftPackageReference "Shuffle" */,
 				025E9DBF2434F14C001E8B2E /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 				02742C1B243B4ED100C04A6A /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
+				02742C4A243F22FB00C04A6A /* XCRemoteSwiftPackageReference "Loaf" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -854,6 +901,7 @@
 				02A9456C2430DF1500623BC4 /* MetricStateView.swift in Sources */,
 				025E9DA12434E9E3001E8B2E /* BLTNBackgroundViewStyle.swift in Sources */,
 				025E9DA02434E9E3001E8B2E /* BLTNItemManager.swift in Sources */,
+				02276312243F85DB00F3BAF3 /* CovidAppMetaData.swift in Sources */,
 				02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */,
 				025E9DAE2434E9E3001E8B2E /* ContinuousMaskLayer.swift in Sources */,
 				02742C2F243C649500C04A6A /* FriendSettingsCell.swift in Sources */,
@@ -1170,6 +1218,14 @@
 				minimumVersion = 1.2.2;
 			};
 		};
+		02742C4A243F22FB00C04A6A /* XCRemoteSwiftPackageReference "Loaf" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/schmidyy/Loaf.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
 		02A94421242B923C00623BC4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -1315,6 +1371,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 02742C1B243B4ED100C04A6A /* XCRemoteSwiftPackageReference "LetterAvatarKit" */;
 			productName = LetterAvatarKit;
+		};
+		02742C4B243F22FB00C04A6A /* Loaf */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02742C4A243F22FB00C04A6A /* XCRemoteSwiftPackageReference "Loaf" */;
+			productName = Loaf;
 		};
 		02A94422242B923C00623BC4 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

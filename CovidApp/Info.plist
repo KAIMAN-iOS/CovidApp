@@ -71,6 +71,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>CovidApp a besoin de vos données de localisation afin de pouvoir fournir une carte des cas suspects</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>CovidApp a besoin de vos données de localisation afin de pouvoir fournir une carte des cas suspects</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>CovidApp a besoin de vos données de localisation afin de pouvoir fournir une carte des cas suspects</string>
 	<key>UIApplicationSceneManifest</key>
@@ -111,5 +115,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

@@ -67,6 +67,18 @@ class AskProfileViewController: UIViewController {
             dobTextField.validateField()
         }
         
+        if let name = SessionController().name {
+            nameTextField.textField.text = name
+            nameTextField.validateField()
+        }
+        
+        if let firstname = SessionController().firstname {
+            firstnameTextField.textField.text = firstname
+            firstnameTextField.validateField()
+        }
+        
+        checkValidity()
+        
         // observe the isValid from ttf
         nameObserver = observe(\.nameTextField.isValid,
                                options: [.old, .new]

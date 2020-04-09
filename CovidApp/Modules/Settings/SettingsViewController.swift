@@ -32,7 +32,7 @@ class SettingsViewController: UIViewController {
         viewModel.notificationDelegate = notificationDelegate
         viewModel.deleteFriendDelegate = self
         retrieveFriends()
-        backgroundView.shareDelegate = shareDelegate
+        backgroundView.shareDelegate = self
     }
     
     let backgroundView: NoFriendsViewController = NoFriendsViewController.create()
@@ -114,6 +114,12 @@ extension SettingsViewController: DeleteFriendDelegate {
         }))
         
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension SettingsViewController: ShareDelegate {
+    func share(from controller: UIViewController?) {
+        shareDelegate?.share(from: self)
     }
 }
 

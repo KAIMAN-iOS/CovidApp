@@ -29,7 +29,7 @@ class NoFriendsViewController: UIViewController {
     }
     
     @IBAction func share(_ sender: Any) {
-        shareDelegate?.share()
+        shareDelegate?.share(from: self)
     }
     
     /*

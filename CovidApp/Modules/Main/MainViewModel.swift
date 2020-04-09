@@ -64,7 +64,7 @@ class MainViewModel {
         switch type {
         case .friends:
             if indexPath.row == user?.sharedUsers.count {
-                shareDelegate?.share()
+                shareDelegate?.share(from: nil)
             } else {
                 coordinatorDelegate?.showMetricsDetail(for: user!.sharedUsers[indexPath.row])
             }

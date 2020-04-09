@@ -1,16 +1,16 @@
-/* 
-  Localizable.strings
-  CovidApp
+/*
+ Localizable.strings
+ CovidApp
+ 
+ Created by jerome on 26/03/2020.
+ Copyright © 2020 Jerome TONNELIER. All rights reserved.
+ */
 
-  Created by jerome on 26/03/2020.
-  Copyright © 2020 Jerome TONNELIER. All rights reserved.
-*/
-
-"drippingNose description" = "Avez vous le nez qui coule ?";
-"cough description" = "Avez vous de la toux ?";
-"fever description" = "Avez vous de la fièvre ?";
-"throatSoreness description" = "Avez vous mal à la gorge ?";
-"breathingIssues description" = "Avez vous des complications respiratoires ?";
+"drippingNose description" = "Avez-vous le nez qui coule ?";
+"cough description" = "Avez-vous de la toux ?";
+"fever description" = "Avez-vous de la fièvre ?";
+"throatSoreness description" = "Avez-vous mal à la gorge ?";
+"breathingIssues description" = "Avez-vous des complications respiratoires ?";
 
 "yes" = "oui";
 "no" = "non";
@@ -46,13 +46,13 @@
 "Onboarding betterWhenShare title" = "C'est meilleur quand on partage";
 "Onboarding letsGo title" = "C'est parti";
 
-"Onboarding welcome subtitle" = "Nous allons vous présenter l'appication en quelques points rapide. Ce ne sera pas long 😊";
-"Onboarding purpose subtitle" = "Covid'App fournit aux institutions une cartographie de l'état du virus en France et vous permet de rester facilement en contact avec vos proches";
+"Onboarding welcome subtitle" = "Nous allons vous présenter l'application en quelques points rapides. Cela ne sera pas long 😊";
+"Onboarding purpose subtitle" = "Covid'App répond à un besoin immédiat : informer en temps réel. Elle fournit aux institutions une cartographie de l'état du virus en France et vous permet de rester facilement en contact avec vos proches";
 "Onboarding governement subtitle" = "Les données anonymisées (nous ne collectons aucune donnée nominative) que vous fournissez chaque jour permettent d'aider le gouvernement et les personnels soignants dans la gestion de l'épidémie";
 "Onboarding betterWhenShare subtitle" = "En autorisant vos proches à avoir accès à vos données, Covid'App vous permet, sans aucun effort, de donner et prendre des nouvelles de vos proches";
 "Onboarding letsGo subtitle" = "";
 
-"The email address entered is not valid" = "Emaill invalide";
+"The email address entered is not valid" = "Email invalide";
 "Email cannot be empty" = "Email vide";
 "Field mandatory" = "Champ obligatoire";
 "Email address" = "Adresse email";
@@ -69,20 +69,20 @@
 "end" = "Terminer";
 "close" = "Fermer";
 "Cancel" = "Annuler";
-"close report title" = "Souhaitez-vous réellement fermer ce formlaire ?";
+"close report title" = "Souhaitez-vous réellement fermer ce formulaire ?";
 
 "refreshTokenFailed" = "Impossible de vous re-connecter pour le moment";
 "cantLogin" = "Impossible de vous connecter pour le moment";
 "Connect with facebook" = "Se connecter avec Facebook";
 
 "ask location" = "CovidApp a besoin de votre position";
-"ask for location" = "Vos données de géolocalisation seront associées de mamière anonyme à vos données de santé afin que les pouvoirs publics et les professionnels de santé puissent visualiser la répartition des cas sains et des cas suspects, en donc leur permetre de mieux anticiper les moyens par secteur géographique";
+"ask for location" = "Vos données de géolocalisation seront associées de manière anonyme à vos données de santé afin que les pouvoirs publics et les professionnels de santé puissent visualiser la répartition des cas sains et des cas suspects, en donc leur permetre de mieux anticiper les moyens par secteur géographique";
 "Activate" = "J'autorise le partage";
 "Not now" = "Je ne souhaite pas partager ma position";
 "ask notification" = "Rappels journaliers";
-"ask for notification" = "Le but de CovidApp est de collecter des données quotidienne sur l'état des santé des personnes restant à domicile. Pour vous aider, CovidApp vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
+"ask for notification" = "Le but de CovidApp est de collecter des données quotidiennes sur l'état des santé des personnes restant à domicile. Pour vous aider, CovidApp vous enverra une notification quotidienne pour vous rappeler de répondre à 5 questions simples.";
 "Activate notification" = "J'ai compris";
-"loading, please wait" = "Réxupération des dernières données";
+"loading, please wait" = "Récupération des dernières données";
 
 "drippingNose short description" = "Nez";
 "cough short description" = "Toux";
@@ -93,7 +93,7 @@
 "settings" = "Paramètres";
 "reminder time" = "Heure de rappel : %@";
 "Attention" = "Attention";
-"About to Delete friend" = "Vous êtes sur le point de supprimer le partage envers un ami. Souhaitez vous continuer ?";
+"About to Delete friend" = "Vous êtes sur le point de supprimer le partage envers un ami. Souhaitez-vous continuer ?";
 "confirm delete" = "Supprimer";
 
 "userNotLoggedIn" = "Vous n'êtes pas encore connecté";
@@ -102,3 +102,10 @@
 "add a friend" = "Ajouter un ami";
 "Notification" = "Notifications";
 "friend list" = "Je partage mes données avec";
+"It's time" = "C'est l'heure";
+"Answer your 5 questions" = "Répondez à vos 5 questions quotidiennes 😊";
+"Add me" = "Ajoute moi 🙏";
+"share from CovidApp" = "Je voudrais partager mes données de santé avec toi via l'application CovidApp. Télécharges là et restons connectés 😊";
+"userNotLoggedIn" = "Vous n'êtes pas encore connecté à CovidApp";
+"addFriendFailed" = "Impossible d'ajouter un ami pour l'instant";
+"cantAddSelf" = "Vous ne pouvez pas vous ajouter vous même en ami 😉";

@@ -123,7 +123,7 @@ private extension CovidApi {
             }
             .catch { error in
                 if showMessageOnFail {
-                    MessageManager.show(.request(.serverError))
+//                    MessageManager.show(.request(.serverError))
                 }
                 resolver.reject(error)
             }

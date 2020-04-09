@@ -83,6 +83,15 @@
         }
       },
       {
+        "package": "Loaf",
+        "repositoryURL": "https://github.com/schmidyy/Loaf.git",
+        "state": {
+          "branch": null,
+          "revision": "31f3b3fff28918c49d69ee76be72b041161b67c7",
+          "version": "0.6.0"
+        }
+      },
+      {
         "package": "MarqueeLabel",
         "repositoryURL": "https://github.com/cbpowell/MarqueeLabel",
         "state": {

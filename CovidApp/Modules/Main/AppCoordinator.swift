@@ -27,7 +27,7 @@ protocol DailyNotificationDelegate: class {
 }
 
 protocol ShareDelegate: class {
-    func share()
+    func share(from controller: UIViewController?)
 }
 
 //MARK: - Launch
@@ -39,7 +39,7 @@ extension DefaultsKeys {
     var notificationsEnabled: DefaultsKey<Bool> { .init("notificationsEnabled", defaultValue: false) }
     var collectedFirstData: DefaultsKey<Bool> { .init("collectedFirstData", defaultValue: false) }
     var hourForNotification: DefaultsKey<Date?> { .init("hourForNotification", defaultValue: nil) }
-    var dailyNotificationId: DefaultsKey<String> { .init("dailyNotificationId", defaultValue: UUID().uuidString) }
+    var dailyNotificationId: DefaultsKey<String?> { .init("dailyNotificationId", defaultValue: nil) }
 }
 
 fileprivate var onboardingWasShown: Bool {
@@ -76,6 +76,11 @@ class AppCoordinator: Coordinator<DeepLink> {
         mainController.shareDelegate = self
         mainController.coordinatorDelegate = self
         customize()
+        UNUserNotificationCenter.current().delegate = self
+        if Defaults[\.dailyNotificationId] == nil {
+            Defaults[\.dailyNotificationId] = UUID().uuidString
+            print("🐞 SET - \(Defaults[\.dailyNotificationId])")
+        }
     }
     
     private func customize() {
@@ -91,11 +96,19 @@ class AppCoordinator: Coordinator<DeepLink> {
                 MessageManager.show(.request(.userNotLoggedIn), in: mainController)
                 return
             }
+            
+            guard userId != SessionController().email else {
+                MessageManager.show(.request(.cantAddSelf), in: mainController)
+                return
+            }
+            
             CovidApi.shared.addFriend(with: userId).done { [weak self] _ in
                 self?.mainController.loadUser()
             }.catch { [weak self] error in
                 guard let self = self else { return }
-                MessageManager.show(.request(.addFriendFailed), in: self.mainController)
+                DispatchQueue.main.async {
+                    MessageManager.show(.request(.addFriendFailed), in: self.mainController)
+                }
             }
             
         default: ()
@@ -203,7 +216,9 @@ class AppCoordinator: Coordinator<DeepLink> {
         CovidApi
             .shared
             .post(metric: dailyData)
-//            .done { _ in }
+            .done { [weak self] _ in
+                self?.mainController.loadUser()
+        }
     }
     
     func appendLocation(to dailyData: Metrics) {
@@ -212,7 +227,7 @@ class AppCoordinator: Coordinator<DeepLink> {
             return
         }
         
-        LocationManager.shared.locateFromGPS(.significant, accuracy: .house) { [weak self] result in
+        LocationManager.shared.locateFromGPS(.oneShot, accuracy: .block) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .failure: self.send(dailyData: dailyData)
@@ -317,10 +332,10 @@ extension AppCoordinator: AppCoordinatorDelegate {
 }
 
 extension AppCoordinator: ShareDelegate {
-    func share() {
+    func share(from controller: UIViewController? = nil) {
         let sharedString = String(format: "share format".local(), SessionController().email ?? "")
         let image = UIImage(named:"AppIcon60x60")!
-        mainController.showShareViewController(with:[sharedString, image])
+        (controller ?? mainController).showShareViewController(with:[sharedString, image])
     }
 }
 
@@ -343,7 +358,7 @@ extension AppCoordinator: CollectDailyMetricsDelegate {
         if LocationManager.state == .undetermined {
             askForLocation()
             LocationManager.shared.onAuthorizationChange.add { [weak self] state in
-                guard let self = self else { return }
+                guard let self = self, state != .undetermined else { return }
                 self.appendLocation(to: data)
             }
         } else {
@@ -364,10 +379,12 @@ extension AppCoordinator: DailyNotificationDelegate {
         content.categoryIdentifier = "alarm"
         content.sound = UNNotificationSound.default
         let dateComponents = Calendar.current.dateComponents([.hour, .minute], from: date)
+//        let dateComponents = Calendar.current.dateComponents([.hour, .minute, .second], from: Date().addingTimeInterval(15))
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
         // removes previous notifications just in case...
         center.removeAllPendingNotificationRequests()
-        let request = UNNotificationRequest(identifier: Defaults[\.dailyNotificationId], content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: Defaults[\.dailyNotificationId]!, content: content, trigger: trigger)
+        print("🐞 - UPDATE NOTIF - \(Defaults[\.dailyNotificationId])")
         center.add(request)
     }
 }
@@ -388,6 +405,7 @@ extension AppCoordinator: UNUserNotificationCenterDelegate {
         defer {
             completionHandler()
         }
+        print("🐞 - GET NOTIF - \(Defaults[\.dailyNotificationId])")
         // open a notification from outside the app
         handleTapOn(response.notification.request)
     }
