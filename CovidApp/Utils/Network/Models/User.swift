@@ -66,6 +66,11 @@ class User: BasicUser {
         super.init()
     }
     
+    var hasSubmittedRportForToday: Bool {
+        guard let lastDate = metrics.compactMap({ $0.date }).sorted().last else { return false }
+        return lastDate.isToday
+    }
+    
     enum CodingKeys: String, CodingKey {
         case birthdate = "birthdate"
         case cp = "cp"

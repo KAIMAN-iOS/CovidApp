@@ -10,6 +10,7 @@ import UIKit
 import SwiftyUserDefaults
 import SwiftLocation
 import UserNotifications
+import CoreLocation
 
 //MARK: - Protocols
 protocol AppCoordinatorDelegate: class {
@@ -99,6 +100,11 @@ class AppCoordinator: Coordinator<DeepLink> {
             
             guard userId != SessionController().email else {
                 MessageManager.show(.request(.cantAddSelf), in: mainController)
+                return
+            }
+            
+            guard mainController.viewModel.user?.user.hasSubmittedRportForToday ?? true == false else {
+                MessageManager.show(.basic(.alreadyAnsweredDailyQuestion))
                 return
             }
             
@@ -227,10 +233,23 @@ class AppCoordinator: Coordinator<DeepLink> {
             return
         }
         
-        LocationManager.shared.locateFromGPS(.oneShot, accuracy: .block) { [weak self] result in
+        LocationManager.shared.locateFromGPS(.oneShot, accuracy: .house) { [weak self] result in
             guard let self = self else { return }
             switch result {
-            case .failure: self.send(dailyData: dailyData)
+            case .failure(let error):
+                switch error {
+                case .requiredLocationNotFound(_, last: let lastLocation) :
+                    var updatedData = dailyData
+                    if let lastLocation = lastLocation {
+                        updatedData.update(coordinates: lastLocation)
+                    }
+                    self.send(dailyData: updatedData)
+                    
+                default:
+                    self.send(dailyData: dailyData)
+                    
+                }
+                self.send(dailyData: dailyData)
                 
             case .success(let location):
                 var updatedData = dailyData
@@ -333,9 +352,18 @@ extension AppCoordinator: AppCoordinatorDelegate {
 
 extension AppCoordinator: ShareDelegate {
     func share(from controller: UIViewController? = nil) {
-        let sharedString = String(format: "share format".local(), SessionController().email ?? "")
-        let image = UIImage(named:"AppIcon60x60")!
-        (controller ?? mainController).showShareViewController(with:[sharedString, image])
+        
+        if #available(iOS 13.0, *) {
+            guard let url = URL(string: String(format: "share format".local(), SessionController().email ?? "")) else { return }
+            let metaData = LinkPresentationItemSource.metaData(title: "share from CovidApp".local(), url: url, fileName: "shareImageData", fileType: "png")
+            let metadataItemSource = LinkPresentationItemSource(metaData: metaData)
+            let activity = UIActivityViewController(activityItems: [metadataItemSource], applicationActivities: [])
+            (controller ?? mainController).present(activity, animated: true)
+        } else {
+            let sharedString = String(format: "share format".local(), SessionController().email ?? "")
+            let image = UIImage(named:"AppIcon60x60")!
+            (controller ?? mainController).showShareViewController(with:[sharedString, image])
+        }
     }
 }
 

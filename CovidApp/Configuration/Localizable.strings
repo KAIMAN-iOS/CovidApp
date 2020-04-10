@@ -62,6 +62,7 @@
 
 "add friends" = "Ajoutez des amis 😊";
 "try" = "Remplir mon premier questionnaire";
+"fill daily report" = "Questionnaire quotidien";
 
 "reports" = "Questionnaire";
 "report number format" = "Question %d/%d";
@@ -105,7 +106,8 @@
 "It's time" = "C'est l'heure";
 "Answer your 5 questions" = "Répondez à vos 5 questions quotidiennes 😊";
 "Add me" = "Ajoute moi 🙏";
-"share from CovidApp" = "Je voudrais partager mes données de santé avec toi via l'application CovidApp. Télécharges là et restons connectés 😊";
+"share from CovidApp" = "Je voudrais partager mes données de santé avec toi via l'app CovidApp de Kaiman. Télécharges là et restons connectés 😊";
 "userNotLoggedIn" = "Vous n'êtes pas encore connecté à CovidApp";
 "addFriendFailed" = "Impossible d'ajouter un ami pour l'instant";
 "cantAddSelf" = "Vous ne pouvez pas vous ajouter vous même en ami 😉";
+"alreadyAnsweredDailyQuestion" = "Vous avez déjà répondu à votre questionnaire quotidien";

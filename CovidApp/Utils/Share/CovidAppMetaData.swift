@@ -34,4 +34,13 @@ class LinkPresentationItemSource: NSObject, UIActivityItemSource {
     init(metaData: LPLinkMetadata) {
         self.linkMetaData = metaData
     }
+    
+    static func metaData(title: String, url: URL, fileName: String, fileType: String) -> LPLinkMetadata {
+        let linkMetaData = LPLinkMetadata()
+        let path = Bundle.main.path(forResource: fileName, ofType: fileType)
+        linkMetaData.imageProvider = NSItemProvider(contentsOf: URL(fileURLWithPath: path ?? ""))
+        linkMetaData.originalURL = url
+        linkMetaData.title = title
+        return linkMetaData
+    }
 }

@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
         didSet {
             launchReportButton.actionButtonType = .primary
 //            launchReportButton.textColor = Palette.basic.primary.color
-            launchReportButton.setTitle("try".local(), for: .normal)
+            launchReportButton.setTitle((viewModel.user?.user.metrics.count ?? 0) > 0 ? "fill daily report".local() : "try".local(), for: .normal)
         }
     }
 
@@ -62,11 +62,24 @@ class MainViewController: UIViewController {
         viewModel.shareDelegate = shareDelegate
         viewModel.coordinatorDelegate = coordinatorDelegate
         handleLayout()
+        
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.updateReportButtonState()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         loadUser()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateReportButtonState()
+    }
+    
+    func updateReportButtonState() {
+        launchReportButton.isHidden = showDailyReportButton == false
     }
     
     func loadUser() {
@@ -77,6 +90,10 @@ class MainViewController: UIViewController {
             // finally update the UI
             self.handleLayout()
         }
+    }
+    
+    private var showDailyReportButton: Bool {
+        return (viewModel.user?.user.hasSubmittedRportForToday ?? true) == false
     }
     
     private func handleLayout() {
@@ -94,6 +111,7 @@ class MainViewController: UIViewController {
         if numberOfFriends > 0 {
             friendsCollectionView.reloadData()
         }
+        updateReportButtonState()
     }
     
     @IBAction func showSettings(_ sender: Any) {

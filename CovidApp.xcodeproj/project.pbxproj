@@ -133,7 +133,6 @@
 		02A9454E242FAA7600623BC4 /* SessionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9454D242FAA7600623BC4 /* SessionController.swift */; };
 		02A94551242FAB0F00623BC4 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94550242FAB0F00623BC4 /* KeychainAccess */; };
 		02A94555242FAD9200623BC4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94554242FAD9200623BC4 /* LoginViewController.swift */; };
-		02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 02A94557242FB5D700623BC4 /* NotificationBannerSwift */; };
 		02A9455A242FB5EA00623BC4 /* MessageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A94559242FB5EA00623BC4 /* MessageManager.swift */; };
 		02A9455C243098D600623BC4 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9455B243098D500623BC4 /* ActionButton.swift */; };
 		02A9455F2430AA9E00623BC4 /* ErrorTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9455E2430AA9E00623BC4 /* ErrorTextField.swift */; };
@@ -143,6 +142,8 @@
 		02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945682430CFD900623BC4 /* Date+Ext.swift */; };
 		02A9456C2430DF1500623BC4 /* MetricStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9456B2430DF1500623BC4 /* MetricStateView.swift */; };
 		02A9456E2430DF1900623BC4 /* MetricStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A9456D2430DF1900623BC4 /* MetricStateView.xib */; };
+		02BEF7D2244069BE00C5BDC2 /* shareImageData.png in Resources */ = {isa = PBXBuildFile; fileRef = 02BEF7D1244069BE00C5BDC2 /* shareImageData.png */; };
+		02BEF8642440781800C5BDC2 /* TTGSnackbar in Frameworks */ = {isa = PBXBuildFile; productRef = 02BEF8632440781800C5BDC2 /* TTGSnackbar */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -269,6 +270,7 @@
 		02A945682430CFD900623BC4 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		02A9456B2430DF1500623BC4 /* MetricStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStateView.swift; sourceTree = "<group>"; };
 		02A9456D2430DF1900623BC4 /* MetricStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStateView.xib; sourceTree = "<group>"; };
+		02BEF7D1244069BE00C5BDC2 /* shareImageData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareImageData.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,7 +298,6 @@
 				02742C44243DBE8400C04A6A /* MessageUI.framework in Frameworks */,
 				02742C3A243DBE2B00C04A6A /* CoreLocation.framework in Frameworks */,
 				02742C1D243B4ED100C04A6A /* LetterAvatarKit in Frameworks */,
-				02A94558242FB5D700623BC4 /* NotificationBannerSwift in Frameworks */,
 				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
 				02A9442C242B93FB00623BC4 /* Hero in Frameworks */,
 				02A94475242B9DA300623BC4 /* UIKit.framework in Frameworks */,
@@ -308,6 +309,7 @@
 				02A94423242B923C00623BC4 /* Alamofire in Frameworks */,
 				02A94432242B961F00623BC4 /* AlamofireImage in Frameworks */,
 				02742C45243DBE8500C04A6A /* UserNotificationsUI.framework in Frameworks */,
+				02BEF8642440781800C5BDC2 /* TTGSnackbar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +681,7 @@
 			children = (
 				02A9443D242B99AA00623BC4 /* Palette.swift */,
 				02A94416242B8CE400623BC4 /* Assets.xcassets */,
+				02BEF7D1244069BE00C5BDC2 /* shareImageData.png */,
 				02A94531242D0EDE00623BC4 /* Localizable.strings */,
 				02A94535242D117E00623BC4 /* Configuration.swift */,
 				025E9DBC2434EABF001E8B2E /* CovidAppBridgingHeader.h */,
@@ -796,12 +799,12 @@
 				02A9453F242F5A8D00623BC4 /* FacebookLogin */,
 				02A94541242F5A8D00623BC4 /* FacebookShare */,
 				02A94550242FAB0F00623BC4 /* KeychainAccess */,
-				02A94557242FB5D700623BC4 /* NotificationBannerSwift */,
 				02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */,
 				025E9D702434BCCB001E8B2E /* Shuffle */,
 				025E9DC02434F14C001E8B2E /* SwiftLocation */,
 				02742C1C243B4ED100C04A6A /* LetterAvatarKit */,
 				02742C4B243F22FB00C04A6A /* Loaf */,
+				02BEF8632440781800C5BDC2 /* TTGSnackbar */,
 			);
 			productName = CovidApp;
 			productReference = 02A9440A242B8CE100623BC4 /* CovidApp.app */;
@@ -846,12 +849,12 @@
 				02A94517242CBA2A00623BC4 /* XCRemoteSwiftPackageReference "paper-onboarding" */,
 				02A9453C242F5A8D00623BC4 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 				02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */,
 				02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				025E9D6F2434BCCB001E8B2E /* XCRemoteSwiftPackageReference "Shuffle" */,
 				025E9DBF2434F14C001E8B2E /* XCRemoteSwiftPackageReference "SwiftLocation" */,
 				02742C1B243B4ED100C04A6A /* XCRemoteSwiftPackageReference "LetterAvatarKit" */,
 				02742C4A243F22FB00C04A6A /* XCRemoteSwiftPackageReference "Loaf" */,
+				02BEF8622440781800C5BDC2 /* XCRemoteSwiftPackageReference "TTGSnackbar" */,
 			);
 			productRefGroup = 02A9440B242B8CE100623BC4 /* Products */;
 			projectDirPath = "";
@@ -873,6 +876,7 @@
 				02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */,
 				02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */,
 				025E9DBE2434EE70001E8B2E /* BulletinAssets.xcassets in Resources */,
+				02BEF7D2244069BE00C5BDC2 /* shareImageData.png in Resources */,
 				02742C26243B5E4F00C04A6A /* HeaderView.xib in Resources */,
 				02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */,
 				02A94415242B8CE100623BC4 /* Main.storyboard in Resources */,
@@ -1127,6 +1131,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidApp/CovidApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				INFOPLIST_FILE = CovidApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1153,6 +1158,7 @@
 				CODE_SIGN_ENTITLEMENTS = CovidApp/CovidApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
 				INFOPLIST_FILE = CovidApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -1338,20 +1344,20 @@
 				minimumVersion = 4.1.0;
 			};
 		};
-		02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Daltron/NotificationBanner.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.0.4;
-			};
-		};
 		02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.5.5;
+			};
+		};
+		02BEF8622440781800C5BDC2 /* XCRemoteSwiftPackageReference "TTGSnackbar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/zekunyan/TTGSnackbar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -1457,15 +1463,15 @@
 			package = 02A9454F242FAB0F00623BC4 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
-		02A94557242FB5D700623BC4 /* NotificationBannerSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 02A94556242FB5D700623BC4 /* XCRemoteSwiftPackageReference "NotificationBanner" */;
-			productName = NotificationBannerSwift;
-		};
 		02A945662430B3CC00623BC4 /* IQKeyboardManagerSwift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 02A945652430B3CC00623BC4 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		02BEF8632440781800C5BDC2 /* TTGSnackbar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 02BEF8622440781800C5BDC2 /* XCRemoteSwiftPackageReference "TTGSnackbar" */;
+			productName = TTGSnackbar;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

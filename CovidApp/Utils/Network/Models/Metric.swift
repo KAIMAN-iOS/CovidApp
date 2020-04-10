@@ -558,7 +558,7 @@ class MetricsApiWrapper: RequestParameters, Decodable {
         if let lat = latitude, let lon = longitude {
             coordinate = Coordinate(latitude: lat, longitude: lon)
         }
-        return Metrics(metrics: [Metric(metric: .fever, value: hasFever), Metric(metric: .drippingNose, value: hasDrippingNose), Metric(metric: .throatSoreness, value: hasThroatSoreness), Metric(metric: .cough, value: hasCough), Metric(metric: .breathingIssues, value: hasBreatingIssues)], date: Date(), coordinates: coordinate)
+        return Metrics(metrics: [Metric(metric: .fever, value: hasFever), Metric(metric: .drippingNose, value: hasDrippingNose), Metric(metric: .throatSoreness, value: hasThroatSoreness), Metric(metric: .cough, value: hasCough), Metric(metric: .breathingIssues, value: hasBreatingIssues)], date: date ?? Date(), coordinates: coordinate)
     }
     
     let hasFever: Bool
@@ -566,7 +566,10 @@ class MetricsApiWrapper: RequestParameters, Decodable {
     let hasThroatSoreness: Bool
     let hasCough: Bool
     let hasBreatingIssues: Bool
-    let resultDate: String // ISO 8601
+    let resultDateAsString: String // ISO 8601
+    var date: Date? {
+        return resultDateAsString.toISODate()?.date
+    }
     let latitude: Double?
     let longitude: Double?
     
@@ -587,7 +590,7 @@ class MetricsApiWrapper: RequestParameters, Decodable {
         hasThroatSoreness = metrics.metrics.filter({ $0.metric == .throatSoreness }).first?.value ?? false
         hasCough = metrics.metrics.filter({ $0.metric == .cough }).first?.value ?? false
         hasBreatingIssues = metrics.metrics.filter({ $0.metric == .breathingIssues }).first?.value ?? false
-        resultDate = metrics.date.toISO()
+        resultDateAsString = metrics.date.toISO()
         latitude = metrics.coordinates?.latitude
         longitude = metrics.coordinates?.longitude
     }
@@ -600,7 +603,7 @@ class MetricsApiWrapper: RequestParameters, Decodable {
         hasThroatSoreness = try container.decode(Bool.self, forKey: .hasThroatSoreness)
         hasCough = try container.decode(Bool.self, forKey: .hasCough)
         hasBreatingIssues = try container.decode(Bool.self, forKey: .hasBreatingIssues)
-        resultDate = try container.decode(String.self, forKey: .resultDate)
+        resultDateAsString = try container.decode(String.self, forKey: .resultDate)
         latitude = try? container.decodeIfPresent(Double.self, forKey: .latitude)
         longitude = try? container.decodeIfPresent(Double.self, forKey: .longitude)
     }
@@ -612,7 +615,7 @@ class MetricsApiWrapper: RequestParameters, Decodable {
         try container.encode(hasThroatSoreness, forKey: .hasThroatSoreness)
         try container.encode(hasCough, forKey: .hasCough)
         try container.encode(hasBreatingIssues, forKey: .hasBreatingIssues)
-        try container.encode(resultDate, forKey: .resultDate)
+        try container.encode(resultDateAsString, forKey: .resultDate)
         try container.encodeIfPresent(latitude, forKey: .latitude)
         try container.encodeIfPresent(longitude, forKey: .longitude)
     }
