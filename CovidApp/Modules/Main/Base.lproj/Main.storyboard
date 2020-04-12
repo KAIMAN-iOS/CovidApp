@@ -256,14 +256,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Cz4-nh-tkx">
-                                <rect key="frame" x="12" y="289.5" width="390" height="317.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Cz4-nh-tkx">
+                                <rect key="frame" x="12" y="264.5" width="390" height="367.5"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="covid'house" translatesAutoresizingMaskIntoConstraints="NO" id="9ah-Om-BwE">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="168.5"/>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2H-uD-6Ic" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="188.5" width="390" height="60"/>
+                                        <rect key="frame" x="0.0" y="178.5" width="390" height="60"/>
                                         <color key="backgroundColor" name="primary"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Ep6-QL-4bf"/>
@@ -273,12 +273,25 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="connect:" destination="Vuu-ER-eCC" eventType="touchUpInside" id="GwC-aS-Tpj"/>
-                                            <action selector="quit:" destination="CSQ-Tb-SsS" eventType="touchUpInside" id="8SV-0p-0gN"/>
+                                            <action selector="connectWithFacebook:" destination="Vuu-ER-eCC" eventType="touchUpInside" id="Eez-gi-DyO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hv-6H-51y" customClass="ActionButton" customModule="CovidApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="248.5" width="390" height="60"/>
+                                        <color key="backgroundColor" name="primary"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="m53-QQ-niL"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Se connecter avec Facebook" image="facebook">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="connectWithGoogle:" destination="Vuu-ER-eCC" eventType="touchUpInside" id="IGI-3D-PcV"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Merci de vous connecter afin de pouvoir utiliser Covid'App" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nQ-p9-VH4">
-                                        <rect key="frame" x="0.0" y="268.5" width="390" height="49"/>
+                                        <rect key="frame" x="0.0" y="318.5" width="390" height="49"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                         <color key="textColor" name="mainTexts"/>
                                         <nil key="highlightedColor"/>
@@ -296,6 +309,7 @@
                     </view>
                     <connections>
                         <outlet property="facebookButton" destination="K2H-uD-6Ic" id="Bwo-gY-tOp"/>
+                        <outlet property="googleButton" destination="9hv-6H-51y" id="Db5-Fo-oLe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gw0-nu-Xbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -339,7 +353,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="connect:" destination="Vuu-ER-eCC" eventType="touchUpInside" id="cU3-IX-Gl0"/>
                                     <action selector="continue:" destination="wWm-b4-IDP" eventType="touchUpInside" id="6sF-xn-hkT"/>
                                     <action selector="quit:" destination="CSQ-Tb-SsS" eventType="touchUpInside" id="IPR-9v-iC6"/>
                                 </connections>
@@ -453,7 +466,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="connect:" destination="Vuu-ER-eCC" eventType="touchUpInside" id="Nuz-dz-74O"/>
                                     <action selector="continue:" destination="kBl-Lv-r2r" eventType="touchUpInside" id="3j8-1U-e97"/>
                                     <action selector="quit:" destination="CSQ-Tb-SsS" eventType="touchUpInside" id="xQZ-DX-Jbk"/>
                                 </connections>
@@ -489,7 +501,7 @@
             <objects>
                 <viewController storyboardIdentifier="NoFriendsViewController" id="3p7-2O-U8q" customClass="NoFriendsViewController" customModule="CovidApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8W9-Hc-4P5">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="430"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="430.5"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="47" translatesAutoresizingMaskIntoConstraints="NO" id="ptP-ub-WmD">

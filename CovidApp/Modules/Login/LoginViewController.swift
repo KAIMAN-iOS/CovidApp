@@ -8,9 +8,14 @@
 
 import UIKit
 import FacebookLogin
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
+    enum CurrentSocialNetwork {
+        case facebook, google, apple
+    }
+    private var currentSocialNetwork: CurrentSocialNetwork = .facebook
     weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     static func create() -> LoginViewController {
         return LoginViewController.loadFromStoryboard(identifier: "LoginViewController", storyboardName: "Main")
@@ -21,14 +26,29 @@ class LoginViewController: UIViewController {
             facebookButton.actionButtonType = .connection(type: .facebook)
         }
     }
+    
+    @IBOutlet weak var googleButton: ActionButton!  {
+        didSet {
+            googleButton.actionButtonType = .connection(type: .google)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
     }
     
-    @IBAction func connect(_ sender: Any) {
+    private func handleConnectResultFrom(sessionController session: SessionController) {
+        // if there is no email, asks for the email
+        guard session.email?.count ?? 0 > 0, session.email?.isValidEmail == true else {
+            self.coordinatorDelegate?.showEmailController()
+            return
+        }
+        self.register()
+    }
+    
+    @IBAction func connectWithFacebook(_ sender: ActionButton) {
+        currentSocialNetwork = .facebook
         LoginManager().logIn(permissions: [.email, .publicProfile, .userBirthday], viewController: self) { result in
             print("res \(result)")
             switch result {
@@ -44,13 +64,7 @@ class LoginViewController: UIViewController {
                         }
                         let session = SessionController()
                         session.readFromFacebook(data)
-                        
-                        // if there is no email, asks for the email
-                        guard session.email?.count ?? 0 > 0, session.email?.isValidEmail == true else {
-                            self.coordinatorDelegate?.showEmailController()
-                            return
-                        }
-                        self.register()
+                        self.handleConnectResultFrom(sessionController: session)
                 }
                 
             case .failed(let error):
@@ -61,8 +75,20 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func connectWithGoogle(_ sender: ActionButton) {
+        currentSocialNetwork = .google
+        GIDSignIn.sharedInstance()?.delegate = self
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.signIn()
+    }
+    
     func register() {
-        facebookButton.isLoading = true
+        switch currentSocialNetwork {
+        case .facebook: facebookButton.isLoading = true
+        case .google: googleButton.isLoading = true
+        case .apple: ()
+        }
+        
         CovidApi
             .shared
             .retrieveToken()
@@ -79,15 +105,22 @@ class LoginViewController: UIViewController {
             MessageManager.show(.sso(.cantLogin(message: error.localizedDescription)), in: self)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+
+//MARK:-
+//MARK: Google Signin
+extension LoginViewController: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        guard error == nil else {
+            return
+        }
+        guard let user = user else {
+            return
+        }
+        let session = SessionController()
+        session.readFrom(googleUser: user)
+        self.handleConnectResultFrom(sessionController: session)
+    }
+}
+

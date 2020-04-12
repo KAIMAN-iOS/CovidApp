@@ -142,6 +142,14 @@
 		02A945692430CFD900623BC4 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A945682430CFD900623BC4 /* Date+Ext.swift */; };
 		02A9456C2430DF1500623BC4 /* MetricStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02A9456B2430DF1500623BC4 /* MetricStateView.swift */; };
 		02A9456E2430DF1900623BC4 /* MetricStateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 02A9456D2430DF1900623BC4 /* MetricStateView.xib */; };
+		02BD0BCD2442F341003011A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 02BD0BCC2442F340003011A3 /* GoogleService-Info.plist */; };
+		02BD0BD22442F39C003011A3 /* GoogleSignInDependencies.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD0BCF2442F39C003011A3 /* GoogleSignInDependencies.framework */; };
+		02BD0BD32442F39D003011A3 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 02BD0BD02442F39C003011A3 /* GoogleSignIn.bundle */; };
+		02BD0BD42442F39D003011A3 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD0BD12442F39C003011A3 /* GoogleSignIn.framework */; };
+		02BD0BD92442F40A003011A3 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD0BD52442F409003011A3 /* LocalAuthentication.framework */; };
+		02BD0BDA2442F40A003011A3 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD0BD62442F409003011A3 /* SafariServices.framework */; };
+		02BD0BDB2442F40A003011A3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD0BD72442F409003011A3 /* SystemConfiguration.framework */; };
+		02BD0BDC2442F40A003011A3 /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02BD0BD82442F409003011A3 /* AuthenticationServices.framework */; };
 		02BEF7D2244069BE00C5BDC2 /* shareImageData.png in Resources */ = {isa = PBXBuildFile; fileRef = 02BEF7D1244069BE00C5BDC2 /* shareImageData.png */; };
 		02BEF8642440781800C5BDC2 /* TTGSnackbar in Frameworks */ = {isa = PBXBuildFile; productRef = 02BEF8632440781800C5BDC2 /* TTGSnackbar */; };
 /* End PBXBuildFile section */
@@ -270,6 +278,14 @@
 		02A945682430CFD900623BC4 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		02A9456B2430DF1500623BC4 /* MetricStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricStateView.swift; sourceTree = "<group>"; };
 		02A9456D2430DF1900623BC4 /* MetricStateView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MetricStateView.xib; sourceTree = "<group>"; };
+		02BD0BCC2442F340003011A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		02BD0BCF2442F39C003011A3 /* GoogleSignInDependencies.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignInDependencies.framework; sourceTree = "<group>"; };
+		02BD0BD02442F39C003011A3 /* GoogleSignIn.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = GoogleSignIn.bundle; sourceTree = "<group>"; };
+		02BD0BD12442F39C003011A3 /* GoogleSignIn.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSignIn.framework; sourceTree = "<group>"; };
+		02BD0BD52442F409003011A3 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		02BD0BD62442F409003011A3 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		02BD0BD72442F409003011A3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		02BD0BD82442F409003011A3 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		02BEF7D1244069BE00C5BDC2 /* shareImageData.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shareImageData.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -292,23 +308,29 @@
 				02A9443B242B98EB00623BC4 /* MSBBarChart in Frameworks */,
 				02A9446F242B9BA300623BC4 /* PromiseKit in Frameworks */,
 				025E9DC12434F14C001E8B2E /* SwiftLocation in Frameworks */,
+				02BD0BDA2442F40A003011A3 /* SafariServices.framework in Frameworks */,
 				02742C3E243DBE4600C04A6A /* AVFoundation.framework in Frameworks */,
+				02BD0BD22442F39C003011A3 /* GoogleSignInDependencies.framework in Frameworks */,
 				02742C3C243DBE3B00C04A6A /* AudioToolbox.framework in Frameworks */,
 				02742C46243DBE8500C04A6A /* Messages.framework in Frameworks */,
 				02742C44243DBE8400C04A6A /* MessageUI.framework in Frameworks */,
+				02BD0BD42442F39D003011A3 /* GoogleSignIn.framework in Frameworks */,
 				02742C3A243DBE2B00C04A6A /* CoreLocation.framework in Frameworks */,
 				02742C1D243B4ED100C04A6A /* LetterAvatarKit in Frameworks */,
 				02A94438242B979E00623BC4 /* Haptica in Frameworks */,
+				02BD0BD92442F40A003011A3 /* LocalAuthentication.framework in Frameworks */,
 				02A9442C242B93FB00623BC4 /* Hero in Frameworks */,
 				02A94475242B9DA300623BC4 /* UIKit.framework in Frameworks */,
 				02A94542242F5A8D00623BC4 /* FacebookShare in Frameworks */,
 				02A9442F242B954900623BC4 /* SwiftyUserDefaults in Frameworks */,
 				02A94477242B9E6600623BC4 /* CoreGraphics.framework in Frameworks */,
 				02742C43243DBE8400C04A6A /* UserNotifications.framework in Frameworks */,
+				02BD0BDB2442F40A003011A3 /* SystemConfiguration.framework in Frameworks */,
 				02A94435242B977300623BC4 /* SwiftDate in Frameworks */,
 				02A94423242B923C00623BC4 /* Alamofire in Frameworks */,
 				02A94432242B961F00623BC4 /* AlamofireImage in Frameworks */,
 				02742C45243DBE8500C04A6A /* UserNotificationsUI.framework in Frameworks */,
+				02BD0BDC2442F40A003011A3 /* AuthenticationServices.framework in Frameworks */,
 				02BEF8642440781800C5BDC2 /* TTGSnackbar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -551,6 +573,7 @@
 		02A9443C242B99AA00623BC4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				02BD0BCE2442F391003011A3 /* GoogleSignIn */,
 				02276310243F85CF00F3BAF3 /* Share */,
 				02A9445F242B99F600623BC4 /* CoordinatorKit */,
 				02A9443E242B99AA00623BC4 /* Ext */,
@@ -605,6 +628,10 @@
 		02A94473242B9DA300623BC4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				02BD0BD82442F409003011A3 /* AuthenticationServices.framework */,
+				02BD0BD52442F409003011A3 /* LocalAuthentication.framework */,
+				02BD0BD62442F409003011A3 /* SafariServices.framework */,
+				02BD0BD72442F409003011A3 /* SystemConfiguration.framework */,
 				02276313243F861A00F3BAF3 /* LinkPresentation.framework */,
 				02742C42243DBE8400C04A6A /* Messages.framework */,
 				02742C40243DBE8400C04A6A /* MessageUI.framework */,
@@ -679,6 +706,7 @@
 		02A94520242CBBF000623BC4 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				02BD0BCC2442F340003011A3 /* GoogleService-Info.plist */,
 				02A9443D242B99AA00623BC4 /* Palette.swift */,
 				02A94416242B8CE400623BC4 /* Assets.xcassets */,
 				02BEF7D1244069BE00C5BDC2 /* shareImageData.png */,
@@ -764,6 +792,16 @@
 				02742C31243DADB000C04A6A /* FriendCollectionCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		02BD0BCE2442F391003011A3 /* GoogleSignIn */ = {
+			isa = PBXGroup;
+			children = (
+				02BD0BD02442F39C003011A3 /* GoogleSignIn.bundle */,
+				02BD0BD12442F39C003011A3 /* GoogleSignIn.framework */,
+				02BD0BCF2442F39C003011A3 /* GoogleSignInDependencies.framework */,
+			);
+			path = GoogleSignIn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -875,8 +913,10 @@
 				0285CDA32431EDF2004DF64A /* MetricStatesCell.xib in Resources */,
 				02A9441A242B8CE400623BC4 /* LaunchScreen.storyboard in Resources */,
 				02A94417242B8CE400623BC4 /* Assets.xcassets in Resources */,
+				02BD0BCD2442F341003011A3 /* GoogleService-Info.plist in Resources */,
 				025E9DBE2434EE70001E8B2E /* BulletinAssets.xcassets in Resources */,
 				02BEF7D2244069BE00C5BDC2 /* shareImageData.png in Resources */,
+				02BD0BD32442F39D003011A3 /* GoogleSignIn.bundle in Resources */,
 				02742C26243B5E4F00C04A6A /* HeaderView.xib in Resources */,
 				02A94527242CC48600623BC4 /* SwipeCardContentView.xib in Resources */,
 				02A94415242B8CE100623BC4 /* Main.storyboard in Resources */,
@@ -1133,6 +1173,10 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CovidApp/Utils/GoogleSignIn",
+				);
 				INFOPLIST_FILE = CovidApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1141,6 +1185,10 @@
 				);
 				OTHER_CFLAGS = "";
 				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaiman.CovidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = CovidApp;
@@ -1160,11 +1208,19 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = R8CKJFJ8PK;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/CovidApp/Utils/GoogleSignIn",
+				);
 				INFOPLIST_FILE = CovidApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(OTHER_LDFLAGS)",
+					"-ObjC",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.kaiman.CovidApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -23,22 +23,20 @@ enum ActionButtonType {
     enum ConnectionType {
         case facebook
         case google
+//        case apple
         
         var image: UIImage? {
             switch self {
-            case .facebook:
-                return UIImage(named: "facebook")
-            case .google:
-                return UIImage(named: "google")
+            case .facebook: return UIImage(named: "facebook")
+            case .google: return UIImage(named: "google")
+//            case .apple: return UIImage(named: "apple")
             }
         }
         
         var title: String {
             switch self {
-            case .facebook:
-                return "Connect with facebook".local()
-            case .google:
-                return "Connect with google".local()
+            case .facebook: return "Connect with facebook".local()
+            case .google: return "Connect with google".local()
             }
         }
     }
@@ -114,7 +112,10 @@ enum ActionButtonType {
             button.backgroundColor = .white
             
         case .connection(let type):
-            button.backgroundColor = Palette.basic.primary.color
+            switch type {
+            case .facebook: button.backgroundColor = UIColor.init(hexString: "#3b5998")
+            case .google: button.backgroundColor = UIColor.init(hexString: "#DB4437")
+            }
             button.setImage(type.image, for: .normal)
             button.setTitle(type.title, for: .normal)
             

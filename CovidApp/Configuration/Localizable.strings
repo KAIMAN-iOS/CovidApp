@@ -75,6 +75,7 @@
 "refreshTokenFailed" = "Impossible de vous re-connecter pour le moment";
 "cantLogin" = "Impossible de vous connecter pour le moment";
 "Connect with facebook" = "Se connecter avec Facebook";
+"Connect with google" = "Se connecter avec Google";
 
 "ask location" = "CovidApp a besoin de votre position";
 "ask for location" = "Vos données de géolocalisation seront associées de manière anonyme à vos données de santé afin que les pouvoirs publics et les professionnels de santé puissent visualiser la répartition des cas sains et des cas suspects, en donc leur permetre de mieux anticiper les moyens par secteur géographique";

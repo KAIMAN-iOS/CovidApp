@@ -11,6 +11,8 @@ import SwiftyUserDefaults
 import SwiftLocation
 import UserNotifications
 import CoreLocation
+import GoogleSignIn
+import FacebookCore
 
 //MARK: - Protocols
 protocol AppCoordinatorDelegate: class {
@@ -122,8 +124,12 @@ class AppCoordinator: Coordinator<DeepLink> {
     }
     
     override func start() {
+        configureGoogleSignIn()
+        
         switch instructor {
-        case .onboarding: presentOnboardingFlow()
+        case .onboarding:
+            presentOnboardingFlow()
+            
         case .main:
             if SessionController().userLoggedIn == false {
                 router.setRootModule(loginController, hideBar: true, animated: false)
@@ -131,6 +137,29 @@ class AppCoordinator: Coordinator<DeepLink> {
                 showMainController()
             }
         }
+    }
+    
+    func configureGoogleSignIn() {
+        GIDSignIn.sharedInstance()?.clientID = "361098807316-tir0pul5maqn5b90rsdg5af5rmet47k2.apps.googleusercontent.com"
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if let scheme = url.scheme {
+            switch scheme {
+            case DeepLink.scheme:
+                if let link = DeepLink.from(route: (url.host ?? "") + url.path) {
+                    open(from: link)
+                }
+                
+            default:
+                let handled = ApplicationDelegate.shared.application(UIApplication.shared, open: url, sourceApplication: sourceApplication, annotation: annotation)
+                guard handled == false else {
+                    return true
+                }
+                return GIDSignIn.sharedInstance()?.handle(url) ?? false
+            }
+        }
+        return false
     }
     
     func presentOnboardingFlow() {

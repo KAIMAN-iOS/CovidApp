@@ -70,7 +70,9 @@ class MainViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        loadUser()
+        if SessionController().userLoggedIn == true {
+            loadUser()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

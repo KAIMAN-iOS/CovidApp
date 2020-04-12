@@ -34,16 +34,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
         if let context: UIOpenURLContext = URLContexts.first {
-            if let scheme = context.url.scheme {
-                switch scheme {
-                case DeepLink.scheme:
-                    if let link = DeepLink.from(route: (context.url.host ?? "") + context.url.path) {
-                        appCoordinator.open(from: link)
-                    }
-                    
-                default: ApplicationDelegate.shared.application(UIApplication.shared, open: context.url, sourceApplication: context.options.sourceApplication, annotation: context.options.annotation)
-                }
-            }
+            appCoordinator.application(UIApplication.shared, open: context.url, sourceApplication: context.options.sourceApplication, annotation: context.options.annotation)
         }
     }    
 

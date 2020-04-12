@@ -9,6 +9,7 @@
 import Foundation
 import KeychainAccess
 import SwiftDate
+import GoogleSignIn
 
 struct SessionController {
     private static let keychain = Keychain.init(service: "CovidApp", accessGroup: "group.com.kaiman.apps")
@@ -106,6 +107,12 @@ struct SessionController {
         if let date = data["birthday"] {
             SessionController.instance.birthday = DateFormatter.facebookDateFormatter.date(from: date)
         }
+    }
+    
+    func readFrom(googleUser user: GIDGoogleUser) {
+        SessionController.instance.name = user.profile.familyName
+        SessionController.instance.firstname = user.profile.givenName
+        SessionController.instance.email = user.profile.email
     }
     
     private func read(from data: [String : String], for key: String, keyPath: WritableKeyPath<SessionController, String?>) {
