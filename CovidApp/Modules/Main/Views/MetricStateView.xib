@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -53,7 +52,6 @@
                             </constraints>
                         </view>
                     </subviews>
-                    <color key="backgroundColor" name="alert"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="kOU-6O-JcE" secondAttribute="bottom" constant="10" id="1c6-HQ-Wzk"/>
                         <constraint firstAttribute="trailing" secondItem="yhi-8U-btc" secondAttribute="trailing" constant="10" id="AMY-1N-EsE"/>
@@ -87,8 +85,5 @@
     </objects>
     <resources>
         <image name="Metrics-Cough" width="168.5" height="168.5"/>
-        <namedColor name="alert">
-            <color red="0.6029999852180481" green="0.17599999904632568" blue="0.14000000059604645" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
     </resources>
 </document>

@@ -27,6 +27,7 @@ class NotificationSettingsCell: UITableViewCell {
     
     private func updateHourLabel() {
         guard let date = Defaults[\.hourForNotification] else { return }
+        datePicker.date = date
         hourLabel.set(text: String(format: "reminder time".local(), DateFormatter.timeOnlyFormatter.string(from: date)), for: .default)
     }
     

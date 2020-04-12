@@ -470,7 +470,7 @@ struct Metric {
     let value: Bool
     
     var color: UIColor {
-        return value == false ? Palette.basic.alert.color : Palette.basic.confirmation.color
+        return value == true ? Palette.basic.alert.color : Palette.basic.confirmation.color
     }
     
     var textColor: UIColor {

@@ -253,7 +253,8 @@ class ActionButton: UIButton {
         switch type {
         case .connection:
             contentEdgeInsets = UIEdgeInsets(top: 0, left: 6, bottom: 0, right: 12)
-            titleEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+            titleEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
+            imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 8)
             contentHorizontalAlignment = .center
             
         case .loading:

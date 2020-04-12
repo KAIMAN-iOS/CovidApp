@@ -10,6 +10,7 @@ import Foundation
 import KeychainAccess
 import SwiftDate
 import GoogleSignIn
+import AuthenticationServices
 
 struct SessionController {
     private static let keychain = Keychain.init(service: "CovidApp", accessGroup: "group.com.kaiman.apps")
@@ -113,6 +114,13 @@ struct SessionController {
         SessionController.instance.name = user.profile.familyName
         SessionController.instance.firstname = user.profile.givenName
         SessionController.instance.email = user.profile.email
+    }
+    
+    @available(iOS 13.0, *)
+    func readFrom(appleIDCredential: ASAuthorizationAppleIDCredential) {
+        SessionController.instance.name = appleIDCredential.fullName?.familyName
+        SessionController.instance.firstname = appleIDCredential.fullName?.givenName
+        SessionController.instance.email = appleIDCredential.email
     }
     
     private func read(from data: [String : String], for key: String, keyPath: WritableKeyPath<SessionController, String?>) {

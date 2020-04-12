@@ -310,6 +310,7 @@
                     <connections>
                         <outlet property="facebookButton" destination="K2H-uD-6Ic" id="Bwo-gY-tOp"/>
                         <outlet property="googleButton" destination="9hv-6H-51y" id="Db5-Fo-oLe"/>
+                        <outlet property="stack" destination="Cz4-nh-tkx" id="AxT-QB-uqK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gw0-nu-Xbg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1017,7 +1018,7 @@
         <image name="appSettings" width="42" height="42"/>
         <image name="close" width="42" height="42"/>
         <image name="covid'house" width="168.5" height="168.5"/>
-        <image name="facebook" width="42" height="42"/>
+        <image name="facebook" width="21" height="21"/>
         <image name="gobackward" catalog="system" width="121" height="128"/>
         <image name="government" width="168.5" height="168.5"/>
         <image name="shareFaces" width="168.5" height="168.5"/>

@@ -18,7 +18,7 @@ class MainViewModel {
     func numberOfItems(in section: Int, for type: CollectionViewType) -> Int {
         guard let user = user else { return 0 }
         switch type {
-        case .metrics: return user.user.metrics.count
+        case .metrics: return metrics.count
         case .friends: return user.sharedUsers.count > 0 ? user.sharedUsers.count + 1 : 0
         }
     }
@@ -28,7 +28,7 @@ class MainViewModel {
         switch type {
         case .metrics:
             if let cell: MetricStatesCell = collectionView.automaticallyDequeueReusableCell(forIndexPath: indexPath) {
-                cell.configure(user.user.metrics.reversed()[indexPath.row])
+                cell.configure(metrics[indexPath.row])
                 return cell
             }
             
@@ -42,8 +42,10 @@ class MainViewModel {
     }
     
     private (set) var user: CurrentUser? = nil
+    private var metrics: [Metrics] = []
     init() {
         user = try? DataManager().retrieve(for: DataManagerKey.currentUser.key)
+        metrics = user?.user.metrics.sorted(by: { $0.date < $1.date }) ?? []
     }
     
     func loadUser(completion: @escaping (() -> Void)) {

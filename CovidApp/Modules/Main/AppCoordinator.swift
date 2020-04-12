@@ -358,6 +358,7 @@ extension AppCoordinator: AppCoordinatorDelegate {
         let coord = CollectDataInitialCoordinator(collectType: .metrics)
         coord.coordinatorDelegate = self
         coord.collectDelegate = self
+        coord.closeDelegate = self
         addChild(coord)
         router.present(coord, animated: true)
         coord.start()
