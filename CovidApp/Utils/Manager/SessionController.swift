@@ -93,6 +93,24 @@ struct SessionController {
         }
     }
     
+    @available(iOS 13.0, *)
+    var appleUserData: UserData? {
+        set {
+            guard let value = newValue else { return }
+            if let archived = try? NSKeyedArchiver.archivedData(withRootObject: value, requiringSecureCoding: true) {
+                try? SessionController.keychain.set(archived, key: "appleIDCredential")
+            }
+        }
+        
+        get {
+            guard let data = try? SessionController.keychain.getData("appleIDCredential"),
+                let userData = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? UserData else {
+                    return nil
+            }
+            return userData
+        }
+    }
+    
     func clear() {
         try? SessionController.keychain.removeAll()
     }
@@ -118,9 +136,19 @@ struct SessionController {
     
     @available(iOS 13.0, *)
     func readFrom(appleIDCredential: ASAuthorizationAppleIDCredential) {
+        guard let email = appleIDCredential.email else {
+            if let userData = SessionController.instance.appleUserData {
+                SessionController.instance.name = userData.name.familyName
+                SessionController.instance.firstname = userData.name.givenName
+                SessionController.instance.email = userData.email
+            }
+            return
+        }
         SessionController.instance.name = appleIDCredential.fullName?.familyName
         SessionController.instance.firstname = appleIDCredential.fullName?.givenName
-        SessionController.instance.email = appleIDCredential.email
+        SessionController.instance.email = email
+        let userData = UserData(email: email, name: appleIDCredential.fullName!, identifier: appleIDCredential.user)
+        SessionController.instance.appleUserData = userData
     }
     
     private func read(from data: [String : String], for key: String, keyPath: WritableKeyPath<SessionController, String?>) {

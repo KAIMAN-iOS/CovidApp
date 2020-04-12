@@ -482,6 +482,12 @@ struct Metric {
     }
 }
 
+extension Metric: Comparable {
+    static func < (lhs: Self, rhs: Self) -> Bool {
+        return lhs.metric.rawValue < rhs.metric.rawValue
+    }
+}
+
 extension Metric: Codable {
     
 }
@@ -497,7 +503,11 @@ struct Metrics: Hashable {
         return lhs.hashValue == rhs.hashValue
     }
     
-    let metrics: [Metric]
+    var metrics: [Metric] {
+        willSet {
+            self.metrics = newValue.sorted()
+        }
+    }
     let date: Date
     private (set) var coordinates: Coordinate?
     
