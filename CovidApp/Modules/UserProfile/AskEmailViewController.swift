@@ -28,7 +28,13 @@ class AskEmailViewController: UIViewController {
             
         }
     }
+    @IBOutlet weak var instructions: UILabel!  {
+        didSet {
+            instructions.text = "ask email instructions".local()
+        }
+    }
 
+    
     deinit {
         print("💀 DEINIT \(URL(fileURLWithPath: #file).lastPathComponent)")
         observation?.invalidate()

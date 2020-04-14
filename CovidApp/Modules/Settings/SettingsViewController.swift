@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: UIViewController {
-
+    weak var coordinatorDelegate: AppCoordinatorDelegate? = nil
     weak var shareDelegate: ShareDelegate? = nil
     weak var notificationDelegate: DailyNotificationDelegate? = nil
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -58,6 +58,16 @@ class SettingsViewController: UIViewController {
     
     @IBAction func close(_ sender: Any) {
         closeDelegate?.close(self)
+    }
+    
+    @IBAction func logout(_ sender: Any) {
+        let alert = UIAlertController(title: "Attention".local(), message: "Vous êtes sur le point de vous déconnecter. Souhaitez-vous poursuivre ?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel".local(), style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Disconnect".local(), style: .destructive, handler: { [weak self] _ in
+            guard let self = self else { return }
+            self.coordinatorDelegate?.logOut()
+        }))
+        present(alert, animated: true, completion: nil)
     }
 }
 

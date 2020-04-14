@@ -34,6 +34,11 @@ class LoginViewController: UIViewController {
             googleButton.actionButtonType = .connection(type: .google)
         }
     }
+    @IBOutlet weak var instructions: UILabel!  {
+        didSet {
+            instructions.text = "login instructions".local()
+        }
+    }
     var appleButton: UIControl? = nil
 
     override func viewDidLoad() {

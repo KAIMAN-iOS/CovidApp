@@ -11,8 +11,17 @@ import KeychainAccess
 import SwiftDate
 import GoogleSignIn
 import AuthenticationServices
+import SwiftyUserDefaults
+
+extension DefaultsKeys {
+    var loginOrigin: DefaultsKey<Int?> { .init("LoginOrigin", defaultValue: nil) }
+}
 
 struct SessionController {
+    
+    enum LoginOrigin: Int, DefaultsSerializable {
+        case facebook, google, apple
+    }
     private static let keychain = Keychain.init(service: "CovidApp", accessGroup: "group.com.kaiman.apps")
     private static var instance = SessionController()
     
@@ -119,7 +128,12 @@ struct SessionController {
         return SessionController().email != nil
     }
     
+    var userProfileCompleted: Bool {
+        return SessionController().name != nil && SessionController().firstname != nil && SessionController().birthday != nil
+    }
+    
     func readFromFacebook(_ data: [String : String]) {
+        Defaults[\.loginOrigin] = LoginOrigin.facebook.rawValue
         read(from: data, for: "email", keyPath: \SessionController.email)
         read(from: data, for: "last_name", keyPath: \SessionController.name)
         read(from: data, for: "first_name", keyPath: \SessionController.firstname)
@@ -129,6 +143,7 @@ struct SessionController {
     }
     
     func readFrom(googleUser user: GIDGoogleUser) {
+        Defaults[\.loginOrigin] = LoginOrigin.google.rawValue
         SessionController.instance.name = user.profile.familyName
         SessionController.instance.firstname = user.profile.givenName
         SessionController.instance.email = user.profile.email
@@ -136,6 +151,7 @@ struct SessionController {
     
     @available(iOS 13.0, *)
     func readFrom(appleIDCredential: ASAuthorizationAppleIDCredential) {
+        Defaults[\.loginOrigin] = LoginOrigin.apple.rawValue
         guard let email = appleIDCredential.email else {
             if let userData = SessionController.instance.appleUserData {
                 SessionController.instance.name = userData.name.familyName
@@ -155,5 +171,10 @@ struct SessionController {
         if let data = data[key] {
             SessionController.instance[keyPath: keyPath] = data
         }
+    }
+    
+    func logOut() {
+        Defaults[\.loginOrigin] = nil
+        clear()
     }
 }

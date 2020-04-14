@@ -112,3 +112,7 @@
 "addFriendFailed" = "Impossible d'ajouter un ami pour l'instant";
 "cantAddSelf" = "Vous ne pouvez pas vous ajouter vous même en ami 😉";
 "alreadyAnsweredDailyQuestion" = "Vous avez déjà répondu à votre questionnaire quotidien";
+"profile instructions" = "Merci de renseigner et vérifier les champs suivants";
+"ask email instructions" = "Covid'App a besoin de votre email afin de vous identifier de façon unique";
+"login instructions" = "Merci de vous connecter afin de pouvoir utiliser Covid'App";
+"Disconnect" = "Me déconnecter";

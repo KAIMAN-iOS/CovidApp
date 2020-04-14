@@ -32,11 +32,16 @@ class MainViewController: UIViewController {
         }
     }
 
+    private let friendsCellsPerRow: CGFloat = 2
     @IBOutlet weak var friendsCollectionView: UICollectionView!  {
         didSet {
             friendsCollectionView.register(cell: FriendCollectionCell.self)
         }
     }
+    private let friendSectionInsets = UIEdgeInsets(top: 10,
+                                                   left: 10,
+                                                   bottom: 10,
+                                                   right: 10)
 
     @IBOutlet weak var bottomContainerView: UIView!
     
@@ -135,7 +140,33 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 224, height: 152)
+        guard collectionType[collectionView]! == .friends else {
+            return CGSize(width: 224, height: 152)
+        }
+        // 2 cells per row...
+        let paddingSpace = friendSectionInsets.left * (friendsCellsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingSpace
+        let widthPerItem = availableWidth / friendsCellsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem * 0.6)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        guard collectionType[collectionView]! == .friends else {
+            return .zero
+        }
+        return friendSectionInsets
+    }
+    
+    // 4
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        guard collectionType[collectionView]! == .friends else {
+            return 0
+        }
+        return friendSectionInsets.left
     }
 }
 

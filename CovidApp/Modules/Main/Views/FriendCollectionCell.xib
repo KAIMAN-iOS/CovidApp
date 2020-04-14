@@ -40,10 +40,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBZ-st-2ba">
-                                <rect key="frame" x="8" y="56" width="166" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="gtP-Kq-Gan"/>
-                                </constraints>
+                                <rect key="frame" x="56.5" y="56" width="69.5" height="36"/>
                                 <string key="text">Julie 
 Lombardo</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -53,13 +50,14 @@ Lombardo</string>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cBZ-st-2ba" secondAttribute="trailing" constant="8" id="9a7-UI-8pm"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cBZ-st-2ba" secondAttribute="trailing" constant="8" id="9a7-UI-8pm"/>
+                            <constraint firstItem="tZ5-2J-iJg" firstAttribute="centerX" secondItem="K8g-Wi-3AR" secondAttribute="centerX" id="BOJ-jp-x4S"/>
+                            <constraint firstItem="cBZ-st-2ba" firstAttribute="centerX" secondItem="K8g-Wi-3AR" secondAttribute="centerX" id="Lw4-1q-F27"/>
                             <constraint firstItem="cBZ-st-2ba" firstAttribute="top" secondItem="tZ5-2J-iJg" secondAttribute="bottom" constant="8" id="MAL-Bb-d3X"/>
                             <constraint firstAttribute="bottom" secondItem="cBZ-st-2ba" secondAttribute="bottom" constant="9" id="W8O-ai-Knb"/>
-                            <constraint firstAttribute="trailing" secondItem="tZ5-2J-iJg" secondAttribute="trailing" constant="71" id="cvl-kF-oDz"/>
-                            <constraint firstItem="tZ5-2J-iJg" firstAttribute="leading" secondItem="K8g-Wi-3AR" secondAttribute="leading" constant="71" id="feU-XK-JcO"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tZ5-2J-iJg" secondAttribute="trailing" constant="24" id="cvl-kF-oDz"/>
                             <constraint firstItem="tZ5-2J-iJg" firstAttribute="top" secondItem="K8g-Wi-3AR" secondAttribute="top" constant="8" id="hOK-TD-khc"/>
-                            <constraint firstItem="cBZ-st-2ba" firstAttribute="leading" secondItem="K8g-Wi-3AR" secondAttribute="leading" constant="8" id="vuD-t0-fjb"/>
+                            <constraint firstItem="cBZ-st-2ba" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="K8g-Wi-3AR" secondAttribute="leading" constant="8" id="vuD-t0-fjb"/>
                         </constraints>
                     </view>
                 </subviews>

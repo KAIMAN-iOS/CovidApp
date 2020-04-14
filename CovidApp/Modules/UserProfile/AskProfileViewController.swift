@@ -22,6 +22,11 @@ class AskProfileViewController: UIViewController {
             continueButton.actionButtonType = .primary
         }
     }
+    @IBOutlet weak var instructions: UILabel!  {
+        didSet {
+            instructions.text = "profile instructions".local()
+        }
+    }
     
     var nameObserver: NSKeyValueObservation?
     @IBOutlet weak var nameTextField: ErrorTextField!  {
@@ -43,8 +48,7 @@ class AskProfileViewController: UIViewController {
             dobTextField.type = .birthDate
             
         }
-    }
-    
+    }    
     
     deinit {
         print("💀 DEINIT \(URL(fileURLWithPath: #file).lastPathComponent)")

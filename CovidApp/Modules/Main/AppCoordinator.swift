@@ -23,6 +23,7 @@ protocol AppCoordinatorDelegate: class {
     func collectDailyMetrics()
     func showSettings()
     func showMetricsDetail(for user: User)
+    func logOut()
 }
 
 protocol DailyNotificationDelegate: class {
@@ -133,6 +134,9 @@ class AppCoordinator: Coordinator<DeepLink> {
         case .main:
             if SessionController().userLoggedIn == false {
                 router.setRootModule(loginController, hideBar: true, animated: false)
+            } else if SessionController().userProfileCompleted == false {
+                router.setRootModule(loginController, hideBar: true, animated: false)
+                showUserProfileController()
             } else {
                 showMainController()
             }
@@ -196,6 +200,7 @@ class AppCoordinator: Coordinator<DeepLink> {
                 guard state != .undetermined else { return }
                 guard let self = self else { return }
             }
+            LocationManager.shared.preferredAuthorization = .whenInUse
             LocationManager.shared.requireUserAuthorization(.whenInUse)
         }
         page.alternativeHandler = { [weak self] item in
@@ -256,14 +261,17 @@ class AppCoordinator: Coordinator<DeepLink> {
         }
     }
     
+    private var locationRequest: LocationRequest?
     func appendLocation(to dailyData: Metrics) {
         guard LocationManager.state == .available || LocationManager.state == .restricted else {
             send(dailyData: dailyData)
             return
         }
         
-        LocationManager.shared.locateFromGPS(.oneShot, accuracy: .house) { [weak self] result in
+        locationRequest = LocationManager.shared.locateFromGPS(.oneShot, accuracy: .house, timeout: .absolute(120)) { [weak self] result in
             guard let self = self else { return }
+            print("🏞 locateFromGPS \(result)")
+            self.locationRequest = nil
             switch result {
             case .failure(let error):
                 switch error {
@@ -369,6 +377,7 @@ extension AppCoordinator: AppCoordinatorDelegate {
         (nav.viewControllers.first as? SettingsViewController)?.closeDelegate = self
         (nav.viewControllers.first as? SettingsViewController)?.notificationDelegate = self
         (nav.viewControllers.first as? SettingsViewController)?.shareDelegate = self
+        (nav.viewControllers.first as? SettingsViewController)?.coordinatorDelegate = self
         router.present(nav, animated: true)
     }
     
@@ -377,6 +386,12 @@ extension AppCoordinator: AppCoordinatorDelegate {
         router.push(ctrl, animated: true) {
             self.router.navigationController.setNavigationBarHidden(true, animated: true)
         }
+    }
+    
+    func logOut() {
+        mainController.dismiss(animated: true, completion: nil)
+        SessionController().logOut()
+        start()
     }
 }
 
