@@ -13,6 +13,8 @@ import UserNotifications
 import CoreLocation
 import GoogleSignIn
 import FacebookCore
+import AuthenticationServices
+import Security
 
 //MARK: - Protocols
 protocol AppCoordinatorDelegate: class {
@@ -292,6 +294,43 @@ class AppCoordinator: Coordinator<DeepLink> {
                 var updatedData = dailyData
                 updatedData.update(coordinates: location)
                 self.send(dailyData: updatedData)
+            }
+        }
+    }
+    
+    private func checkIfSessionExpired() {
+        guard let rawLoginOrigin = Defaults[\.loginOrigin], let loginOrigin = SessionController.LoginOrigin.init(rawValue: rawLoginOrigin) else { return }
+        switch loginOrigin {
+        case .apple:
+            if #available(iOS 13.0, *) {
+                checkIfAppleSessionExpired()
+            }
+            
+        case .google: checkIfGoogleSessionExpired()
+        case .facebook: checkIfFacebookSessionExpired()
+        }
+    }
+    
+    private func checkIfGoogleSessionExpired() {
+    }
+    
+    private func checkIfFacebookSessionExpired() {
+    }
+    
+    @available(iOS 13.0, *)
+    private func checkIfAppleSessionExpired() {
+        guard let userIdentifier = SessionController().appleUserData?.identifier else { return }
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: userIdentifier) { (credentialState, error) in
+            switch credentialState {
+            case .authorized: break // The Apple ID credential is valid.
+            case .revoked, .notFound:
+                self.logOut()
+                DispatchQueue.main.async {
+                    MessageManager.show(.sso(.userWasLoggedOut))
+                }
+                
+            default: break
             }
         }
     }

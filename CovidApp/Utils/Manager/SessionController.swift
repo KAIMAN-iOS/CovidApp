@@ -10,6 +10,7 @@ import Foundation
 import KeychainAccess
 import SwiftDate
 import GoogleSignIn
+import FacebookLogin
 import AuthenticationServices
 import SwiftyUserDefaults
 
@@ -121,7 +122,15 @@ struct SessionController {
     }
     
     func clear() {
+        // keep the AppleUser Data just in case. When re-login, Apple does not provide the userEmail anymore....
+        var appleUserData: UserData? = nil
+        if #available(iOS 13.0, *) {
+            appleUserData = SessionController().appleUserData
+        }
         try? SessionController.keychain.removeAll()
+        if #available(iOS 13.0, *) {
+            SessionController.instance.appleUserData = appleUserData
+        }
     }
     
     var userLoggedIn: Bool {
@@ -174,6 +183,13 @@ struct SessionController {
     }
     
     func logOut() {
+        if let rawOrigin = Defaults[\.loginOrigin], let origin = LoginOrigin.init(rawValue: rawOrigin) {
+            switch origin {
+            case .google: GIDSignIn.sharedInstance().signOut()
+            case .facebook: LoginManager().logOut()
+            case .apple: () // nothing so far...
+            }
+        }
         Defaults[\.loginOrigin] = nil
         clear()
     }
